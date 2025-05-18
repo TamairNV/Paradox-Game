@@ -1,32 +1,99 @@
 using System;
+using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Player_Controller : MonoBehaviour
 {
 
-
+    public List<DimentionalPlayer> DimentionalPlayers = new List<DimentionalPlayer>();
     private string currentAnimation = "sdsf";
-
+    private bool isMoving;
     private Animator ani;
     [SerializeField] public float speed = 100;
 
+    [SerializeField] public GameObject DimPlayer;
+
     public Vector3 direction;
-    private Vector2 lastDirection;
-    
+    public Vector2 lastDirection;
+
+    private DimensionalLinkedList timeEngine;
+    private float timer = 0;
+    public float MomentRate = 20;
+
+
+
+    void MomentUpdate()
+    {
+
+        timeEngine.stepNode();
+        timeEngine.CurrentDimensionalNode.data = CreateMoment();
+        int i = 0;
+        foreach (var dimNode in timeEngine.CurrentDimensionalNode.SameTimeNodes)
+        {
+            if (i >= timeEngine.CurrentDimensionalNode.SameTimeNodes.Count - 1)
+            {
+                break;
+            }
+            DimentionalPlayer dimentionalPlayer = DimentionalPlayers[i];
+            dimentionalPlayer.currentNode = dimNode;
+            dimentionalPlayer.MomentUpdate();
+            dimentionalPlayer.setVisable();  
+            i++;
+        }
+
+        for (int j = i; j < DimentionalPlayers.Count; j++)
+        {
+            DimentionalPlayers[j].setInvisable();
+        }
+    }
+
+    MomentData CreateMoment()
+    {
+        Vector2 dir = new Vector2(lastDirection.x, lastDirection.y);
+        Vector3 pos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        MomentData newMoment = new MomentData(dir, isMoving, pos);
+        return newMoment;
+    }
+
+    private void ReverseDirection()
+    {
+        GameObject dimPlayer = GameObject.Instantiate(DimPlayer);
+        dimPlayer.GetComponent<DimentionalPlayer>().InitDimPlayer(timeEngine.CurrentDimensionalNode,timeEngine);
+        DimentionalPlayers.Add(dimPlayer.GetComponent<DimentionalPlayer>());
+        timeEngine.reverseDirection();
+        
+    }
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {;
+        timeEngine = new DimensionalLinkedList();
+        timeEngine.CurrentDimensionalNode = new DimensionalNode(null, null, null,null);
+        timeEngine.CurrentDimensionalNode.data = CreateMoment();
         ani = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         Move();
-    
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        {
+            ReverseDirection();
+        }
+        timer += Time.deltaTime;
+        if (timer > 1 / MomentRate)
+        {
+            timer = 0;
+            MomentUpdate();
+        }
+
+
+
     }
 
     void Move()
@@ -56,9 +123,11 @@ public class Player_Controller : MonoBehaviour
             AnimateMovement();
             lastDirection = direction;
             transform.position += direction * Time.deltaTime * speed;
+            isMoving = true;
         }
         else
         {
+            isMoving = false;
             PlayIdleAnimation(lastDirection);
         }
         
