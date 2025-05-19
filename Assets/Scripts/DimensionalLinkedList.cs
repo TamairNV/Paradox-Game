@@ -1,6 +1,10 @@
 
+using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using UnityEngine;
+using Vector3 = UnityEngine.Vector3;
+
 public class DimensionalLinkedList
 {
 
@@ -9,14 +13,25 @@ public class DimensionalLinkedList
     public int direction = 1;
     public DimensionalNode LastSplitPoint = null;
     public int CurrentTime = 0;
+    [SerializeField] public LineRenderer line;
+    private float x = 0;
+    private float y = 0;
+    public float xStep = 0.1f;
+    public float yStep = 0.5f;
+    public List<Vector3> linePositions = new List<Vector3>();
     
-    public DimensionalLinkedList()
+    public DimensionalLinkedList(float xStep, float yStep,LineRenderer line)
     {
         TransDimensionalLinkStorage = new List<LinkedList<DimensionalNode>>();
         TransDimensionalLinkStorage.Add(new LinkedList<DimensionalNode>()); // Initial time step
+        this.xStep = xStep;
+        this.yStep = yStep;
+        this.line = line;
+        
+
     }
 
-
+    private int s = 0;
     public void reverseDirection()
     {
         direction = (direction == 1) ? 0 : 1; // Toggle direction
@@ -36,11 +51,13 @@ public class DimensionalLinkedList
             LastSplitPoint,
             CurrentDimensionalNode.SameTimeNodes
         );
+        y -= yStep;
     }
     
 
     public void stepNode()
     {
+        s ++ ;
         if (CurrentTime < 0)
         {
             CurrentTime = 0;
@@ -48,6 +65,7 @@ public class DimensionalLinkedList
         
         if (direction == 1)
         {
+            x += xStep;
             if (CurrentDimensionalNode.ForwardDimensionalNode != null)
             {
                 CurrentDimensionalNode = CurrentDimensionalNode.ForwardDimensionalNode;
@@ -75,6 +93,7 @@ public class DimensionalLinkedList
 
         if (direction == 0)
         {
+            x -= xStep;
             if (CurrentTime <= 0) // Prevent underflow
             {
                 return;
@@ -106,12 +125,16 @@ public class DimensionalLinkedList
 
             }
         }
-        
 
+        if (s == 2)
+        {
+            linePositions.Add(new Vector3(x,y,0));
+            s = 0;
+        }
+
+        
         
 
     }
-    
-    
 }
 

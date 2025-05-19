@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
@@ -21,8 +22,22 @@ public class Player_Controller : MonoBehaviour
     private DimensionalLinkedList timeEngine;
     private float timer = 0;
     public float MomentRate = 20;
+    
+    [SerializeField] public float xStep = 0.1f;
+    [SerializeField] public float yStep = 0.5f;
+    [SerializeField] public LineRenderer line;
 
-
+    IEnumerator setLine()
+    {
+        while (true)
+        {
+            line.positionCount = timeEngine.linePositions.Count;
+            line.SetPositions(timeEngine.linePositions.ToArray());
+            line.Simplify(0);
+            yield return new WaitForSeconds(0.05f);
+        }
+        
+    }
 
     void MomentUpdate()
     {
@@ -38,6 +53,10 @@ public class Player_Controller : MonoBehaviour
             }
             DimentionalPlayer dimentionalPlayer = DimentionalPlayers[i];
             dimentionalPlayer.currentNode = dimNode;
+            if (Vector3.Distance(dimentionalPlayer.transform.position, dimNode.data.Position) > 0.4f)
+            {
+                dimentionalPlayer.transform.position = dimNode.data.Position;
+            }
             dimentionalPlayer.MomentUpdate();
             dimentionalPlayer.setVisable();  
             i++;
@@ -60,7 +79,8 @@ public class Player_Controller : MonoBehaviour
     private void ReverseDirection()
     {
         GameObject dimPlayer = GameObject.Instantiate(DimPlayer);
-        dimPlayer.GetComponent<DimentionalPlayer>().InitDimPlayer(timeEngine.CurrentDimensionalNode,timeEngine);
+        dimPlayer.GetComponent<DimentionalPlayer>().InitDimPlayer(timeEngine.CurrentDimensionalNode,timeEngine,MomentRate);
+        dimPlayer.transform.position = transform.position;
         DimentionalPlayers.Add(dimPlayer.GetComponent<DimentionalPlayer>());
         timeEngine.reverseDirection();
         
@@ -70,10 +90,11 @@ public class Player_Controller : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {;
-        timeEngine = new DimensionalLinkedList();
+        timeEngine = new DimensionalLinkedList(xStep,yStep,line);
         timeEngine.CurrentDimensionalNode = new DimensionalNode(null, null, null,null);
         timeEngine.CurrentDimensionalNode.data = CreateMoment();
         ani = GetComponent<Animator>();
+        StartCoroutine(setLine());
     }
 
     // Update is called once per frame

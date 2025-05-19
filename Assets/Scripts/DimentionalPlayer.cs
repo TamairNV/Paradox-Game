@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class DimentionalPlayer : MonoBehaviour
@@ -13,10 +14,12 @@ public class DimentionalPlayer : MonoBehaviour
     private SpriteRenderer sp;
     private Animator ani;
     private string currentAnimation = "";
+    private float momentTime;
 
 
-    public void InitDimPlayer(DimensionalNode startNode,DimensionalLinkedList timeEngine)
+    public void InitDimPlayer(DimensionalNode startNode,DimensionalLinkedList timeEngine,float momentTime)
     {
+        this.momentTime = momentTime;
         this.startNode = startNode;
         this.timeEngine = timeEngine;
         currentNode = startNode;
@@ -29,11 +32,17 @@ public class DimentionalPlayer : MonoBehaviour
         sp = GetComponent<SpriteRenderer>();
         ani = GetComponent<Animator>();
     }
-    
+
+    private void Update()
+    {
+        transform.position = Vector3.Lerp(transform.position, currentNode.data.Position, 1 / momentTime);
+    }
+
     public void MomentUpdate()
     {
         loadPlayerState();
         setAnimations();
+        
     }
 
     private void loadPlayerState()
@@ -42,7 +51,6 @@ public class DimentionalPlayer : MonoBehaviour
         {
             direction = currentNode.data.Direction;
             isMoving = currentNode.data.isMoving;
-            transform.position = currentNode.data.Position;
         }
 
     }
