@@ -16,7 +16,7 @@ public class DimentionalPlayer : MonoBehaviour
     private string currentAnimation = "";
     private float momentTime;
 
-
+    private CapsuleCollider2D col;
     public void InitDimPlayer(DimensionalNode startNode,DimensionalLinkedList timeEngine,float momentTime)
     {
         this.momentTime = momentTime;
@@ -31,6 +31,7 @@ public class DimentionalPlayer : MonoBehaviour
     {
         sp = GetComponent<SpriteRenderer>();
         ani = GetComponent<Animator>();
+        col = GetComponent<CapsuleCollider2D>();;
     }
 
     private void Update()
@@ -57,11 +58,14 @@ public class DimentionalPlayer : MonoBehaviour
     public void setInvisable()
     {
         sp.enabled = false;
+        col.enabled = false;
     }
 
     public void setVisable()
     {
         sp.enabled = true;
+        col.enabled = true;
+
     }
     private void setAnimations()
     {

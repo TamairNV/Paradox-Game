@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine;
 
 public class MomentData
@@ -11,6 +13,10 @@ public class MomentData
         Direction = direction;
         this.isMoving = isMoving;
         Position = position;
+
+
     }
     
 }
+
+

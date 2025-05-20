@@ -1,16 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Player_Controller : MonoBehaviour
 {
-
+    [SerializeField] private List<DimentionalObjects> DimentionalObjects = new List<DimentionalObjects>();
+    private Dictionary<int, List<Tuple<int,objData>>> objDatas = new Dictionary<int, List<Tuple<int,objData>>>();
     public List<DimentionalPlayer> DimentionalPlayers = new List<DimentionalPlayer>();
     private string currentAnimation = "sdsf";
-    private bool isMoving;
+    public bool isMoving;
     private Animator ani;
     [SerializeField] public float speed = 100;
 
@@ -19,13 +21,15 @@ public class Player_Controller : MonoBehaviour
     public Vector3 direction;
     public Vector2 lastDirection;
 
-    private DimensionalLinkedList timeEngine;
+    public DimensionalLinkedList timeEngine;
     private float timer = 0;
     public float MomentRate = 20;
     
     [SerializeField] public float xStep = 0.1f;
     [SerializeField] public float yStep = 0.5f;
     [SerializeField] public LineRenderer line;
+
+    public bool allowedToWalk = true;
 
     IEnumerator setLine()
     {
@@ -41,8 +45,9 @@ public class Player_Controller : MonoBehaviour
 
     void MomentUpdate()
     {
-
+        UpdateDimObjects();
         timeEngine.stepNode();
+        
         timeEngine.CurrentDimensionalNode.data = CreateMoment();
         int i = 0;
         foreach (var dimNode in timeEngine.CurrentDimensionalNode.SameTimeNodes)
@@ -61,10 +66,46 @@ public class Player_Controller : MonoBehaviour
             dimentionalPlayer.setVisable();  
             i++;
         }
+        
 
         for (int j = i; j < DimentionalPlayers.Count; j++)
         {
             DimentionalPlayers[j].setInvisable();
+        }
+    }
+
+    public void UpdateDimObjects()
+    {
+        
+        if (!objDatas.ContainsKey(timeEngine.CurrentTime))
+        {
+            List<Tuple<int,objData>> newList = new List<Tuple<int,objData>>();
+            objDatas.Add(timeEngine.CurrentTime,newList);
+
+        }
+        foreach (var obj in DimentionalObjects)
+        {
+            if (obj.beenInteractedWith && !objDatas[timeEngine.CurrentTime].Any(t => t.Item1 == obj.ID))
+            {
+                objDatas[timeEngine.CurrentTime].Add(new Tuple<int, objData>(obj.ID,new objData(obj)));
+            }
+        }
+        
+        int l = 0;
+        foreach (var obj in DimentionalObjects)
+        {
+            if (objDatas.ContainsKey(timeEngine.CurrentTime))
+            {
+                if (objDatas[timeEngine.CurrentTime].Any(t => t.Item1 == obj.ID))
+                {
+                    obj.targetPosition = objDatas[timeEngine.CurrentTime][l].Item2.Position;
+                    obj.targetRotation = objDatas[timeEngine.CurrentTime][l].Item2.Rotation;
+                }
+
+            }
+
+            l++;
+
         }
     }
 
@@ -76,14 +117,15 @@ public class Player_Controller : MonoBehaviour
         return newMoment;
     }
 
-    private void ReverseDirection()
+    public DimentionalPlayer ReverseDirection()
     {
         GameObject dimPlayer = GameObject.Instantiate(DimPlayer);
         dimPlayer.GetComponent<DimentionalPlayer>().InitDimPlayer(timeEngine.CurrentDimensionalNode,timeEngine,MomentRate);
         dimPlayer.transform.position = transform.position;
         DimentionalPlayers.Add(dimPlayer.GetComponent<DimentionalPlayer>());
         timeEngine.reverseDirection();
-        
+        return dimPlayer.GetComponent<DimentionalPlayer>();
+
     }
 
 
@@ -100,7 +142,7 @@ public class Player_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+ 
         Move();
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
@@ -137,13 +179,23 @@ public class Player_Controller : MonoBehaviour
             direction.y -= 1;
         }
 
-        direction = direction.normalized;
+        if (allowedToWalk)
+        {
+            direction = direction.normalized;
+        }
+        
+
+        
         
         if (direction.magnitude > 0.1f)
         {
             AnimateMovement();
             lastDirection = direction;
-            transform.position += direction * Time.deltaTime * speed;
+            if (allowedToWalk)
+            {
+                transform.position += direction * Time.deltaTime * speed;
+            }
+            
             isMoving = true;
         }
         else
