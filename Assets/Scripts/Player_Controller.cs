@@ -3,8 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class Player_Controller : MonoBehaviour
 {
@@ -28,6 +31,8 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] public float xStep = 0.1f;
     [SerializeField] public float yStep = 0.5f;
     [SerializeField] public LineRenderer line;
+
+    private List<CheckPoint> checkPoints = new List<CheckPoint>();
 
     public bool allowedToWalk = true;
 
@@ -133,6 +138,7 @@ public class Player_Controller : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {;
+        checkPoints.Add(new CheckPoint(0,transform.position));
         timeEngine = new DimensionalLinkedList(xStep,yStep,line);
         timeEngine.CurrentDimensionalNode = new DimensionalNode(null, null, null,null);
         timeEngine.CurrentDimensionalNode.data = CreateMoment();
@@ -147,8 +153,16 @@ public class Player_Controller : MonoBehaviour
         Move();
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            ReverseDirection();
+            CheckPoint checkPoint = new CheckPoint(timeEngine.CurrentTime, transform.position);
+            checkPoints.Add(checkPoint);
         }
+        
+        if (Keyboard.current.backspaceKey.wasPressedThisFrame)
+        {
+            StartCoroutine(CauseParadox());
+        }
+        
+        
         timer += Time.deltaTime;
         if (timer > 1 / MomentRate)
         {
@@ -261,5 +275,88 @@ public class Player_Controller : MonoBehaviour
         {
             ani.Play(animation);
         }
+    }
+
+    [SerializeField] private Volume volume;
+    public IEnumerator CauseParadox()
+    {
+        Vignette vignette;
+        allowedToWalk = false;
+        if (volume.profile.TryGet<Vignette>(out vignette))
+        {
+            // Successfully found vignette
+            Debug.Log("Vignette found in volume profile");
+        }
+        else
+        {
+            Debug.LogError("Vignette not found in volume profile");
+        }
+
+        float newValue = 0;
+        while (vignette.intensity != 1)
+        {
+            newValue += 10 * Time.deltaTime;
+            if (Mathf.Abs(newValue - 1) < 0.05f || newValue > 1)
+            {
+                newValue = 1;
+            }
+            vignette.intensity.Override(newValue);
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+        yield return new WaitForSeconds(1f);
+
+        CheckPoint checkPoint = checkPoints.Last();
+        List<DimentionalPlayer> playersToKill = new List<DimentionalPlayer>();
+        foreach (var player in DimentionalPlayers)
+        {
+            if (player.CreatedAt > checkPoint.time)
+            {
+                playersToKill.Add(player);
+            }
+        }
+
+        foreach (var player in playersToKill)
+        {
+            DimentionalPlayers.Remove(player);
+            Destroy(player);
+        }
+   
+        if (timeEngine.TransDimensionalLinkStorage[checkPoint.time] != null)
+        {
+            timeEngine.TransDimensionalLinkStorage[checkPoint.time].Clear();
+            timeEngine.TransDimensionalLinkStorage[checkPoint.time] = null;
+        }
+        transform.position = checkPoint.location;
+        allowedToWalk = true;
+        
+         newValue = 1;
+        while (vignette.intensity != 0)
+        {
+            newValue -= 10 * Time.deltaTime;
+            if (Mathf.Abs(newValue - 1) < 0.95f || newValue > 0)
+            {
+                newValue = 0;
+            }
+            vignette.intensity.Override(newValue);
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+
+
+    }
+    
+    
+    
+    
+}
+
+public class CheckPoint
+{
+    public int time;
+    public Vector3 location;
+
+    public CheckPoint(int time, Vector3 location)
+    {
+        this.time = time;
+        this.location = new Vector3(location.x,location.y,location.z);
     }
 }

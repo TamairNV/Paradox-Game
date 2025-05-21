@@ -15,6 +15,7 @@ public class DimentionalPlayer : MonoBehaviour
     private Animator ani;
     private string currentAnimation = "";
     private float momentTime;
+    public int CreatedAt;
 
     private CapsuleCollider2D col;
     public void InitDimPlayer(DimensionalNode startNode,DimensionalLinkedList timeEngine,float momentTime)
@@ -23,6 +24,7 @@ public class DimentionalPlayer : MonoBehaviour
         this.startNode = startNode;
         this.timeEngine = timeEngine;
         currentNode = startNode;
+        CreatedAt = timeEngine.CurrentTime;
     }
     
     

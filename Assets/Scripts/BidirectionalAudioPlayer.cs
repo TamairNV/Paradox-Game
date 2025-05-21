@@ -36,6 +36,8 @@ public class BidirectionalAudioPlayer : MonoBehaviour
             currentPosition += Time.deltaTime;
             if (currentPosition >= clipLength)
             {
+                print("sound finished");
+                audioSource.Play();
                 currentPosition = 0f;
                 
             }
@@ -45,6 +47,8 @@ public class BidirectionalAudioPlayer : MonoBehaviour
             currentPosition -= Time.deltaTime;
             if (currentPosition <= 0)
             {
+                print("sound finished");
+                audioSource.Play();
                 currentPosition = clipLength;
             }
         }
