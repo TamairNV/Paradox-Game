@@ -91,20 +91,21 @@ public class Player_Controller : MonoBehaviour
             }
         }
         
-        int l = 0;
+   
         foreach (var obj in DimentionalObjects)
         {
             if (objDatas.ContainsKey(timeEngine.CurrentTime))
             {
                 if (objDatas[timeEngine.CurrentTime].Any(t => t.Item1 == obj.ID))
                 {
-                    obj.targetPosition = objDatas[timeEngine.CurrentTime][l].Item2.Position;
-                    obj.targetRotation = objDatas[timeEngine.CurrentTime][l].Item2.Rotation;
+                    objData d = objDatas[timeEngine.CurrentTime].Find(t => t.Item1 == obj.ID).Item2;
+                    obj.targetPosition = d.Position;
+                    obj.targetRotation = d.Rotation;
                 }
 
             }
 
-            l++;
+         
 
         }
     }
