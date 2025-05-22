@@ -11,12 +11,18 @@ public class DimentionalObjects : MonoBehaviour
 
     public bool beenInteractedWith = false;
 
+    public Vector3 StartingPosition;
+    public Quaternion  StartingRotation;
+
     public int ID;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         ID = number;
         number++;
+        StartingPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        
+        StartingRotation = new Quaternion(transform.rotation.x, transform.rotation.y, transform.rotation.z, transform.rotation.w);
     }
 
 

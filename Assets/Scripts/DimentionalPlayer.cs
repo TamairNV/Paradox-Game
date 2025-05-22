@@ -16,15 +16,25 @@ public class DimentionalPlayer : MonoBehaviour
     private string currentAnimation = "";
     private float momentTime;
     public int CreatedAt;
+    private Player_Controller Player;
 
     private CapsuleCollider2D col;
-    public void InitDimPlayer(DimensionalNode startNode,DimensionalLinkedList timeEngine,float momentTime)
+    public void InitDimPlayer(DimensionalNode startNode,DimensionalLinkedList timeEngine,float momentTime,Player_Controller player)
     {
         this.momentTime = momentTime;
         this.startNode = startNode;
         this.timeEngine = timeEngine;
         currentNode = startNode;
         CreatedAt = timeEngine.CurrentTime;
+        Player = player;
+    }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.layer == 12)
+        {
+            //StartCoroutine(Player.CauseParadox());
+        }
+        
     }
     
     

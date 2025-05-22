@@ -19,7 +19,7 @@ public class Camera : MonoBehaviour
 
     void Start()
     {
-        dimPlayers = player.DimentionalPlayers;
+        
     
         // Initialize camera position to player position at start
         if (player != null)
@@ -37,6 +37,7 @@ public class Camera : MonoBehaviour
 
     void LateUpdate()
     {
+        dimPlayers = player.DimentionalPlayers;
         if (player == null || dimPlayers == null) return;
 
         // Calculate weighted average position

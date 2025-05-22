@@ -12,7 +12,7 @@ public class DimensionalLinkedList
     public List<LinkedList<DimensionalNode>> TransDimensionalLinkStorage;
     public int direction = 1;
     public DimensionalNode LastSplitPoint = null;
-    public int CurrentTime = 0;
+    public int CurrentTime = 1;
     [SerializeField] public LineRenderer line;
     private float x = 0;
     private float y = 0;
@@ -36,7 +36,7 @@ public class DimensionalLinkedList
     {
         direction = (direction == 1) ? 0 : 1; // Toggle direction
         LastSplitPoint = CurrentDimensionalNode;
-
+        
         // Adjust CurrentTime to stay within bounds
         if (direction == 0 && CurrentTime >= TransDimensionalLinkStorage.Count)
         {
@@ -44,13 +44,18 @@ public class DimensionalLinkedList
         }
 
 
-
-        CurrentDimensionalNode = new DimensionalNode(
+        DimensionalNode newNode  = new DimensionalNode(
             null, 
             null, 
             LastSplitPoint,
-            CurrentDimensionalNode.SameTimeNodes
+            CurrentDimensionalNode.SameTimeNodes,
+            CurrentTime
         );
+
+        CurrentDimensionalNode.DownNode = newNode;
+        CurrentDimensionalNode = newNode;
+ 
+
         y -= yStep;
     }
     
@@ -72,7 +77,7 @@ public class DimensionalLinkedList
             }
             else
             {
-                CurrentDimensionalNode = new DimensionalNode(null,CurrentDimensionalNode,LastSplitPoint,null);
+                CurrentDimensionalNode = new DimensionalNode(null,CurrentDimensionalNode,LastSplitPoint,null,CurrentTime);
                 if (TransDimensionalLinkStorage.Count-1 >= CurrentTime && TransDimensionalLinkStorage[CurrentTime] != null)
                 {
                     TransDimensionalLinkStorage[CurrentTime].AddLast(CurrentDimensionalNode);
@@ -113,7 +118,8 @@ public class DimensionalLinkedList
                         CurrentDimensionalNode, 
                         null, 
                         LastSplitPoint,
-                        TransDimensionalLinkStorage[CurrentTime+ 1]
+                        TransDimensionalLinkStorage[CurrentTime+ 1],
+                        CurrentTime
                     );
                     TransDimensionalLinkStorage[CurrentTime].AddLast(CurrentDimensionalNode);
                 }

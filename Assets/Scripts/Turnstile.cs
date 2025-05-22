@@ -16,6 +16,7 @@ public class Turnstile : MonoBehaviour
     private Vector3 goToPosition;
 
     private Player_Controller player;
+    public static List<Turnstile> Turnstiles = new List<Turnstile>();
 
     private bool inReverser = false;
     float startTime;
@@ -29,6 +30,20 @@ public class Turnstile : MonoBehaviour
     void Start()
     {
         ani =transform.GetChild(0).GetComponent<Animator>();
+        Turnstiles.Add(this);
+    }
+
+    private void reset()
+    {
+        animationTimes = new List<int>();
+    }
+
+    public static void resetAll()
+    {
+        foreach (var turnstile in Turnstiles)
+        {
+            turnstile.reset();
+        }
     }
 
     // Update is called once per frame
@@ -37,6 +52,14 @@ public class Turnstile : MonoBehaviour
         if (overTernstile)
         {
             checkForInteraction();
+        }
+        else
+        {
+            if (player != null)
+            {
+                player.transform.GetChild(0).gameObject.SetActive(false);   
+            }
+            
         }
         if (player !=null && animationTimes.Contains(player.timeEngine.CurrentTime))
         {
@@ -90,27 +113,35 @@ public class Turnstile : MonoBehaviour
 
     private void checkForInteraction()
     {
-
-            print("player enter");
-            if (!working && Keyboard.current.eKey.isPressed)
+        if (!working)
+        {
+            player.transform.GetChild(0).gameObject.SetActive(true);   
+        }
+        else
+        {
+            player.transform.GetChild(0).gameObject.SetActive(false);   
+        }
+        print("player enter");
+        
+        if (!working && Keyboard.current.eKey.isPressed)
+        {
+            startTime = Time.time;
+            working = true; 
+            player.allowedToWalk = false;
+            player.isMoving = true;
+            if (player.timeEngine.direction == 1)
             {
-                startTime = Time.time;
-                working = true; 
-                player.allowedToWalk = false;
-                player.isMoving = true;
-                if (player.timeEngine.direction == 1)
-                {
-                    goToPosition = input.position;
-                }
-                else
-                {
-                    goToPosition = output.position;
-                }
-                player.lastDirection = (player.transform.position - goToPosition ).normalized;
-                player.direction =  (player.transform.position - goToPosition ).normalized;
-                StartCoroutine(reverse());
-
+                goToPosition = input.position;
             }
+            else
+            {
+                goToPosition = output.position;
+            }
+            player.lastDirection = (player.transform.position - goToPosition ).normalized;
+            player.direction =  (player.transform.position - goToPosition ).normalized;
+            StartCoroutine(reverse());
+
+        }
             
         
      

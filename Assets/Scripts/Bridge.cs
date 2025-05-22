@@ -3,18 +3,30 @@ using UnityEngine;
 
 public class Bridge : MonoBehaviour
 {
+    public static List<Bridge> Bridges = new List<Bridge>();
     private Animator ani;
     [SerializeField] private Door Door;
 
     [SerializeField] private Player_Controller player;
-    private List<int> breakPoints = new List<int>();
+    public List<int> breakPoints;
     private string currentAnimation = "";
-    private bool hasBroken = false;
+    public bool hasBroken = false;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void Start()
     {
         ani = GetComponent<Animator>();
+        Bridges.Add(this);
+        breakPoints = new List<int>();
+        hasBroken = false;
+    }
+
+    public void reset()
+    {
+        breakPoints = new List<int>();
+        hasBroken = false;
+        changeAnimation("fix");
+        
     }
 
 

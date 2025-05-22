@@ -13,6 +13,7 @@ public class MomentData
         Direction = direction;
         this.isMoving = isMoving;
         Position = position;
+        
 
 
     }
