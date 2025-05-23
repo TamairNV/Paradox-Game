@@ -11,6 +11,7 @@ using UnityEngine.Rendering.Universal;
 
 public class Player_Controller : MonoBehaviour
 {
+    [SerializeField] public Camera cam;
     [SerializeField] private List<DimentionalObjects> DimentionalObjects = new List<DimentionalObjects>();
     private Dictionary<int, List<Tuple<int, objData>>> objDatas = new Dictionary<int, List<Tuple<int, objData>>>();
     public List<DimentionalPlayer> DimentionalPlayers = new List<DimentionalPlayer>();
@@ -342,7 +343,7 @@ public class Player_Controller : MonoBehaviour
         CheckPoint checkPoint = checkPoints.Last();
         transform.position = checkPoint.location;
         allowedToWalk = true;
-        timeEngine.direction = checkPoint.direction;
+        
 
         // Destroy players created after checkpoint
         DimentionalPlayers.RemoveAll(player =>
@@ -380,6 +381,7 @@ public class Player_Controller : MonoBehaviour
         ani = GetComponent<Animator>();
         StartCoroutine(setLine());
         Turnstile.resetAll();
+        timeEngine.direction = checkPoint.direction;
         
         duration = 2f;
         elapsed = 0f;

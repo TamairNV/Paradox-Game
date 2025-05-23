@@ -14,6 +14,14 @@ public class Door : MonoBehaviour
     void Start()
     {
         ani = GetComponent<Animator>();
+        foreach (var plate in PressurePlates)
+        {
+            plate.Doors.Add(this.transform);
+        }
+        foreach (var button in buttons)
+        {
+            button.Doors.Add(this.transform);
+        }
     }
 
     // Update is called once per frame

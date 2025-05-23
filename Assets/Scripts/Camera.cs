@@ -14,6 +14,8 @@ public class Camera : MonoBehaviour
     [SerializeField] private float zoomPadding = 1.2f; // Extra space around players
 
     private List<DimentionalPlayer> dimPlayers;
+    public List<Transform> FocusObjs = new List<Transform>();
+    public float FocusWeight = 10;
     private Vector3 averagePosition;
     private float requiredZoom;
 
@@ -60,7 +62,16 @@ public class Camera : MonoBehaviour
     void CalculateAveragePosition()
     {
         Vector3 combinedPosition = player.transform.position * playerWeight;
+
         float totalWeight = playerWeight;
+        if (FocusObjs != null)
+        {
+            foreach (var focusObj in FocusObjs)
+            {
+                combinedPosition += focusObj.position * FocusWeight;
+                totalWeight += FocusWeight;
+            }
+        }
 
         foreach (DimentionalPlayer dimPlayer in dimPlayers)
         {
@@ -87,6 +98,15 @@ public class Camera : MonoBehaviour
                 bounds.Encapsulate(dimPlayer.transform.position);
             }
         }
+
+        if (FocusObjs != null)
+        {
+            foreach (var focusObj in FocusObjs)
+            {
+                bounds.Encapsulate(focusObj.transform.position);
+            }
+        }
+
 
         // Calculate required zoom based on bounds size
         float requiredSize = Mathf.Max(bounds.size.x, bounds.size.y) * 0.5f * zoomPadding;
