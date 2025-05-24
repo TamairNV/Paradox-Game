@@ -18,6 +18,17 @@ public class DimentionalObjects : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        GameObject player = GameObject.Find("player");
+        if (player != null)
+        {
+            GameObject.Find("player").GetComponent<Player_Controller>().DimentionalObjects.Add(this);
+            
+        }
+        else
+        {
+            print("No player found in scene");
+        }
+        
         ID = number;
         number++;
         StartingPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);

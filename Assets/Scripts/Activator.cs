@@ -42,7 +42,6 @@ public class Activator : MonoBehaviour
         if (((1 << other.gameObject.layer) & _activatorLayers) != 0)
         {
             isPressed = false;
-            ResetPlayerCamera(other);
             ResetDoorColors();
         }
     }
@@ -53,7 +52,6 @@ public class Activator : MonoBehaviour
         if (playerController == null || playerController.cam == null) return;
 
         // Set camera focus objects
-        playerController.cam.FocusObjs = new List<Transform>(Doors);
         
         // Process each door with its color
         for (int i = 0; i < Doors.Count; i++)
@@ -68,7 +66,7 @@ public class Activator : MonoBehaviour
             var doorComponent = door.GetComponent<Door>();
             if (doorComponent != null)
             {
-                AddConnectedObjectsToCamera(playerController, doorComponent);
+            
                 ColorConnectedObjects(doorComponent, color);
             }
         }
@@ -96,22 +94,7 @@ public class Activator : MonoBehaviour
         }
     }
 
-    private void AddConnectedObjectsToCamera(Player_Controller player, Door doorComponent)
-    {
-        if (doorComponent.buttons != null)
-        {
-            player.cam.FocusObjs.AddRange(doorComponent.buttons
-                .Where(button => button != null)
-                .Select(button => button.transform));
-        }
-        
-        if (doorComponent.PressurePlates != null)
-        {
-            player.cam.FocusObjs.AddRange(doorComponent.PressurePlates
-                .Where(plate => plate != null)
-                .Select(plate => plate.transform));
-        }
-    }
+
 
     private void ColorConnectedObjects(Door doorComponent, float color)
     {
@@ -132,14 +115,7 @@ public class Activator : MonoBehaviour
         }
     }
 
-    private void ResetPlayerCamera(Collider2D playerCollider)
-    {
-        var playerController = playerCollider.GetComponent<Player_Controller>();
-        if (playerController != null && playerController.cam != null)
-        {
-            playerController.cam.FocusObjs = null;
-        }
-    }
+
 
     private void ResetDoorColors()
     {

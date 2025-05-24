@@ -1,115 +1,156 @@
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Camera : MonoBehaviour
+public class CameraController : MonoBehaviour
 {
     [SerializeField] private Player_Controller player;
-    [SerializeField] private float playerWeight = 2f; // How much more important the main player is
-    [SerializeField] private float smoothSpeed = 5f; // How smoothly the camera follows
+    [SerializeField] private float smoothSpeed = 5f;
     [SerializeField] private float minZoom = 5f;
     [SerializeField] private float maxZoom = 15f;
-    [SerializeField] private float zoomPadding = 1.2f; // Extra space around players
+    [SerializeField] private float zoomSpeed = 2f;
+    [SerializeField] private float dragSpeed = 2f;
+    [SerializeField] private float autoSpeed = 10f;
+    [SerializeField] private float easeSpeed = 0.5f;
+    [SerializeField] private float easeEaseSpeed = 1f;
+    [SerializeField] private float autoKickInTime = 1.25f;
+    private float timer = 0;
+    private float targetSpeed;
 
-    private List<DimentionalPlayer> dimPlayers;
-    public List<Transform> FocusObjs = new List<Transform>();
-    public float FocusWeight = 10;
-    private Vector3 averagePosition;
-    private float requiredZoom;
+    private Vector3 dragOrigin;
+    private bool isDragging = false;
+    private Camera mainCamera;
+    private float touchDistance;
+    private Touchscreen touchscreen;
+    
 
     void Start()
     {
+        mainCamera = GetComponent<Camera>();
+        touchscreen = Touchscreen.current;
         
-    
-        // Initialize camera position to player position at start
         if (player != null)
         {
             transform.position = new Vector3(
                 player.transform.position.x,
                 player.transform.position.y,
-                transform.position.z // Maintain original z position
+                transform.position.z
             );
         }
-    
-        // Initialize zoom
-        GetComponent<UnityEngine.Camera>().orthographicSize = minZoom;
+        
+        mainCamera.orthographicSize = minZoom;
     }
 
     void LateUpdate()
     {
-        dimPlayers = player.DimentionalPlayers;
-        if (player == null || dimPlayers == null) return;
-
-        // Calculate weighted average position
-        CalculateAveragePosition();
+        // Handle camera movement (mouse drag or touch drag)
+        HandleCameraMovement();
         
-        // Calculate required zoom level
-        CalculateRequiredZoom();
-        
-        // Smoothly move camera to average position
-        transform.position = Vector3.Lerp(transform.position, averagePosition, smoothSpeed * Time.deltaTime);
-        
-        // Smoothly adjust camera zoom (assuming orthographic camera)
-        GetComponent<UnityEngine.Camera>().orthographicSize = Mathf.Lerp(
-            GetComponent<UnityEngine.Camera>().orthographicSize, 
-            requiredZoom, 
-            smoothSpeed * Time.deltaTime
-        );
+        // Handle zoom (mouse scroll or touch pinch)
+        HandleZoom();
     }
 
-    void CalculateAveragePosition()
+    private void HandleCameraMovement()
     {
-        Vector3 combinedPosition = player.transform.position * playerWeight;
-
-        float totalWeight = playerWeight;
-        if (FocusObjs != null)
+        // Mouse input
+        if (Mouse.current.leftButton.wasPressedThisFrame)
         {
-            foreach (var focusObj in FocusObjs)
-            {
-                combinedPosition += focusObj.position * FocusWeight;
-                totalWeight += FocusWeight;
-            }
+            dragOrigin = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            isDragging = true;
         }
 
-        foreach (DimentionalPlayer dimPlayer in dimPlayers)
+        float speed = easeSpeed;
+        if (Mouse.current.leftButton.isPressed && isDragging)
         {
-            if (dimPlayer != null && dimPlayer.GetComponent<SpriteRenderer>().enabled && dimPlayer.gameObject.activeInHierarchy)
-            {
-                combinedPosition += dimPlayer.transform.position;
-                totalWeight += 1f;
-            }
+            Vector3 difference = dragOrigin - mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            transform.position += difference;
+            
+            timer = 0;
+        }
+        else
+        {
+            timer += Time.deltaTime;
+            targetSpeed = easeSpeed;
+      
+
         }
 
-        averagePosition = combinedPosition / totalWeight;
-        averagePosition.z = transform.position.z; // Maintain camera's z position
+        if (timer > autoKickInTime)
+        {
+            targetSpeed = autoSpeed;
+           
+        }
+
+        speed = Mathf.Lerp(speed, targetSpeed, easeEaseSpeed * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position,
+            new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z),speed * Time.deltaTime);
+        
+
+
+            
+        
+        
+        
+
+        if (Mouse.current.leftButton.wasReleasedThisFrame)
+        {
+            isDragging = false;
+        }
+
+        // Touch input (for mobile) - New Input System
+        if (touchscreen != null && touchscreen.touches.Count == 1)
+        {
+            var touch = touchscreen.touches[0];
+            if (touch.phase.ReadValue() == TouchPhase.Moved)
+            {
+                Vector2 touchPos = touch.position.ReadValue();
+                Vector2 delta = touch.delta.ReadValue();
+                Vector3 touchDelta = mainCamera.ScreenToWorldPoint(touchPos) - 
+                                    mainCamera.ScreenToWorldPoint(touchPos - delta);
+                transform.position -= touchDelta;
+            }
+        }
     }
 
-    void CalculateRequiredZoom()
+    private void HandleZoom()
     {
-        Bounds bounds = new Bounds(player.transform.position, Vector3.zero);
-        
-        // Include all active dimensional players in bounds calculation
-        foreach (DimentionalPlayer dimPlayer in dimPlayers)
+        // Mouse scroll wheel zoom
+        float scroll = Mouse.current.scroll.ReadValue().y;
+        if (scroll != 0)
         {
-            if (dimPlayer != null && dimPlayer.GetComponent<SpriteRenderer>().enabled  && dimPlayer.gameObject.activeInHierarchy)
-            {
-                bounds.Encapsulate(dimPlayer.transform.position);
-            }
+            mainCamera.orthographicSize = Mathf.Clamp(
+                mainCamera.orthographicSize - scroll * zoomSpeed * mainCamera.orthographicSize,
+                minZoom,
+                maxZoom
+            );
         }
 
-        if (FocusObjs != null)
+        // Touch pinch zoom - New Input System
+        if (touchscreen != null && touchscreen.touches.Count == 2)
         {
-            foreach (var focusObj in FocusObjs)
+            var touchZero = touchscreen.touches[0];
+            var touchOne = touchscreen.touches[1];
+
+            var touchZeroPhase = touchZero.phase.ReadValue();
+            var touchOnePhase = touchOne.phase.ReadValue();
+
+            if (touchZeroPhase == TouchPhase.Began || touchOnePhase == TouchPhase.Began)
             {
-                bounds.Encapsulate(focusObj.transform.position);
+                touchDistance = Vector2.Distance(touchZero.position.ReadValue(), touchOne.position.ReadValue());
+            }
+            else if (touchZeroPhase == TouchPhase.Moved || touchOnePhase == TouchPhase.Moved)
+            {
+                float currentDistance = Vector2.Distance(touchZero.position.ReadValue(), touchOne.position.ReadValue());
+                float difference = currentDistance - touchDistance;
+
+                mainCamera.orthographicSize = Mathf.Clamp(
+                    mainCamera.orthographicSize - (difference * 0.01f * zoomSpeed * mainCamera.orthographicSize),
+                    minZoom,
+                    maxZoom
+                );
+
+                touchDistance = currentDistance;
             }
         }
-
-
-        // Calculate required zoom based on bounds size
-        float requiredSize = Mathf.Max(bounds.size.x, bounds.size.y) * 0.5f * zoomPadding;
-        requiredZoom = Mathf.Clamp(requiredSize, minZoom, maxZoom);
     }
 }
