@@ -12,8 +12,8 @@ using UnityEngine.Rendering.Universal;
 public class Player_Controller : MonoBehaviour
 {
     [SerializeField] public Camera cam;
-    [SerializeField] public List<DimentionalObjects> DimentionalObjects = new List<DimentionalObjects>();
-    private Dictionary<int, List<Tuple<int, objData>>> objDatas = new Dictionary<int, List<Tuple<int, objData>>>();
+    //[SerializeField] public List<DimentionalObjects> DimentionalObjects = new List<DimentionalObjects>();
+    //private Dictionary<int, List<Tuple<int, objData>>> objDatas = new Dictionary<int, List<Tuple<int, objData>>>();
     public List<DimentionalPlayer> DimentionalPlayers = new List<DimentionalPlayer>();
     private string currentAnimation = "sdsf";
     public bool isMoving;
@@ -33,10 +33,17 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] public float yStep = 0.5f;
     [SerializeField] public LineRenderer line;
 
+    [SerializeField]
+    private AudioClip footSteps;
+
+    [SerializeField]
+    private AudioSource audioSource;
+
+    private bool isFootSteps = false;
     private List<CheckPoint> checkPoints = new List<CheckPoint>();
 
     public bool allowedToWalk = true;
-
+    private bool reseting = false;
     IEnumerator setLine()
     {
         while (true)
@@ -44,13 +51,16 @@ public class Player_Controller : MonoBehaviour
             line.positionCount = timeEngine.linePositions.Count;
             line.SetPositions(timeEngine.linePositions.ToArray());
             line.Simplify(0);
+            line.transform.GetComponent<UILineRenderer>().UpdateLine();
             yield return new WaitForSeconds(0.05f);
         }
     }
 
     void MomentUpdate()
     {
-        UpdateDimObjects();
+        //UpdateDimObjects();
+        DimentionalObjects.UpdateAllDimObjects();
+        
         timeEngine.stepNode();
 
         timeEngine.CurrentDimensionalNode.data = CreateMoment();
@@ -81,37 +91,6 @@ public class Player_Controller : MonoBehaviour
         }
     }
 
-    public void UpdateDimObjects()
-    {
-        if (!objDatas.ContainsKey(timeEngine.CurrentTime))
-        {
-            List<Tuple<int, objData>> newList = new List<Tuple<int, objData>>();
-            objDatas.Add(timeEngine.CurrentTime, newList);
-        }
-
-        foreach (var obj in DimentionalObjects)
-        {
-            if (obj.beenInteractedWith && !objDatas[timeEngine.CurrentTime].Any(t => t.Item1 == obj.ID))
-            {
-                objDatas[timeEngine.CurrentTime].Add(new Tuple<int, objData>(obj.ID, new objData(obj)));
-            }
-        }
-
-
-        foreach (var obj in DimentionalObjects)
-        {
-            if (objDatas.ContainsKey(timeEngine.CurrentTime))
-            {
-                if (objDatas[timeEngine.CurrentTime].Any(t => t.Item1 == obj.ID))
-                {
-                    objData d = objDatas[timeEngine.CurrentTime].Find(t => t.Item1 == obj.ID).Item2;
-                    obj.targetPosition = d.Position;
-                    obj.targetRotation = d.Rotation;
-                }
-            }
-        }
-    }
-
     MomentData CreateMoment()
     {
         Vector2 dir = new Vector2(lastDirection.x, lastDirection.y);
@@ -135,7 +114,7 @@ public class Player_Controller : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        ;
+        
 
         
         timeEngine = new DimensionalLinkedList(xStep, yStep, line);
@@ -146,6 +125,8 @@ public class Player_Controller : MonoBehaviour
             new CheckPoint(0, transform.position, timeEngine.CurrentTime, timeEngine.CurrentDimensionalNode));
         ani = GetComponent<Animator>();
         StartCoroutine(setLine());
+        
+
     }
 
     // Update is called once per frame
@@ -160,7 +141,7 @@ public class Player_Controller : MonoBehaviour
 
 
         timer += Time.deltaTime;
-        if (timer > 1 / MomentRate)
+        if (timer > 1 / MomentRate && !reseting)
         {
             timer = 0;
             MomentUpdate();
@@ -203,6 +184,7 @@ public class Player_Controller : MonoBehaviour
 
         if (direction.magnitude > 0.1f)
         {
+            
             AnimateMovement();
             lastDirection = direction;
             if (allowedToWalk)
@@ -214,16 +196,30 @@ public class Player_Controller : MonoBehaviour
         }
         else
         {
+            if (isFootSteps)
+            {
+                audioSource.Stop();
+                isFootSteps = false;
+            }
             isMoving = false;
             PlayIdleAnimation(lastDirection);
         }
+        
     }
 
     void AnimateMovement()
     {
+
         if (direction.magnitude < 0.1f)
         {
+
             return;
+        }
+
+        if (isMoving && !isFootSteps)
+        {
+            audioSource.Play();
+            isFootSteps = true;
         }
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -282,6 +278,8 @@ public class Player_Controller : MonoBehaviour
         {
             yield break;
         }
+
+        reseting = true;
         // Get all post-processing effects
         Vignette vignette= null;
         ChromaticAberration chromatic = null;
@@ -353,15 +351,8 @@ public class Player_Controller : MonoBehaviour
         });
 
         // Reset objects
-        objDatas = new Dictionary<int, List<Tuple<int, objData>>>();
-        foreach (var obj in DimentionalObjects)
-        {
-            obj.transform.position = obj.StartingPosition;
-            obj.transform.rotation = obj.StartingRotation;
-            obj.targetPosition = obj.StartingPosition;
-            obj.targetRotation = obj.StartingRotation;
-            obj.beenInteractedWith = false;
-        }
+        //objDatas = new Dictionary<int, List<Tuple<int, objData>>>();
+
 
         
         // Final cleanup
@@ -382,6 +373,8 @@ public class Player_Controller : MonoBehaviour
         StartCoroutine(setLine());
         Turnstile.resetAll();
         timeEngine.direction = checkPoint.direction;
+        
+        DimentionalObjects.ResetAllObj();
         
         duration = 2f;
         elapsed = 0f;
@@ -405,6 +398,8 @@ public class Player_Controller : MonoBehaviour
             elapsed += Time.deltaTime;
             yield return null;
         }
+
+        reseting = false;
 
 
     }

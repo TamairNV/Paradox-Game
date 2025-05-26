@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DimentionalObjects : MonoBehaviour
@@ -14,15 +15,22 @@ public class DimentionalObjects : MonoBehaviour
     public Vector3 StartingPosition;
     public Quaternion  StartingRotation;
 
+    public Dictionary<int, objData> data = new Dictionary<int, objData>();
+    private Player_Controller player;
+
+    public static List<DimentionalObjects> Objects = new List<DimentionalObjects>();
+
     public int ID;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        GameObject player = GameObject.Find("player");
-        if (player != null)
+        Objects.Add(this);
+        GameObject playerObj = GameObject.Find("player");
+        if (playerObj != null)
         {
-            GameObject.Find("player").GetComponent<Player_Controller>().DimentionalObjects.Add(this);
-            
+            //playerObj.GetComponent<Player_Controller>().DimentionalObjects.Add(this);
+            player = playerObj.GetComponent<Player_Controller>();
+
         }
         else
         {
@@ -36,6 +44,13 @@ public class DimentionalObjects : MonoBehaviour
         StartingRotation = new Quaternion(transform.rotation.x, transform.rotation.y, transform.rotation.z, transform.rotation.w);
     }
 
+    public static void UpdateAllDimObjects()
+    {
+        foreach (var obj in Objects)
+        {
+            obj.MomentUpdate();
+        }
+    }
 
     public float moveSpeed = 5f; // Units per second
     public float rotateSpeed = 5f; // Degrees per second
@@ -55,12 +70,50 @@ public class DimentionalObjects : MonoBehaviour
     
     }
 
+    public static void ResetAllObj()
+    {
+        foreach (var obj in Objects)
+        {
+            obj.RestObj();
+        }
+    }
+
+    public void RestObj()
+    {
+        transform.position = StartingPosition;
+        transform.rotation = StartingRotation;
+        targetPosition = StartingPosition;
+        targetRotation = StartingRotation;
+        beenInteractedWith = false;
+        data = new Dictionary<int, objData>();
+        MomentUpdate();
+
+    }
+
+    public void MomentUpdate()
+    {
+        int time = player.timeEngine.CurrentTime;
+// Ensure time is non-negative
+        if (time < 0) return; // or handle error
+
+        if (beenInteractedWith && !data.ContainsKey(time))
+        {
+            data.Add(time,new objData(this));
+        }
+
+        if (beenInteractedWith && data.ContainsKey(time))
+        {
+            targetPosition = data[time].Position;
+            targetRotation = data[time].Rotation;
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.layer == 13)
         {
             beenInteractedWith = true;
-            other.transform.GetComponent<Player_Controller>().UpdateDimObjects();
+            //other.transform.GetComponent<Player_Controller>().UpdateDimObjects();
         }
         
      

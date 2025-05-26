@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Light2D))]
 public class HospitalLightFlicker : MonoBehaviour
@@ -29,6 +31,8 @@ public class HospitalLightFlicker : MonoBehaviour
     [Tooltip("How fast the light transitions during flickers")]
     [SerializeField] private float flickerSpeed = 15f;
 
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip buzz;
     private Light2D globalLight;
     private float nextFlickerTime;
     private bool isFlickering = false;
@@ -50,6 +54,12 @@ public class HospitalLightFlicker : MonoBehaviour
         
         ResetToNormal();
         ScheduleNextFlicker();
+        
+    }
+
+    private void Start()
+    {
+ 
     }
 
     private void Update()
@@ -78,12 +88,14 @@ public class HospitalLightFlicker : MonoBehaviour
         
         if (flashesRemaining > 0 && Time.time >= nextFlashTime)
         {
+
             Flash();
         }
     }
 
     private void StartFlicker()
     {
+        
         isFlickering = true;
         float flickerDuration = Random.Range(minFlickerDuration, maxFlickerDuration);
         flickerEndTime = Time.time + flickerDuration;
@@ -94,7 +106,10 @@ public class HospitalLightFlicker : MonoBehaviour
     }
 
     private void Flash()
+    
     {
+        audioSource.volume = targetIntensity/4;
+        audioSource.PlayOneShot(buzz);
         // Random intensity for this flash
         targetIntensity = Random.Range(flickerMinIntensity, flickerMaxIntensity);
         targetColor = flickerColor;

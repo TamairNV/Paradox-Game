@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TouchPhase = UnityEngine.InputSystem.TouchPhase;
@@ -59,7 +60,7 @@ public class CameraController : MonoBehaviour
             isDragging = true;
         }
 
-        float speed = easeSpeed;
+        float speed=0;
         if (Mouse.current.leftButton.isPressed && isDragging)
         {
             Vector3 difference = dragOrigin - mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
@@ -70,21 +71,23 @@ public class CameraController : MonoBehaviour
         else
         {
             timer += Time.deltaTime;
-            targetSpeed = easeSpeed;
-      
-
+            
         }
 
+
+
+        Vector3 target = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
         if (timer > autoKickInTime)
         {
-            targetSpeed = autoSpeed;
-           
+            
+            transform.position = Vector3.Lerp(transform.position,
+                target,autoSpeed * Time.deltaTime);
         }
 
-        speed = Mathf.Lerp(speed, targetSpeed, easeEaseSpeed * Time.deltaTime);
-        transform.position = Vector3.Lerp(transform.position,
-            new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z),speed * Time.deltaTime);
-        
+        if (Vector3.Distance(transform.position, target) < 0.05f)
+        {
+            transform.position = target;
+        }
 
 
             
