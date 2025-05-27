@@ -113,6 +113,11 @@ public class DimentionalObjects : MonoBehaviour
         if (other.gameObject.layer == 13)
         {
             beenInteractedWith = true;
+            if (data.ContainsKey(player.timeEngine.CurrentTime))
+            {
+                StartCoroutine(player.CauseParadox());
+                
+            }
             //other.transform.GetComponent<Player_Controller>().UpdateDimObjects();
         }
         
