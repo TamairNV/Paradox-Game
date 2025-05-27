@@ -20,6 +20,7 @@ public class Portal : MonoBehaviour
     void Start()
     {
         timer = cooldown;
+        player = GameObject.Find("player").transform.GetComponent<Player_Controller>();
     }
 
     // Update is called once per frame
