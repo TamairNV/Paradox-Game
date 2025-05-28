@@ -185,10 +185,11 @@ public class Player_Controller : MonoBehaviour
         if (direction.magnitude > 0.1f)
         {
             
-            AnimateMovement();
+            
             lastDirection = direction;
             if (allowedToWalk)
             {
+                AnimateMovement();
                 transform.position += direction * Time.deltaTime * speed;
             }
 
@@ -270,8 +271,48 @@ public class Player_Controller : MonoBehaviour
         }
     }
 
-    [SerializeField] private Volume volume;
+    [SerializeField] public Volume volume;
 
+
+    public void resetGame()
+    {
+
+        allowedToWalk = true;
+        
+
+        // Destroy players created after checkpoint
+        DimentionalPlayers.RemoveAll(player =>
+        {
+            Destroy(player.gameObject);
+            return true;
+        });
+
+        // Reset objects
+        //objDatas = new Dictionary<int, List<Tuple<int, objData>>>();
+
+
+        
+        // Final cleanup
+        foreach (var bridge in Bridge.Bridges)
+        {
+
+            bridge.reset();
+        }
+
+        line.SetPositions(new Vector3[0]);
+        timeEngine = new DimensionalLinkedList(xStep, yStep, line);
+        DimentionalPlayers = new List<DimentionalPlayer>();
+        timeEngine.CurrentDimensionalNode = new DimensionalNode(null, null, null, null, timeEngine.CurrentTime);
+        timeEngine.CurrentDimensionalNode.data = CreateMoment();
+        checkPoints.Add(
+            new CheckPoint(0, transform.position, timeEngine.CurrentTime, timeEngine.CurrentDimensionalNode));
+        ani = GetComponent<Animator>();
+        StartCoroutine(setLine());
+        Turnstile.resetAll();
+        
+        
+        DimentionalObjects.ResetAllObj();
+    }
     public IEnumerator CauseParadox()
     {
         if (IsImmune)
@@ -338,44 +379,10 @@ public class Player_Controller : MonoBehaviour
         // PHASE 2: Reality reset (teleport/cleanup)
         //yield return new WaitForSeconds(0.5f); // Hold at peak distortion
 
+        resetGame();
         CheckPoint checkPoint = checkPoints.Last();
         transform.position = checkPoint.location;
-        allowedToWalk = true;
-        
-
-        // Destroy players created after checkpoint
-        DimentionalPlayers.RemoveAll(player =>
-        {
-            Destroy(player.gameObject);
-            return true;
-        });
-
-        // Reset objects
-        //objDatas = new Dictionary<int, List<Tuple<int, objData>>>();
-
-
-        
-        // Final cleanup
-        foreach (var bridge in Bridge.Bridges)
-        {
-
-            bridge.reset();
-        }
-
-        line.SetPositions(new Vector3[0]);
-        timeEngine = new DimensionalLinkedList(xStep, yStep, line);
-        DimentionalPlayers = new List<DimentionalPlayer>();
-        timeEngine.CurrentDimensionalNode = new DimensionalNode(null, null, null, null, timeEngine.CurrentTime);
-        timeEngine.CurrentDimensionalNode.data = CreateMoment();
-        checkPoints.Add(
-            new CheckPoint(0, transform.position, timeEngine.CurrentTime, timeEngine.CurrentDimensionalNode));
-        ani = GetComponent<Animator>();
-        StartCoroutine(setLine());
-        Turnstile.resetAll();
         timeEngine.direction = checkPoint.direction;
-        
-        DimentionalObjects.ResetAllObj();
-        
         duration = 2f;
         elapsed = 0f;
 
