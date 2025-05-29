@@ -40,6 +40,7 @@ public class Player_Controller : MonoBehaviour
     private AudioSource audioSource;
 
     private bool isFootSteps = false;
+    
     private List<CheckPoint> checkPoints = new List<CheckPoint>();
 
     public bool allowedToWalk = true;
@@ -309,8 +310,8 @@ public class Player_Controller : MonoBehaviour
         ani = GetComponent<Animator>();
         StartCoroutine(setLine());
         Turnstile.resetAll();
-        
-        
+
+        Portal.ResetPortals();
         DimentionalObjects.ResetAllObj();
     }
     public IEnumerator CauseParadox()
@@ -361,7 +362,7 @@ public class Player_Controller : MonoBehaviour
             // Animate all effects simultaneously
             vignetteValue = Mathf.Lerp(0, 6f, t/10f);
             chromaticValue = Mathf.Lerp(0, 2, t * 2f); // Chromatic aberration grows faster
-            noiseValue = Mathf.Lerp(0, 0.8f, t);
+            noiseValue = Mathf.Lerp(0.35f, 0.8f, t);
             distortionValue = Mathf.Lerp(0, -1f, t); // Negative for "implosion" effect
             bloomValue = Mathf.Lerp(bloom.intensity.value, 10f, t); // Hyper-bright flare
 
@@ -378,11 +379,11 @@ public class Player_Controller : MonoBehaviour
 
         // PHASE 2: Reality reset (teleport/cleanup)
         //yield return new WaitForSeconds(0.5f); // Hold at peak distortion
-
-        resetGame();
         CheckPoint checkPoint = checkPoints.Last();
         transform.position = checkPoint.location;
         timeEngine.direction = checkPoint.direction;
+        resetGame();
+
         duration = 2f;
         elapsed = 0f;
 
@@ -392,7 +393,7 @@ public class Player_Controller : MonoBehaviour
 
             vignetteValue = Mathf.Lerp(10, 0, t*2f);
             chromaticValue = Mathf.Lerp(2, 0, t * 1.5f); // Chromatic fades faster
-            noiseValue = Mathf.Lerp(0.8f, 0, t);
+            noiseValue = Mathf.Lerp(0.8f, 0.35f, t);
             distortionValue = Mathf.Lerp(-1f, 0, t);
             bloomValue = Mathf.Lerp(10f, bloom.intensity.value, t);
 
@@ -427,6 +428,8 @@ public class Player_Controller : MonoBehaviour
             CheckPoint checkPoint = new CheckPoint(timeEngine.CurrentTime, transform.position, timeEngine.CurrentTime,
                 timeEngine.CurrentDimensionalNode);
             checkPoints.Add(checkPoint);
+            print("checkPoint");
+            
         }
 
         if (other.gameObject.layer == 17)

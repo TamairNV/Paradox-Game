@@ -11,10 +11,8 @@ using UnityEngine.Rendering.Universal;
 public class LevelPorter : MonoBehaviour
 {
 
-    [SerializeField] public int Level;
-
-    [SerializeField] public Transform LevelStartPoint;
-
+    [SerializeField] public int LevelNumber;
+    
     private Player_Controller player;
     
     
@@ -89,7 +87,8 @@ public class LevelPorter : MonoBehaviour
 
         player.resetGame();
 
-        player.transform.position = LevelStartPoint.position;
+        player.transform.position = Level.Levels[LevelNumber].startLocation.position;
+        Level.CurrentLevel = Level.Levels[LevelNumber];
         elapsed = 0;
         while (elapsed < duration)
         {
@@ -97,7 +96,6 @@ public class LevelPorter : MonoBehaviour
 
          
             vignetteValue = Mathf.Lerp(6f, 0, t);
-            print(vignetteValue);
             vignette.intensity.Override(vignetteValue);
             
             elapsed += Time.deltaTime;

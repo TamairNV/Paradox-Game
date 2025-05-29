@@ -23,6 +23,7 @@ public class CameraController : MonoBehaviour
     private Camera mainCamera;
     private float touchDistance;
     private Touchscreen touchscreen;
+    private Vector3 targetPostion;
     
 
     void Start()
@@ -40,6 +41,7 @@ public class CameraController : MonoBehaviour
         }
         
         mainCamera.orthographicSize = minZoom;
+        targetPostion = player.transform.position;
     }
 
     void LateUpdate()
@@ -48,6 +50,19 @@ public class CameraController : MonoBehaviour
         HandleCameraMovement();
         
         // Handle zoom (mouse scroll or touch pinch)
+        if (Level.CurrentLevel != null)
+        {
+            maxZoom = Level.CurrentLevel.maxZoom;
+        }
+        else
+        {
+            maxZoom = 2f;
+        }
+
+        if (mainCamera.orthographicSize > maxZoom)
+        {
+            mainCamera.orthographicSize = maxZoom;
+        }
         HandleZoom();
     }
 
@@ -58,14 +73,30 @@ public class CameraController : MonoBehaviour
         {
             dragOrigin = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             isDragging = true;
+            
         }
+
+        if (targetPostion != null && timer < autoKickInTime)
+        {
+            
+            Vector3 newPostion = Vector3.Lerp(transform.position, targetPostion ,10 * Time.deltaTime);
+            if (Level.CurrentLevel == null || Level.CurrentLevel.collider.OverlapPoint(newPostion))
+            {
+
+                transform.position = new Vector3(newPostion.x,newPostion.y,transform.position.z);
+            }
+        }
+
+
+
 
         float speed=0;
         if (Mouse.current.leftButton.isPressed && isDragging)
         {
             Vector3 difference = dragOrigin - mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            transform.position += difference;
             
+            targetPostion = transform.position + difference;
+            targetPostion = new Vector3(targetPostion.x, targetPostion.y, transform.position.z);
             timer = 0;
         }
         else
