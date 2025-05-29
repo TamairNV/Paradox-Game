@@ -1,8 +1,11 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
+
+    public static List<Portal> Portals = new List<Portal>();
     [SerializeField] private Player_Controller player;
 
     public bool isSingleUse = false;
@@ -21,6 +24,14 @@ public class Portal : MonoBehaviour
     {
         timer = cooldown;
         player = GameObject.Find("player").transform.GetComponent<Player_Controller>();
+    }
+
+    public static void ResetPortals()
+    {
+        foreach (var portal in Portals)
+        {
+            portal.isUsed = false;
+        }
     }
 
     // Update is called once per frame
