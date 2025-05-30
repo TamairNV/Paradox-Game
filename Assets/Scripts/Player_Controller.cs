@@ -35,6 +35,7 @@ public class Player_Controller : MonoBehaviour
 
     [SerializeField]
     private AudioClip footSteps;
+    public bool isJumping = false;
 
     [SerializeField]
     private AudioSource audioSource;
@@ -183,7 +184,7 @@ public class Player_Controller : MonoBehaviour
         }
 
 
-        if (direction.magnitude > 0.1f)
+        if (direction.magnitude > 0.1f && !isJumping)
         {
             
             
@@ -191,8 +192,28 @@ public class Player_Controller : MonoBehaviour
             if (allowedToWalk)
             {
                 AnimateMovement();
-                transform.position += direction * Time.deltaTime * speed;
+                // Apply speed reduction if on stairs
+                float currentSpeed = speed * Stair.GetSpeedModifier();
+
+                // Apply slight upward force if moving horizontally on stairs
+                if (Stair.IsPlayerOnAnyStair() && (direction.x > 0.1f || direction.x < 0.1f) )
+                {
+                    if (direction.x > 0.1f)
+                    {
+                        direction.y -= Stair.GetInclineForce();
+                    }
+                    else
+                    {
+                        direction.y += Stair.GetInclineForce();
+                    }
+                    
+                    direction = direction.normalized; // Re-normalize to prevent faster diagonal movement
+                }
+
+                transform.position += (Vector3)(direction * currentSpeed * Time.deltaTime);
             }
+            
+            
 
             isMoving = true;
         }
@@ -204,7 +225,15 @@ public class Player_Controller : MonoBehaviour
                 isFootSteps = false;
             }
             isMoving = false;
-            PlayIdleAnimation(lastDirection);
+            if (!isJumping)
+            {
+                PlayIdleAnimation(lastDirection);
+            }
+            else
+            {
+                changeAnimation("jump");
+            }
+            
         }
         
     }
@@ -212,6 +241,11 @@ public class Player_Controller : MonoBehaviour
     void AnimateMovement()
     {
 
+        if (isJumping)
+        {
+            changeAnimation("jump");
+            return;
+        }
         if (direction.magnitude < 0.1f)
         {
 
