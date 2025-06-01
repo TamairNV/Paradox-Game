@@ -18,12 +18,20 @@ public class VerticalFan : MonoBehaviour
     [SerializeField] private float liftSpeed = 10;
     [SerializeField] private float distanceDropOff = 2f;
 
+    [SerializeField] private float particleHeight = 0.5f;
+    [SerializeField] private ParticleSystem particleSystem;
+    private Vector3 startLocation;
+    private Vector3 startScale;
+    [SerializeField] private Transform jumpPoint;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        startLocation = particleSystem.transform.position;
+        startScale = particleSystem.transform.localScale;
         player = GameObject.Find("player").GetComponent<Player_Controller>();
         collider = GetComponent<PolygonCollider2D>();
+        
     }
 
     // Update is called once per frame
@@ -34,7 +42,6 @@ public class VerticalFan : MonoBehaviour
         if (isOverFan && flowDirection)
         {
             float distance = 1-Vector3.Distance(player.transform.position, transform.position);
-            print(distance);
             player.transform.position += -Vector3.down * liftSpeed * Time.deltaTime*(distance/distanceDropOff);
             collider.enabled = false;
         }
@@ -42,7 +49,23 @@ public class VerticalFan : MonoBehaviour
         {
             collider.enabled = true;
         }
+
+        if (flowDirection)
+        {
+            particleSystem.transform.position = startLocation;
+            particleSystem.transform.localScale = new Vector3(startScale.x, startScale.y, startScale.z);
+            if(jumpPoint != null){jumpPoint.gameObject.SetActive(false);}
+        }
+        else
+        {
+            particleSystem.transform.position = startLocation + new Vector3(0, particleHeight, 0);
+            particleSystem.transform.localScale = new Vector3(startScale.x, -startScale.y, startScale.z);
+            if(jumpPoint != null){jumpPoint.gameObject.SetActive(true);}
+            
+        }
     }
+    
+    
 
     private void OnTriggerEnter2D(Collider2D other)
     {
