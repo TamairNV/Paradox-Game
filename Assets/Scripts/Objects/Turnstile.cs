@@ -30,6 +30,7 @@ public class Turnstile : MonoBehaviour
     {
         ani =transform.GetChild(0).GetComponent<Animator>();
         Turnstiles.Add(this);
+        player = GameObject.Find("player").GetComponent<Player_Controller>();
     }
 
     private void reset()
@@ -48,6 +49,28 @@ public class Turnstile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (player.timeEngine.direction == 1)
+        {
+            if (input.GetComponent<Collider2D>().IsTouching(player.collider))
+            {
+                overTernstile = true;
+            }
+            else
+            {
+                overTernstile = false;
+            }
+        }
+        else
+        {
+            if (output.GetComponent<Collider2D>().IsTouching(player.collider))
+            {
+                overTernstile = true;
+            }
+            else
+            {
+                overTernstile = false;
+            }
+        }
         if (overTernstile)
         {
             checkForInteraction();
@@ -90,25 +113,7 @@ public class Turnstile : MonoBehaviour
     }
 
     private bool overTernstile = false;
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        GameObject obj = other.gameObject;
-        if (obj.layer == 13)
-        {
-            overTernstile = true;
-            player = obj.GetComponent<Player_Controller>();
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        GameObject obj = other.gameObject;
-        if (obj.layer == 13)
-        {
-            overTernstile = false;
-        }
-    }
+    
 
     private void checkForInteraction()
     {
@@ -120,7 +125,7 @@ public class Turnstile : MonoBehaviour
         {
             player.transform.GetChild(0).gameObject.SetActive(false);   
         }
-        print("player enter");
+ 
         
         if (!working && Keyboard.current.eKey.isPressed)
         {

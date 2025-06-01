@@ -21,6 +21,9 @@ public class UILineRenderer : MonoBehaviour
     public void UpdateLine()
     {
         if (!Application.isPlaying && lineRenderer.positionCount != 0) return;
+        if (lineRenderer.positionCount == 0)
+        {return;
+        }
 
         Vector3 lastPointWorldPos = transform.TransformPoint(lineRenderer.GetPosition(lineRenderer.positionCount - 1));
         float lastPointX = lastPointWorldPos.x;

@@ -11,6 +11,10 @@ using UnityEngine.Rendering.Universal;
 
 public class Player_Controller : MonoBehaviour
 {
+    [HideInInspector] public float jumpProgress;
+    [HideInInspector] public Vector3 jumpStartPosition;
+    [HideInInspector] public Vector3 jumpPeakPosition;
+    [HideInInspector] public Vector3 jumpTargetPosition;
     [SerializeField] public Camera cam;
     //[SerializeField] public List<DimentionalObjects> DimentionalObjects = new List<DimentionalObjects>();
     //private Dictionary<int, List<Tuple<int, objData>>> objDatas = new Dictionary<int, List<Tuple<int, objData>>>();
@@ -46,6 +50,7 @@ public class Player_Controller : MonoBehaviour
 
     public bool allowedToWalk = true;
     private bool reseting = false;
+    public Collider2D collider;
     IEnumerator setLine()
     {
         while (true)
@@ -116,7 +121,7 @@ public class Player_Controller : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        collider = GetComponent<Collider2D>();   
 
         
         timeEngine = new DimensionalLinkedList(xStep, yStep, line);

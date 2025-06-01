@@ -81,6 +81,14 @@ public class DimentionalPlayer : MonoBehaviour
     }
     private void setAnimations()
     {
+        if (currentNode != null)
+        {
+            if (currentNode.data.Jumped)
+            {
+                changeAnimation("reverseJump");
+                return;
+            }
+        }
         if (isMoving)
         {
             AnimateMovement();

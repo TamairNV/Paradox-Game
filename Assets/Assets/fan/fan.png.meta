@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -100,10 +100,10 @@ TextureImporter:
       name: fan_0
       rect:
         serializedVersion: 2
-        x: 41
+        x: 5
         y: 0
-        width: 1032
-        height: 1010
+        width: 129
+        height: 126
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,20 +112,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ddcb755cdb917f4da9499b722bd7c0b
-      internalID: 1934870067
+      spriteID: 7fa8db559c61f2e479f97ccf3a9131f4
+      internalID: -37189942
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fan_1
+      name: fan_6
       rect:
         serializedVersion: 2
-        x: 1165
-        y: 99
-        width: 793
-        height: 775
+        x: 271
+        y: 41
+        width: 40
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,8 +134,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2aca33c449069fc4fa4aa2dc5e4d3871
-      internalID: 1299395392
+      spriteID: e42ffff9701bc8b489c392ae7d6c30d2
+      internalID: -1298157642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fan_12
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 12
+        width: 101
+        height: 101
+      alignment: 9
+      pivot: {x: 0.5285317, y: 0.46887428}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e84c3c61e6929242ae59163228e9409
+      internalID: -895918402
       vertices: []
       indices: 
       edges: []
@@ -144,7 +166,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 2d00159cfab67bb4da4deee2ec949f0b
+    spriteID: 7d061b7fdcb39964b89644970891f034
     internalID: 0
     vertices: []
     indices: 
@@ -156,8 +178,19 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      fan_0: 1934870067
-      fan_1: 1299395392
+      fan_0: -37189942
+      fan_1: -1509481577
+      fan_10: -1485605463
+      fan_11: -2099451091
+      fan_12: -895918402
+      fan_2: 432459011
+      fan_3: 998420242
+      fan_4: 1208309066
+      fan_5: -572737551
+      fan_6: -1298157642
+      fan_7: -267175435
+      fan_8: 949378731
+      fan_9: 1536412998
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

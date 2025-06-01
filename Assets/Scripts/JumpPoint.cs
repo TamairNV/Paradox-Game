@@ -5,15 +5,11 @@ public class JumpPoint : MonoBehaviour
     [SerializeField] private Vector3 directionToJump = new Vector3(0, -1);
     [SerializeField] private float speed = 3f;
     [SerializeField] private float jumpDistance = 1f;
-    [SerializeField] private float upwardBoost = 0.3f; // How much the player jumps up before falling
-    [SerializeField] private LayerMask playerLayer;
+    [SerializeField] private float upwardBoost = 0.3f;
 
     private Transform player;
-    private Vector3 originalPosition;
-    private Vector3 peakPosition; // Highest point of the jump arc
-    private Vector3 targetPosition;
-    private float progress = 0f;
     private Player_Controller playerController;
+    private static JumpPoint activeJumpPoint; // Track which jump point is currently active
 
     void Start()
     {
@@ -23,69 +19,69 @@ public class JumpPoint : MonoBehaviour
 
     void Update()
     {
-        if (playerController.isJumping)
+        // Only update if this is the active jump point
+        if (activeJumpPoint == this && playerController.isJumping)
         {
-            progress += Time.deltaTime * speed;
-            
-            // First half of progress (0-0.5): go up to peak
-            if (progress < 0.5f)
-            {
-                float upProgress = progress * 2f; // Convert to 0-1 range
-                player.position = Vector3.Lerp(originalPosition, peakPosition, upProgress);
-            }
-            // Second half of progress (0.5-1): fall down from peak
-            else
-            {
-                float downProgress = (progress - 0.5f) * 2f; // Convert to 0-1 range
-                player.position = Vector3.Lerp(peakPosition, targetPosition, downProgress);
-            }
+            playerController.timeEngine.CurrentDimensionalNode.data.Jumped = true;
+            playerController.jumpProgress += Time.deltaTime * speed;
+            float progress = playerController.jumpProgress;
+
+
+         
+            // Coming down from peak
+            float downProgress = (progress - 0.5f) * 2f;
+            player.position = Vector3.Lerp(playerController.jumpPeakPosition, 
+                                         playerController.jumpTargetPosition, 
+                downProgress);
+        
 
             if (progress >= 1f)
             {
                 playerController.isJumping = false;
-                player.position = targetPosition;
+                player.position = playerController.jumpTargetPosition;
+                activeJumpPoint = null;
             }
-        }
-        else
-        {
-            
         }
     }
 
-    void OnTriggerStay2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (!playerController.isJumping && other.gameObject.layer == 13)
+        if (other.gameObject.layer == 13 && !playerController.isJumping)
         {
-            Vector3 playerToJumpPoint = transform.position - player.position;
-            float dotProduct = Vector3.Dot(playerToJumpPoint.normalized, directionToJump.normalized);
-            StartJump();
+            // Only trigger if no other jump point is active
+            if (activeJumpPoint == null || activeJumpPoint == this)
+            {
+                activeJumpPoint = this;
+                StartJump();
+            }
         }
     }
 
     void StartJump()
     {
         playerController.isJumping = true;
-        originalPosition = player.position;
-        targetPosition = originalPosition + ((directionToJump).normalized * jumpDistance);
-        
-        // Calculate peak position (straight up from original position)
-        peakPosition = originalPosition + (new Vector3 (0,1,0) * upwardBoost);
-        
-        progress = 0f;
+        playerController.jumpProgress = 0f;
+        playerController.jumpStartPosition = player.position;
+        playerController.jumpTargetPosition = player.position + (directionToJump.normalized * jumpDistance);
+        playerController.jumpPeakPosition = player.position + (Vector3.up * upwardBoost);
+        playerController.allowedToWalk = false;
 
-        player.GetComponent<Player_Controller>().allowedToWalk = false;
-        Invoke("EnablePlayerMovement", 1f / speed);
+        // Automatically re-enable walking after jump duration
+        float jumpDuration = 1f / speed;
+        Invoke("EnablePlayerMovement", jumpDuration);
     }
 
     void EnablePlayerMovement()
     {
-        player.GetComponent<Player_Controller>().allowedToWalk = true;
+
+        playerController.allowedToWalk = true;
+        activeJumpPoint = null;
+        
     }
 
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        // Draw jump path: original -> peak -> target
         Vector3 peakPos = transform.position + (Vector3.up * upwardBoost);
         Vector3 targetPos = transform.position + (directionToJump.normalized * jumpDistance);
         
