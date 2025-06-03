@@ -9,7 +9,7 @@ public class DimentionalObjects : MonoBehaviour
     public Vector3 targetPosition;
 
     public Quaternion targetRotation;
-
+    private bool targetRotationNull = true;
     public bool beenInteractedWith = false;
 
     public Vector3 StartingPosition;
@@ -64,10 +64,14 @@ public class DimentionalObjects : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, targetPosition, step);
         }
 
+        if (!targetRotationNull)
+        {
+            step = rotateSpeed * Time.deltaTime;
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, step);
 
-        step = rotateSpeed * Time.deltaTime;
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, step);
-    
+        }
+        
+
     }
 
     public static void ResetAllObj()
@@ -103,6 +107,7 @@ public class DimentionalObjects : MonoBehaviour
 
         if (beenInteractedWith && data.ContainsKey(time))
         {
+            targetRotationNull = false;
             targetPosition = data[time].Position;
             targetRotation = data[time].Rotation;
         }
