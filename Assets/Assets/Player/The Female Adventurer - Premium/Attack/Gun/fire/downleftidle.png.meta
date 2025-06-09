@@ -1,0 +1,303 @@
+fileFormatVersion: 2
+guid: e19ab304b99229e42b6676e9f71d7e50
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: downleftidle_0
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 0
+        width: 108
+        height: 124
+      alignment: 9
+      pivot: {x: 0.23, y: 0.72}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30fde703735d20041a31a703fe454fd5
+      internalID: 1500382034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: downleftidle_1
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 0
+        width: 108
+        height: 124
+      alignment: 9
+      pivot: {x: 0.23, y: 0.72}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c66cc3de30ec7d241a2e361881c72102
+      internalID: -1439133646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: downleftidle_2
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 0
+        width: 108
+        height: 124
+      alignment: 9
+      pivot: {x: 0.23, y: 0.72}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4666c8a89cdd6d344b5ed478353ed0b8
+      internalID: -1236753286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: downleftidle_3
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 0
+        width: 108
+        height: 124
+      alignment: 9
+      pivot: {x: 0.23, y: 0.72}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7199ffba7684204c97e8b77f4fe752b
+      internalID: 1269020031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: downleftidle_4
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 0
+        width: 108
+        height: 124
+      alignment: 9
+      pivot: {x: 0.23, y: 0.72}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac4b364d8263aee41a350acaf3fec522
+      internalID: 480837976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: downleftidle_5
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 0
+        width: 108
+        height: 124
+      alignment: 9
+      pivot: {x: 0.23, y: 0.72}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6437d8246d0ddac41bebab4846feabb5
+      internalID: -97915951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: downleftidle_6
+      rect:
+        serializedVersion: 2
+        x: 1068
+        y: 0
+        width: 108
+        height: 124
+      alignment: 9
+      pivot: {x: 0.23, y: 0.72}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0565534d152691d428fa97ce1c8ce741
+      internalID: -46384830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: downleftidle_7
+      rect:
+        serializedVersion: 2
+        x: 1236
+        y: 0
+        width: 108
+        height: 124
+      alignment: 9
+      pivot: {x: 0.23, y: 0.72}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fadfc490868d26a478f8848e2ed5e01a
+      internalID: -46181110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: c5db681eeb0daa34da0f5a2a787b6b9d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":8.0,"y":1.0},"gridSpriteSize":{"x":108.0,"y":124.0},"gridSpriteOffset":{"x":60.0,"y":60.0},"gridSpritePadding":{"x":60.0,"y":0.0},"pivot":{"x":0.23000000417232514,"y":0.7200000286102295},"autoSlicingMethod":0,"spriteAlignment":9,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      downleftidle_0: 1500382034
+      downleftidle_1: -1439133646
+      downleftidle_2: -1236753286
+      downleftidle_3: 1269020031
+      downleftidle_4: 480837976
+      downleftidle_5: -97915951
+      downleftidle_6: -46384830
+      downleftidle_7: -46181110
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

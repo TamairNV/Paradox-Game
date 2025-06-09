@@ -11,10 +11,14 @@ using UnityEngine.Rendering.Universal;
 
 public class Player_Controller : MonoBehaviour
 {
+    public int lastLevelCompleted = 0;
+    
+    
     [HideInInspector] public float jumpProgress;
     [HideInInspector] public Vector3 jumpStartPosition;
     [HideInInspector] public Vector3 jumpPeakPosition;
     [HideInInspector] public Vector3 jumpTargetPosition;
+    public bool hasFlamethrower = false;
     [SerializeField] public Camera cam;
     //[SerializeField] public List<DimentionalObjects> DimentionalObjects = new List<DimentionalObjects>();
     //private Dictionary<int, List<Tuple<int, objData>>> objDatas = new Dictionary<int, List<Tuple<int, objData>>>();
@@ -188,15 +192,24 @@ public class Player_Controller : MonoBehaviour
             direction = direction.normalized;
         }
 
-
+        bool shooting = animateFire();
         if (direction.magnitude > 0.1f && !isJumping)
         {
-            
+            // Calculate the angle in radians, then convert to degrees
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+    
+            // Apply the rotation (for 2D, use Quaternion.Euler(0, 0, angle))
+            transform.GetChild(1).rotation = Quaternion.Euler(0, 0, angle);   
             
             lastDirection = direction;
+            
             if (allowedToWalk)
             {
-                AnimateMovement();
+                if(!shooting)
+                {
+                    AnimateMovement();
+                }
+                
                 // Apply speed reduction if on stairs
                 float currentSpeed = speed * Stair.GetSpeedModifier();
 
@@ -230,9 +243,13 @@ public class Player_Controller : MonoBehaviour
                 isFootSteps = false;
             }
             isMoving = false;
-            if (!isJumping)
+            if (!isJumping )
             {
-                PlayIdleAnimation(lastDirection);
+                if(!shooting)
+                {
+                    PlayIdleAnimation(lastDirection);
+                }
+                
             }
             else
             {
@@ -269,6 +286,7 @@ public class Player_Controller : MonoBehaviour
         int snappedAngle = Mathf.RoundToInt(angle / 45) % 8;
         snappedAngle = (snappedAngle < 0) ? snappedAngle + 8 : snappedAngle;
 
+       
         switch (snappedAngle)
         {
             case 0: changeAnimation("run_gun_right"); break; // 0°
@@ -280,6 +298,43 @@ public class Player_Controller : MonoBehaviour
             case 6: changeAnimation("run_gun_down"); break; // 270°
             case 7: changeAnimation("run_gun_right_down"); break; // 315°
         }
+
+    }
+
+    private bool animateFire()
+    {
+        if (!hasFlamethrower)
+        {
+            return false;
+        }
+        if (Keyboard.current.spaceKey.isPressed)
+        {
+            float angle = Mathf.Atan2(lastDirection.y, lastDirection.x) * Mathf.Rad2Deg;
+
+            // Snap to 8-directional angles (0°, 45°, 90°, etc.)
+            int snappedAngle = Mathf.RoundToInt(angle / 45) % 8;
+            snappedAngle = (snappedAngle < 0) ? snappedAngle + 8 : snappedAngle;
+
+            string sufix = "idle";
+            if (isMoving)
+            {
+                sufix = "run";
+
+            }
+            switch (snappedAngle)
+            {
+                case 0: changeAnimation("right" + sufix); break; // 0°
+                case 1: changeAnimation("upright"+ sufix); break; // 45°
+                case 2: changeAnimation("up"+ sufix); break; // 90°
+                case 3: changeAnimation("upleft"+ sufix); break; // 135°
+                case 4: changeAnimation("left"+ sufix); break; // 180°
+                case 5: changeAnimation("downleft"+ sufix); break; // 225°
+                case 6: changeAnimation("down"+ sufix); break; // 270°
+                case 7: changeAnimation("downright"+ sufix); break; // 315°
+            }
+            return true;
+        }
+        return false;
     }
 
     private void PlayIdleAnimation(Vector2 lastDirection)
@@ -307,7 +362,8 @@ public class Player_Controller : MonoBehaviour
     {
         if (!currentAnimation.Equals(animation))
         {
-            ani.Play(animation);
+            
+            ani.Play(animation);    
         }
     }
 
@@ -467,7 +523,7 @@ public class Player_Controller : MonoBehaviour
             CheckPoint checkPoint = new CheckPoint(timeEngine.CurrentTime, transform.position, timeEngine.CurrentTime,
                 timeEngine.CurrentDimensionalNode);
             checkPoints.Add(checkPoint);
-            print("checkPoint");
+            
             
         }
 
