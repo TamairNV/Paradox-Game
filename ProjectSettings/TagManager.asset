@@ -16,7 +16,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - wall
   - Player
   - RealPlayer
   - turnstile
@@ -50,6 +50,9 @@ TagManager:
   - name: Background
     uniqueID: 751001983
     locked: 0
+  - name: background_obj_back
+    uniqueID: 543815945
+    locked: 0
   - name: background_obj
     uniqueID: 72848641
     locked: 0
@@ -67,6 +70,9 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 1556399543
+    locked: 0
+  - name: wall
+    uniqueID: 24890453
     locked: 0
   m_RenderingLayers:
   - Default
