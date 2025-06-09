@@ -72,6 +72,8 @@ public class FinishPorter : MonoBehaviour
             
             yield return new WaitForSeconds(Time.deltaTime);
         }
+        player.resetGame();
+        player.time = 0;
         
         
     }
