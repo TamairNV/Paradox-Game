@@ -10,6 +10,8 @@ public class Level : MonoBehaviour
     [SerializeField] public int LevelNumber;
     [SerializeField] public Transform startLocation;
     [SerializeField] public float maxZoom = 2f;
+    
+    [HideInInspector]
     public Collider2D collider;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created

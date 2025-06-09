@@ -103,6 +103,7 @@ public class LevelPorter : MonoBehaviour
         }
         vignette.intensity.Override(0);
         player.allowedToWalk = true;
+        player.time = 0;
         yield return new WaitForSeconds(2f);
     }   
 }

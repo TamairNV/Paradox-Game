@@ -13,7 +13,7 @@ public class Player_Controller : MonoBehaviour
 {
     public int lastLevelCompleted = 0;
     
-    
+    public double time = 0;
     [HideInInspector] public float jumpProgress;
     [HideInInspector] public Vector3 jumpStartPosition;
     [HideInInspector] public Vector3 jumpPeakPosition;
@@ -162,6 +162,7 @@ public class Player_Controller : MonoBehaviour
         {
             StartCoroutine(CauseParadox());
         }
+
     }
 
     void Move()
@@ -478,7 +479,7 @@ public class Player_Controller : MonoBehaviour
         transform.position = checkPoint.location;
         timeEngine.direction = checkPoint.direction;
         resetGame();
-
+        time = 0;
         duration = 2f;
         elapsed = 0f;
 
@@ -503,6 +504,7 @@ public class Player_Controller : MonoBehaviour
         }
 
         reseting = false;
+        
 
 
     }

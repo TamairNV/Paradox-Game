@@ -38,6 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: invis
+    uniqueID: 2267509657
+    locked: 0
   - name: floor
     uniqueID: 3184121811
     locked: 0
