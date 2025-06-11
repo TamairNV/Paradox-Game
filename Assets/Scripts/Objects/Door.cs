@@ -11,7 +11,7 @@ public class Door : MonoBehaviour
 
     private string currentAnimation = ""; 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         ani = GetComponent<Animator>();
         foreach (var plate in PressurePlates)
