@@ -37,7 +37,7 @@ public class Bridge : MonoBehaviour
         {
             
             // Get the first child's BoxCollider2D
-        BoxCollider2D collider = transform.GetChild(0).GetComponent<BoxCollider2D>();
+            Collider2D collider = transform.GetChild(0).GetComponent<Collider2D>();
 
         // Check if the player is overlapping this collider
         Collider2D[] overlappingColliders = new Collider2D[10];

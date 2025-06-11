@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -14,61 +15,80 @@ public class Activator : MonoBehaviour
     // Layer masks for more efficient collision checking
     private const int PlayerLayer = 13;
     private const int BoxLayer = 12;
-    private const int OtherLayer = 15;
-    private LayerMask _activatorLayers;
+    private const int DimPlayer = 15;
+
 
     private void Awake()
     {
         // Combine layers into a single mask for more efficient checks
-        _activatorLayers = (1 << PlayerLayer) | (1 << BoxLayer) | (1 << OtherLayer);
+
+    }
+    
+    private List<GameObject> lines = new List<GameObject>();
+
+    protected void Start()
+    {
+
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
+        
         // More efficient layer check using bitwise operation
-        if (((1 << other.gameObject.layer) & _activatorLayers) != 0)
+        int layer = other.gameObject.layer;
+        if (layer == PlayerLayer || layer == BoxLayer || layer == DimPlayer)
         {
             isPressed = true;
             
-            if (other.gameObject.layer == PlayerLayer)
+            if (layer == PlayerLayer)
             {
                 HandlePlayerInteraction(other);
             }
         }
     }
+    
+    
+    
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (((1 << other.gameObject.layer) & _activatorLayers) != 0)
+        int layer = other.gameObject.layer;
+        if (layer == PlayerLayer || layer == BoxLayer || layer == DimPlayer)
         {
             isPressed = false;
             ResetDoorColors();
+            if (other.gameObject.layer == PlayerLayer)
+            {
+                foreach (GameObject line in lines)
+                {
+                    Destroy(line);
+                }
+            }
+            
+
+
         }
     }
+    
 
     private void HandlePlayerInteraction(Collider2D playerCollider)
     {
         var playerController = playerCollider.GetComponent<Player_Controller>();
-        if (playerController == null || playerController.cam == null) return;
 
         // Set camera focus objects
         
         // Process each door with its color
-        for (int i = 0; i < Doors.Count; i++)
+        print("run forest run");
+        int i = 0;
+        foreach (var door in Doors)
         {
-            Transform door = Doors[i];
-            if (door == null) continue;
-
-            int color = 4;
-            ColorDoorAndComponents(door, color);
-            
-            // Add connected buttons and plates to camera focus
-            var doorComponent = door.GetComponent<Door>();
-            if (doorComponent != null)
-            {
-            
-                ColorConnectedObjects(doorComponent, color);
-            }
+            GameObject doorLine = Instantiate(playerController.doorLine);
+            LineRenderer line = doorLine.GetComponent<LineRenderer>();
+            line.positionCount = 2;
+            line.SetPosition(0, door.transform.position);
+            line.SetPosition(1, transform.position);
+            lines.Add(doorLine);
+            i++;
         }
     }
 

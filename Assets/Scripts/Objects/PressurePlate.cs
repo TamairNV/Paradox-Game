@@ -14,6 +14,7 @@ public class PressurePlate : Activator
     private SpriteRenderer sr;
     void Start()
     {
+        base.Start();
         sr = GetComponent<SpriteRenderer>();
     }
 
