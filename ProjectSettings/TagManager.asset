@@ -50,8 +50,20 @@ TagManager:
   - name: New Layer 1
     uniqueID: 4212975049
     locked: 0
+  - name: Door_back
+    uniqueID: 2143581691
+    locked: 0
+  - name: Door
+    uniqueID: 1319915035
+    locked: 0
   - name: Background
     uniqueID: 751001983
+    locked: 0
+  - name: Line_back
+    uniqueID: 1287842201
+    locked: 0
+  - name: Line
+    uniqueID: 2371485737
     locked: 0
   - name: background_obj_back
     uniqueID: 543815945

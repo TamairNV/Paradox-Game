@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,21 +15,14 @@ public class Door : MonoBehaviour
     void Awake()
     {
         ani = GetComponent<Animator>();
-        foreach (var plate in PressurePlates)
-        {
-            plate.Doors.Add(this.transform);
-        }
-        foreach (var button in buttons)
-        {
-            button.Doors.Add(this.transform);
-        }
+
     }
 
     // Update is called once per frame
     void Update()
     {
         isOpen = false;
-        foreach (var button in buttons)
+        foreach (DoorButton button in buttons)
         {
             if (!button.isPressed)
             {
@@ -37,13 +31,16 @@ public class Door : MonoBehaviour
                 return;
             }
         }
-        foreach (var plate in PressurePlates)
+        foreach (PressurePlate plate in PressurePlates)
         {
+
             if (!plate.isPressed)
             {
                 changeAnimation("close");
                 return;
             }
+
+
         }
 
         isOpen = true;

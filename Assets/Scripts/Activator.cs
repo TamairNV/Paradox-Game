@@ -6,7 +6,12 @@ using UnityEngine.Rendering.Universal;
 
 public class Activator : MonoBehaviour
 {
-    public List<Transform> Doors = new List<Transform>();
+    [SerializeField] private Material lineMat;
+    [SerializeField] private Gradient boltColour;
+    [SerializeField] private float boltWidth = 0.07f;
+    [SerializeField] private float numBoltsPerUnit = 1;
+
+    private Transform activeLine;
     public bool isPressed = false;
     
     // Cache the color white to avoid creating new Color instances
@@ -14,9 +19,9 @@ public class Activator : MonoBehaviour
     
     // Layer masks for more efficient collision checking
     private const int PlayerLayer = 13;
-    private const int BoxLayer = 12;
-    private const int DimPlayer = 15;
-
+    private const int BoxLayer = 15;
+    private const int DimPlayer = 12;
+    private Player_Controller playerController;
 
     private void Awake()
     {
@@ -24,31 +29,112 @@ public class Activator : MonoBehaviour
 
     }
     
-    private List<GameObject> lines = new List<GameObject>();
+    private List<GameObject> activeLines = new List<GameObject>();
 
     protected void Start()
     {
+        playerController = GameObject.Find("player").GetComponent<Player_Controller>();
+        if (transform.childCount == 0)
+        {
+            return;
+        }
+
+
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            activeLine = transform.GetChild(i);
+            Transform activeLineBolt = activeLine.GetChild(0);
+            LineRenderer lineRenderer = CopyPropertiesTo(activeLine.GetComponent<LineRenderer>(), activeLineBolt);
+            lineRenderer.material = new Material(lineMat);
+            lineRenderer.material.SetFloat("_Number_of_Dashes",CalculateTotalLength(activeLineBolt.GetComponent<LineRenderer>()) * numBoltsPerUnit);
+            lineRenderer.colorGradient = boltColour;
+            lineRenderer.startWidth = boltWidth;
+            lineRenderer.sortingLayerName = "Line";
+            activeLine.transform.GetChild(0).gameObject.SetActive(false);
+            activeLines.Add(activeLine.gameObject);
+            
+            
+        }
+
+        
 
     }
-
-    private void OnTriggerEnter2D(Collider2D other)
+    public static LineRenderer CopyPropertiesTo( LineRenderer source, Transform targetTransform)
     {
-        
+        if (source == null || targetTransform == null) return null;
+        LineRenderer target = targetTransform.gameObject.AddComponent<LineRenderer>();
+        // Basic settings
+        target.positionCount = source.positionCount;
+        target.loop = source.loop;
+        target.startWidth = source.startWidth;
+        target.endWidth = source.endWidth;
+        target.widthCurve = source.widthCurve;
+        target.widthMultiplier = source.widthMultiplier;
+        target.startColor = source.startColor;
+        target.endColor = source.endColor;
+        target.colorGradient = source.colorGradient;
+        target.numCapVertices = source.numCapVertices;
+        target.alignment = source.alignment;
+        target.textureMode = source.textureMode;
+        target.generateLightingData = source.generateLightingData;
+        target.shadowBias = source.shadowBias;
+
+        // Materials and rendering
+        target.materials = source.materials;
+        target.lightProbeUsage = source.lightProbeUsage;
+        target.receiveShadows = source.receiveShadows;
+        target.shadowCastingMode = source.shadowCastingMode;
+        target.motionVectorGenerationMode = source.motionVectorGenerationMode;
+        target.allowOcclusionWhenDynamic = source.allowOcclusionWhenDynamic;
+        target.sortingLayerID = source.sortingLayerID;
+        target.sortingOrder = source.sortingOrder;
+
+        // Positions
+        Vector3[] positions = new Vector3[source.positionCount];
+        source.GetPositions(positions);
+        target.SetPositions(positions);
+        return target;
+    }
+    public static float CalculateTotalLength(LineRenderer lineRenderer)
+    {
+        if (lineRenderer == null || lineRenderer.positionCount < 2)
+            return 0f;
+
+        float totalLength = 0f;
+        Vector3[] positions = new Vector3[lineRenderer.positionCount];
+        lineRenderer.GetPositions(positions);
+
+        for (int i = 1; i < positions.Length; i++)
+        {
+            totalLength += Vector3.Distance(positions[i - 1], positions[i]);
+        }
+
+        return totalLength;
+    }
+
+
+    
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+                
         // More efficient layer check using bitwise operation
         int layer = other.gameObject.layer;
         if (layer == PlayerLayer || layer == BoxLayer || layer == DimPlayer)
         {
             isPressed = true;
-            
             if (layer == PlayerLayer)
             {
-                HandlePlayerInteraction(other);
+                foreach (GameObject line in activeLines)
+                {
+                    line.transform.GetChild(0).gameObject.SetActive(true);
+                }
             }
+
         }
+
     }
-    
-    
-    
+
 
     private void OnTriggerExit2D(Collider2D other)
     {
@@ -56,121 +142,30 @@ public class Activator : MonoBehaviour
         if (layer == PlayerLayer || layer == BoxLayer || layer == DimPlayer)
         {
             isPressed = false;
-            ResetDoorColors();
-            if (other.gameObject.layer == PlayerLayer)
+         
+
+            foreach (GameObject line in activeLines)
             {
-                foreach (GameObject line in lines)
-                {
-                    Destroy(line);
-                }
+                line.transform.GetChild(0).gameObject.SetActive(false);
             }
             
 
-
-        }
-    }
-    
-
-    private void HandlePlayerInteraction(Collider2D playerCollider)
-    {
-        var playerController = playerCollider.GetComponent<Player_Controller>();
-
-        // Set camera focus objects
-        
-        // Process each door with its color
-        print("run forest run");
-        int i = 0;
-        foreach (var door in Doors)
-        {
-            GameObject doorLine = Instantiate(playerController.doorLine);
-            LineRenderer line = doorLine.GetComponent<LineRenderer>();
-            line.positionCount = 2;
-            line.SetPosition(0, door.transform.position);
-            line.SetPosition(1, transform.position);
-            lines.Add(doorLine);
-            i++;
-        }
-    }
-
-    private void ColorDoorAndComponents(Transform door, float color)
-    {
-        ColourObject(door, color);
-        
-        // Safely handle child objects
-        if (door.childCount >= 2)
-        {
-            Transform child0 = door.GetChild(0);
-            Transform child1 = door.GetChild(1);
-            
-            ColourObject(child0, color);
-            ColourObject(child1, color);
-            
-            // Handle nested children if they exist
-            if (child0.childCount > 0)
-            {
-                ColourObject(child0.GetChild(0), color);
-                ColourObject(child1.GetChild(0), color);
-            }
         }
     }
 
 
 
-    private void ColorConnectedObjects(Door doorComponent, float color)
-    {
-        if (doorComponent.buttons != null)
-        {
-            ColourObjects(doorComponent.buttons
-                .Where(button => button != null)
-                .Select(button => button.transform)
-                .ToList(), color);
-        }
-        
-        if (doorComponent.PressurePlates != null)
-        {
-            ColourObjects(doorComponent.PressurePlates
-                .Where(plate => plate != null)
-                .Select(plate => plate.transform)
-                .ToList(), color);
-        }
-    }
 
 
 
-    private void ResetDoorColors()
-    {
-        foreach (var door in Doors.Where(d => d != null))
-        {
-            ColorDoorAndComponents(door, WhiteColor);
-            
-            var doorComponent = door.GetComponent<Door>();
-            if (doorComponent != null)
-            {
-                ColorConnectedObjects(doorComponent, WhiteColor);
-            }
-        }
-    }
 
-    public static void ColourObjects(List<Transform> objs, float color)
-    {
-        if (objs == null) return;
-        
-        foreach (var obj in objs.Where(o => o != null))
-        {
-            ColourObject(obj, color);
-        }
-    }
 
-    public static void ColourObject(Transform obj, float color)
-    {
-        if (obj == null) return;
 
-        var renderer = obj.GetComponent<Light2D>();
-        if (renderer != null)
-        {
-            renderer.intensity = color;
-        }
-    }
+
+
+
+
+
 
     public static Color GetColorFromNumber(int number)
     {

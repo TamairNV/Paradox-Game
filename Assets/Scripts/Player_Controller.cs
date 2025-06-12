@@ -54,6 +54,9 @@ public class Player_Controller : MonoBehaviour
     public bool allowedToWalk = true;
     private bool reseting = false;
     public Collider2D collider;
+    
+
+        
     IEnumerator setLine()
     {
         while (true)
@@ -161,6 +164,8 @@ public class Player_Controller : MonoBehaviour
         {
             StartCoroutine(CauseParadox());
         }
+
+
 
     }
 
