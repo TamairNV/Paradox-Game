@@ -27,9 +27,15 @@ public class DimentionalObjects : MonoBehaviour
     public static List<DimentionalObjects> Objects = new List<DimentionalObjects>();
     public bool isDestoryed = false;
     public int ID;
+    [HideInInspector]
+    public Vector3 startingScale;
+    
+
+    private bool holding = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        startingScale = transform.localScale;
         Objects.Add(this);
         GameObject playerObj = GameObject.Find("player");
         if (playerObj != null)
@@ -92,7 +98,10 @@ public class DimentionalObjects : MonoBehaviour
             }
         }
 
-        
+
+
+
+
 
     }
 
@@ -142,22 +151,19 @@ public class DimentionalObjects : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+
+
+    private void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.layer == 13)
         {
-            beenInteractedWith = true;
-            if (data.ContainsKey(player.timeEngine.CurrentTime))
-            {
-                StartCoroutine(player.CauseParadox());
-                
-            }
-            //other.transform.GetComponent<Player_Controller>().UpdateDimObjects();
+            
+            transform.GetChild(0).transform.gameObject.SetActive(true);
+
         }
-        
-        
-     
     }
+
+
 
     public float burnTimer = 0;
     private bool isBurning = false;
@@ -168,6 +174,16 @@ public class DimentionalObjects : MonoBehaviour
         {
             isBurning = true;
         }
+        if (other.gameObject.layer == 13)
+        {
+            beenInteractedWith = true;
+            if (data.ContainsKey(player.timeEngine.CurrentTime))
+            {
+                StartCoroutine(player.CauseParadox());
+                
+            }
+            //other.transform.GetComponent<Player_Controller>().UpdateDimObjects();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -177,6 +193,11 @@ public class DimentionalObjects : MonoBehaviour
             isDestoryed = false;
             isBurning = false;
             burnTimer = 0;
+        }
+
+        if (other.gameObject.layer == 13)
+        {
+            transform.GetChild(0).transform.gameObject.SetActive(false);
         }
     }
 
