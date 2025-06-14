@@ -12,13 +12,13 @@ public class PlayerBoxHolder : MonoBehaviour
     private Vector3 targetBoxPosition;
     private Vector3 lastValidDirection;
     
-    private Player_Controller player;
+    private Player player;
     private Transform boxHolding;
     public float holdingSizeMul = 0.85f;
 
     void Start()
     {
-        player = GetComponent<Player_Controller>();
+        player = GetComponent<Player>();
         lastValidDirection = Vector3.right; // Default direction
     }
 
@@ -44,6 +44,8 @@ public class PlayerBoxHolder : MonoBehaviour
             
                 boxHolding.GetComponent<BoxCollider2D>().enabled = true;
                 boxHolding = null;
+                
+                
             }
         }
 
@@ -82,6 +84,7 @@ public class PlayerBoxHolder : MonoBehaviour
             // Start from current position to avoid teleportation
             boxHoldPosition = closestBox.position;
         }
+        
     }
 
     private void GetTargetPosition()

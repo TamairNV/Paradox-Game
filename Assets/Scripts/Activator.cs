@@ -21,7 +21,7 @@ public class Activator : MonoBehaviour
     private const int PlayerLayer = 13;
     private const int BoxLayer = 15;
     private const int DimPlayer = 12;
-    private Player_Controller playerController;
+    private Player player;
 
     private void Awake()
     {
@@ -33,7 +33,7 @@ public class Activator : MonoBehaviour
 
     protected void Start()
     {
-        playerController = GameObject.Find("player").GetComponent<Player_Controller>();
+        player = GameObject.Find("player").GetComponent<Player>();
         if (transform.childCount == 0)
         {
             return;
@@ -123,13 +123,12 @@ public class Activator : MonoBehaviour
         if (layer == PlayerLayer || layer == BoxLayer || layer == DimPlayer)
         {
             isPressed = true;
-            if (layer == PlayerLayer)
+
+            foreach (GameObject line in activeLines)
             {
-                foreach (GameObject line in activeLines)
-                {
-                    line.transform.GetChild(0).gameObject.SetActive(true);
-                }
+                line.transform.GetChild(0).gameObject.SetActive(true);
             }
+            
 
         }
 

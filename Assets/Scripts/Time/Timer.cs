@@ -6,7 +6,7 @@ public class Timer : MonoBehaviour
 {
     
     private TMP_Text text;
-    private Player_Controller player;
+    private Player player;
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -14,7 +14,7 @@ public class Timer : MonoBehaviour
     {
         Time.timeScale = 1f;
         text = GetComponent<TMP_Text>();
-        player = GameObject.Find("player").GetComponent<Player_Controller>();
+        player = GameObject.Find("player").GetComponent<Player>();
     }
 
     // Update is called once per frame

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2537894303692082627}
   - component: {fileID: 8234439055245922902}
   - component: {fileID: 4560342400077021471}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Baby Tank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2037241763
-  m_SortingLayer: 7
+  m_SortingLayer: 11
   m_SortingOrder: 0
   m_Sprite: {fileID: 1955637223, guid: 2fb1fb2825d814ff0a4c53bd8ed96e9a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -187,13 +187,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: baby
       objectReference: {fileID: 0}
+    - target: {fileID: 5825969547380924003, guid: 7c7a6fb22906641ba9b919e41b4eb5bf, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 6245295389511365281, guid: 7c7a6fb22906641ba9b919e41b4eb5bf, type: 3}
       propertyPath: m_Color.a
       value: 0.69411767
       objectReference: {fileID: 0}
     - target: {fileID: 6245295389511365281, guid: 7c7a6fb22906641ba9b919e41b4eb5bf, type: 3}
       propertyPath: m_SortingLayer
-      value: 8
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6245295389511365281, guid: 7c7a6fb22906641ba9b919e41b4eb5bf, type: 3}
       propertyPath: m_SortingLayerID

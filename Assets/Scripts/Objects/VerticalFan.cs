@@ -7,7 +7,7 @@ public class VerticalFan : MonoBehaviour
 
     [SerializeField] private int startDirection = 1;
 
-    private Player_Controller player;
+    private Player player;
 
     private bool isOn;
 
@@ -29,7 +29,7 @@ public class VerticalFan : MonoBehaviour
     {
         startLocation = particleSystem.transform.position;
         startScale = particleSystem.transform.localScale;
-        player = GameObject.Find("player").GetComponent<Player_Controller>();
+        player = GameObject.Find("player").GetComponent<Player>();
         collider = GetComponent<PolygonCollider2D>();
         
     }

@@ -11,7 +11,7 @@ public class UILineRenderer : MonoBehaviour
     [SerializeField] private float lineMinWidth = 0;
     [SerializeField] private float buffer = 50;
     private Vector3 startingPosition;
-    [SerializeField] private Player_Controller player;
+    [SerializeField] private Player player;
 
     private void Start()
     {

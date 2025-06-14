@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class BidirectionalAudioPlayer : MonoBehaviour
 {
     public AudioSource audioSource;
     public AudioClip forwardClip;
     public AudioClip reversedClip;
-    public Player_Controller PlayerController;
+    [FormerlySerializedAs("PlayerController")] public Player player;
     
     private int currentDirection = 1;
     private bool isPlayingForward = true;
@@ -24,9 +25,9 @@ public class BidirectionalAudioPlayer : MonoBehaviour
     void Update()
     {
         // Check for direction change
-        if (PlayerController.timeEngine.direction != currentDirection)
+        if (player.timeEngine.direction != currentDirection)
         {
-            currentDirection = PlayerController.timeEngine.direction;
+            currentDirection = player.timeEngine.direction;
             TogglePlaybackDirection();
         }
         

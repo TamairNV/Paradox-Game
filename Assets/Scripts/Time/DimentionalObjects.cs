@@ -22,7 +22,7 @@ public class DimentionalObjects : MonoBehaviour
     public Quaternion  StartingRotation;
 
     public Dictionary<int, objData> data = new Dictionary<int, objData>();
-    private Player_Controller player;
+    private Player player;
 
     public static List<DimentionalObjects> Objects = new List<DimentionalObjects>();
     public bool isDestoryed = false;
@@ -41,7 +41,7 @@ public class DimentionalObjects : MonoBehaviour
         if (playerObj != null)
         {
             //playerObj.GetComponent<Player_Controller>().DimentionalObjects.Add(this);
-            player = playerObj.GetComponent<Player_Controller>();
+            player = playerObj.GetComponent<Player>();
 
         }
         else
@@ -152,16 +152,7 @@ public class DimentionalObjects : MonoBehaviour
     }
 
 
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.gameObject.layer == 13)
-        {
-            
-            transform.GetChild(0).transform.gameObject.SetActive(true);
-
-        }
-    }
+    
 
 
 
@@ -194,11 +185,7 @@ public class DimentionalObjects : MonoBehaviour
             isBurning = false;
             burnTimer = 0;
         }
-
-        if (other.gameObject.layer == 13)
-        {
-            transform.GetChild(0).transform.gameObject.SetActive(false);
-        }
+        
     }
 
     private IEnumerator PulseWhite()

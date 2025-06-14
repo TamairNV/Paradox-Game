@@ -16,10 +16,10 @@ public class DimentionalPlayer : MonoBehaviour
     private string currentAnimation = "";
     private float momentTime;
     public int CreatedAt;
-    private Player_Controller Player;
+    private Player Player;
 
     private CapsuleCollider2D col;
-    public void InitDimPlayer(DimensionalNode startNode,DimensionalLinkedList timeEngine,float momentTime,Player_Controller player)
+    public void InitDimPlayer(DimensionalNode startNode,DimensionalLinkedList timeEngine,float momentTime,Player player)
     {
         this.momentTime = momentTime;
         this.startNode = startNode;

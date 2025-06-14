@@ -9,7 +9,7 @@ public class sideFan : MonoBehaviour
     private Collider2D collider;
     [SerializeField] private int startDirection = 1;
     private bool isOverFan;
-    private Player_Controller playerController;
+    private Player playerController;
     [SerializeField] private float particleWidth = 1.5f;
     private Vector3 startLocation;
     [SerializeField] private ParticleSystem particleSystem;
@@ -27,7 +27,7 @@ public class sideFan : MonoBehaviour
         startScale = particleSystem.transform.localScale;
         player = GameObject.Find("player").transform;
         collider = GetComponent<BoxCollider2D>();
-        playerController = player.GetComponent<Player_Controller>();
+        playerController = player.GetComponent<Player>();
         
     }
 

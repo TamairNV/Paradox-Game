@@ -14,7 +14,7 @@ public class Turnstile : MonoBehaviour
 
     private Vector3 goToPosition;
 
-    private Player_Controller player;
+    private Player player;
     public static List<Turnstile> Turnstiles = new List<Turnstile>();
 
     private bool inReverser = false;
@@ -30,7 +30,7 @@ public class Turnstile : MonoBehaviour
     {
         ani =transform.GetChild(0).GetComponent<Animator>();
         Turnstiles.Add(this);
-        player = GameObject.Find("player").GetComponent<Player_Controller>();
+        player = GameObject.Find("player").GetComponent<Player>();
     }
 
     private void reset()
@@ -117,6 +117,7 @@ public class Turnstile : MonoBehaviour
 
     private void checkForInteraction()
     {
+
         if (!working)
         {
             player.transform.GetChild(0).gameObject.SetActive(true);   

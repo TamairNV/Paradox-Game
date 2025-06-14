@@ -77,7 +77,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2037241763
-  m_SortingLayer: 6
+  m_SortingLayer: 11
   m_SortingOrder: 0
   m_Sprite: {fileID: 2082298155, guid: ac1857e80455e415ba50bafee2381f38, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -505,7 +505,7 @@ GameObject:
   - component: {fileID: 8052791703869086340}
   - component: {fileID: 4899495259736895368}
   - component: {fileID: 4181931945058347155}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: turnstile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -572,7 +572,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 72848641
-  m_SortingLayer: 3
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3f3c3e923b640a2458cba79f28286951, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

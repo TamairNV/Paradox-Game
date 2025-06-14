@@ -4,7 +4,7 @@ public class LevelDoor : MonoBehaviour
 {
     [SerializeField] private int level;
 
-    private Player_Controller player;
+    private Player player;
 
     private string currentAnimation = "";
 
@@ -12,7 +12,7 @@ public class LevelDoor : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player = GameObject.Find("player").GetComponent<Player_Controller>();
+        player = GameObject.Find("player").GetComponent<Player>();
         ani = GetComponent<Animator>();
     }
 

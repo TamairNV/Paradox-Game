@@ -6,7 +6,7 @@ public class Portal : MonoBehaviour
 {
 
     public static List<Portal> Portals = new List<Portal>();
-    [SerializeField] private Player_Controller player;
+    [SerializeField] private Player player;
 
     public bool isSingleUse = false;
 
@@ -23,7 +23,7 @@ public class Portal : MonoBehaviour
     void Start()
     {
         timer = cooldown;
-        player = GameObject.Find("player").transform.GetComponent<Player_Controller>();
+        player = GameObject.Find("player").transform.GetComponent<Player>();
     }
 
     public static void ResetPortals()

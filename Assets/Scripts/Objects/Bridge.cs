@@ -6,7 +6,7 @@ public class Bridge : MonoBehaviour
     public static List<Bridge> Bridges = new List<Bridge>();
     private Animator ani;
 
-    [SerializeField] private Player_Controller player;
+    [SerializeField] private Player player;
     public List<int> breakPoints;
     private string currentAnimation = "";
     public bool hasBroken = false;
@@ -18,7 +18,7 @@ public class Bridge : MonoBehaviour
         Bridges.Add(this);
         breakPoints = new List<int>();
         hasBroken = false;
-        player = GameObject.Find("player").transform.GetComponent<Player_Controller>();
+        player = GameObject.Find("player").transform.GetComponent<Player>();
     }
 
     public void reset()
