@@ -10,205 +10,157 @@ using UnityEngine.Rendering.Universal;
 
 public class Player_Controller : MonoBehaviour
 {
-    public int lastLevelCompleted = 0;
-    [SerializeField] public GameObject doorLine;
-    public double time = 0;
-    [HideInInspector] public float jumpProgress;
-    [HideInInspector] public Vector3 jumpStartPosition;
-    [HideInInspector] public Vector3 jumpPeakPosition;
-    [HideInInspector] public Vector3 jumpTargetPosition;
-    public bool hasFlamethrower = false;
-    [SerializeField] public Camera cam;
-    //[SerializeField] public List<DimentionalObjects> DimentionalObjects = new List<DimentionalObjects>();
-    //private Dictionary<int, List<Tuple<int, objData>>> objDatas = new Dictionary<int, List<Tuple<int, objData>>>();
-    public List<DimentionalPlayer> DimentionalPlayers = new List<DimentionalPlayer>();
-    private string currentAnimation = "sdsf";
-    public bool isMoving;
+    [SerializeField] private LayerMask layer;
+    [SerializeField] private float distance = 2f;
+    [SerializeField] private float sideRayDistance;
+    [SerializeField] private Transform flameThrower;
+    private Player player;
     private Animator ani;
-    [SerializeField] public float speed = 100;
+    private string currentAnimation = "sdsf";
+    private ParticleSystem fireParticleSystem;
+    private float startingFireSpeed = 5f;
+    private Dictionary<String, Vector2> directions = new Dictionary<String,Vector2>()
+    {
+        {"W", Vector2.up},
+        {"S",Vector2.down},
+            {"A",Vector2.left},
+            {"D",Vector2.right},
 
-    [SerializeField] public GameObject DimPlayer;
+    };
 
-    public Vector3 direction;
-    public Vector2 lastDirection;
-    public bool IsImmune = false;
-    public DimensionalLinkedList timeEngine;
-    private float timer = 0;
-    public float MomentRate = 20;
 
-    [SerializeField] public float xStep = 0.1f;
-    [SerializeField] public float yStep = 0.5f;
-    [SerializeField] public LineRenderer line;
-
-    [SerializeField]
-    private AudioClip footSteps;
-    public bool isJumping = false;
-
-    [SerializeField]
-    private AudioSource audioSource;
-
-    private bool isFootSteps = false;
     
-    private List<CheckPoint> checkPoints = new List<CheckPoint>();
-
-    public bool allowedToWalk = true;
-    private bool reseting = false;
-    public Collider2D collider;
-    
-
-        
-    IEnumerator setLine()
-    {
-        while (true)
-        {
-            line.positionCount = timeEngine.linePositions.Count;
-            line.SetPositions(timeEngine.linePositions.ToArray());
-            line.Simplify(0);
-            line.transform.GetComponent<UILineRenderer>().UpdateLine();
-            yield return new WaitForSeconds(0.05f);
-        }
-    }
-
-    void MomentUpdate()
-    {
-        //UpdateDimObjects();
-        DimentionalObjects.UpdateAllDimObjects();
-        
-        timeEngine.stepNode();
-
-        timeEngine.CurrentDimensionalNode.data = CreateMoment();
-        int i = 0;
-        foreach (var dimNode in timeEngine.CurrentDimensionalNode.SameTimeNodes)
-        {
-            if (i >= timeEngine.CurrentDimensionalNode.SameTimeNodes.Count - 1)
-            {
-                break;
-            }
-
-            DimentionalPlayer dimentionalPlayer = DimentionalPlayers[i];
-            dimentionalPlayer.currentNode = dimNode;
-            if (Vector3.Distance(dimentionalPlayer.transform.position, dimNode.data.Position) > 0.4f)
-            {
-                dimentionalPlayer.transform.position = dimNode.data.Position;
-            }
-
-            dimentionalPlayer.MomentUpdate();
-            dimentionalPlayer.setVisable();
-            i++;
-        }
-
-
-        for (int j = i; j < DimentionalPlayers.Count; j++)
-        {
-            DimentionalPlayers[j].setInvisable();
-        }
-    }
-
-    MomentData CreateMoment()
-    {
-        Vector2 dir = new Vector2(lastDirection.x, lastDirection.y);
-        Vector3 pos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        MomentData newMoment = new MomentData(dir, isMoving, pos);
-        return newMoment;
-    }
-
-    public DimentionalPlayer ReverseDirection()
-    {
-        GameObject dimPlayer = GameObject.Instantiate(DimPlayer);
-        dimPlayer.GetComponent<DimentionalPlayer>()
-            .InitDimPlayer(timeEngine.CurrentDimensionalNode, timeEngine, MomentRate,this);
-        dimPlayer.transform.position = transform.position;
-        DimentionalPlayers.Add(dimPlayer.GetComponent<DimentionalPlayer>());
-        timeEngine.reverseDirection();
-        return dimPlayer.GetComponent<DimentionalPlayer>();
-    }
-
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        collider = GetComponent<Collider2D>();   
-
-        
-        timeEngine = new DimensionalLinkedList(xStep, yStep, line);
-
-        timeEngine.CurrentDimensionalNode = new DimensionalNode(null, null, null, null, timeEngine.CurrentTime);
-        timeEngine.CurrentDimensionalNode.data = CreateMoment();
-        checkPoints.Add(
-            new CheckPoint(0, transform.position, timeEngine.CurrentTime, timeEngine.CurrentDimensionalNode));
+        player = transform.GetComponent<Player>();
         ani = GetComponent<Animator>();
-        StartCoroutine(setLine());
-        
+        fireParticleSystem = flameThrower.GetChild(0).GetComponent<ParticleSystem>();
+        startingFireSpeed = fireParticleSystem.main.startSpeed.constant;
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Debugging code 
+        foreach (var direction in directions)
+        {
+            if (direction.Key == "A" || direction.Key == "D")
+            {
+                Debug.DrawLine(transform.position + Vector3.down * sideRayDistance,transform.position + Vector3.down * sideRayDistance + (Vector3)directions[direction.Key] * distance,Color.blue);
+                Debug.DrawLine(transform.position + Vector3.up * sideRayDistance,transform.position + Vector3.up * sideRayDistance + (Vector3)directions[direction.Key] * distance,Color.blue);
+            }
+            else
+            {
+                Debug.DrawLine(transform.position,transform.position + (Vector3)directions[direction.Key] * distance,Color.blue);
+            }
+        }
+        float angle = Mathf.Atan2(player.lastDirection.y, player.lastDirection.x) * Mathf.Rad2Deg;
+        flameThrower.transform.rotation = Quaternion.Euler(0, 0, angle);
+
         Move();
+    }
 
-        if (Keyboard.current.backspaceKey.wasPressedThisFrame)
+    bool rayCastHit(String direction)
+    {
+        if (direction == "A" || direction == "D")
         {
-            StartCoroutine(CauseParadox());
+            RaycastHit2D hit = Physics2D.Raycast(transform.position + Vector3.down * sideRayDistance, directions[direction], distance, layer);
+            RaycastHit2D hit1 = Physics2D.Raycast(transform.position + Vector3.up * sideRayDistance, directions[direction], distance, layer);
+            Debug.DrawLine(transform.position + Vector3.down * sideRayDistance,transform.position + Vector3.down * sideRayDistance + (Vector3)directions[direction] * distance,Color.blue);
+            Debug.DrawLine(transform.position + Vector3.up * sideRayDistance,transform.position + Vector3.up * sideRayDistance + (Vector3)directions[direction] * distance,Color.blue);
+            return hit.transform == null || hit1.transform ;
+        }
+        else
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, directions[direction], distance, layer);
+            Debug.DrawLine(transform.position,transform.position + (Vector3)directions[direction] * distance,Color.blue);
+            return hit.transform == null;
         }
 
-
-        timer += Time.deltaTime;
-        if (timer > 1 / MomentRate && !reseting)
-        {
-            timer = 0;
-            MomentUpdate();
-        }
-
-        if (timeEngine.CurrentTime <= 0)
-        {
-            StartCoroutine(CauseParadox());
-        }
+        
 
 
 
     }
 
+    bool anyDirectionPressed()
+    {
+        return Keyboard.current.sKey.isPressed || Keyboard.current.wKey.isPressed || Keyboard.current.aKey.isPressed ||
+               Keyboard.current.dKey.isPressed;
+    }
+    
     void Move()
     {
-        direction = new Vector2(0, 0);
+        player.direction = new Vector2(0, 0);
         if (Keyboard.current.aKey.isPressed)
         {
-            direction.x -= 1;
+
+            if (rayCastHit("A"))
+            {
+                player.direction.x -= 1;
+            }
+
+            
+
         }
 
         if (Keyboard.current.dKey.isPressed)
         {
-            direction.x += 1;
+            if (rayCastHit("D"))
+            {
+                player.direction.x += 1;
+            }
+            
+       
         }
 
         if (Keyboard.current.wKey.isPressed)
         {
-            direction.y += 1;
+            if (rayCastHit("W"))
+            {
+                player.direction.y += 1;
+            }
+
+
         }
 
         if (Keyboard.current.sKey.isPressed)
         {
-            direction.y -= 1;
+            if (rayCastHit("S"))
+            {
+                player.direction.y -= 1;
+            }
+        
+       
         }
 
-        if (allowedToWalk)
+        if (player.allowedToWalk)
         {
-            direction = direction.normalized;
+            player.direction = player.direction.normalized;
         }
 
         bool shooting = animateFire();
-        if (direction.magnitude > 0.1f && !isJumping)
+        print(anyDirectionPressed());
+        if (anyDirectionPressed() && !player.isJumping)
         {
-            // Calculate the angle in radians, then convert to degrees
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-    
-            // Apply the rotation (for 2D, use Quaternion.Euler(0, 0, angle))
-            transform.GetChild(1).rotation = Quaternion.Euler(0, 0, angle);   
+
+            if (player.direction.magnitude > 0.1f)
+            {
+                player.lastDirection = player.direction;
+                
+                var main = fireParticleSystem.main;
+                main.startSpeed = startingFireSpeed * 3f;
+
+            }
+            else
+            {
+                var main = fireParticleSystem.main;
+                main.startSpeed = startingFireSpeed * 3f;
+            }
             
-            lastDirection = direction;
-            
-            if (allowedToWalk)
+            if (player.allowedToWalk)
             {
                 if(!shooting)
                 {
@@ -216,43 +168,43 @@ public class Player_Controller : MonoBehaviour
                 }
                 
                 // Apply speed reduction if on stairs
-                float currentSpeed = speed * Stair.GetSpeedModifier();
+                float currentSpeed = player.speed * Stair.GetSpeedModifier();
 
                 // Apply slight upward force if moving horizontally on stairs
-                if (Stair.IsPlayerOnAnyStair() && (direction.x > 0.1f || direction.x < 0.1f) )
+                if (Stair.IsPlayerOnAnyStair() && (player.direction.x > 0.1f || player.direction.x < 0.1f) )
                 {
-                    if (direction.x > 0.1f)
+                    if (player.direction.x > 0.1f)
                     {
-                        direction.y -= Stair.GetInclineForce();
+                        player.direction.y -= Stair.GetInclineForce();
                     }
                     else
                     {
-                        direction.y += Stair.GetInclineForce();
+                        player.direction.y += Stair.GetInclineForce();
                     }
                     
-                    direction = direction.normalized; // Re-normalize to prevent faster diagonal movement
+                    player.direction = player.direction.normalized; // Re-normalize to prevent faster diagonal movement
                 }
 
-                transform.position += (Vector3)(direction * currentSpeed * Time.deltaTime);
+                transform.position += (Vector3)(player.direction * currentSpeed * Time.deltaTime);
             }
             
             
 
-            isMoving = true;
+            player.isMoving = true;
         }
         else
         {
-            if (isFootSteps)
+            if (player.isFootSteps)
             {
-                audioSource.Stop();
-                isFootSteps = false;
+                player.audioSource.Stop();
+                player.isFootSteps = false;
             }
-            isMoving = false;
-            if (!isJumping )
+            player.isMoving = false;
+            if (!player.isJumping )
             {
                 if(!shooting)
                 {
-                    PlayIdleAnimation(lastDirection);
+                    PlayIdleAnimation(player.lastDirection);
                 }
                 
             }
@@ -260,32 +212,34 @@ public class Player_Controller : MonoBehaviour
             {
                 changeAnimation("jump");
             }
-            
+            var main = fireParticleSystem.main;
+            main.startSpeed = startingFireSpeed ;
         }
         
     }
-
-    void AnimateMovement()
+    
+    
+    public void AnimateMovement()
     {
 
-        if (isJumping)
+        if (player.isJumping)
         {
             changeAnimation("jump");
             return;
         }
-        if (direction.magnitude < 0.1f)
+        if (!anyDirectionPressed())
         {
 
             return;
         }
 
-        if (isMoving && !isFootSteps)
+        if (player.isMoving && !player.isFootSteps)
         {
-            audioSource.Play();
-            isFootSteps = true;
+            player.audioSource.Play();
+            player.isFootSteps = true;
         }
 
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        float angle = Mathf.Atan2(player.lastDirection.y, player.lastDirection.x) * Mathf.Rad2Deg;
 
         // Snap to 8-directional angles (0°, 45°, 90°, etc.)
         int snappedAngle = Mathf.RoundToInt(angle / 45) % 8;
@@ -306,22 +260,22 @@ public class Player_Controller : MonoBehaviour
 
     }
 
-    private bool animateFire()
+    public bool animateFire()
     {
-        if (!hasFlamethrower)
+        if (!player.hasFlamethrower)
         {
             return false;
         }
         if (Keyboard.current.spaceKey.isPressed)
         {
-            float angle = Mathf.Atan2(lastDirection.y, lastDirection.x) * Mathf.Rad2Deg;
+            float angle = Mathf.Atan2(player.lastDirection.y, player.lastDirection.x) * Mathf.Rad2Deg;
 
             // Snap to 8-directional angles (0°, 45°, 90°, etc.)
             int snappedAngle = Mathf.RoundToInt(angle / 45) % 8;
             snappedAngle = (snappedAngle < 0) ? snappedAngle + 8 : snappedAngle;
 
             string sufix = "idle";
-            if (isMoving)
+            if (player.isMoving)
             {
                 sufix = "run";
 
@@ -342,7 +296,7 @@ public class Player_Controller : MonoBehaviour
         return false;
     }
 
-    private void PlayIdleAnimation(Vector2 lastDirection)
+    public void PlayIdleAnimation(Vector2 lastDirection)
     {
         float angle = Mathf.Atan2(lastDirection.y, lastDirection.x) * Mathf.Rad2Deg;
         angle = (angle < 0) ? angle + 360 : angle; // Convert to 0-360° range
@@ -363,202 +317,12 @@ public class Player_Controller : MonoBehaviour
     }
 
 
-    private void changeAnimation(string animation)
+    public void changeAnimation(string animation)
     {
         if (!currentAnimation.Equals(animation))
         {
             
             ani.Play(animation);    
         }
-    }
-
-    [SerializeField] public Volume volume;
-
-
-    public void resetGame()
-    {
-
-        allowedToWalk = true;
-        
-
-        // Destroy players created after checkpoint
-        DimentionalPlayers.RemoveAll(player =>
-        {
-            Destroy(player.gameObject);
-            return true;
-        });
-
-        // Reset objects
-        //objDatas = new Dictionary<int, List<Tuple<int, objData>>>();
-
-
-        
-        // Final cleanup
-        foreach (var bridge in Bridge.Bridges)
-        {
-
-            bridge.reset();
-        }
-
-        line.SetPositions(new Vector3[0]);
-        timeEngine = new DimensionalLinkedList(xStep, yStep, line);
-        DimentionalPlayers = new List<DimentionalPlayer>();
-        timeEngine.CurrentDimensionalNode = new DimensionalNode(null, null, null, null, timeEngine.CurrentTime);
-        timeEngine.CurrentDimensionalNode.data = CreateMoment();
-        checkPoints.Add(
-            new CheckPoint(0, transform.position, timeEngine.CurrentTime, timeEngine.CurrentDimensionalNode));
-        ani = GetComponent<Animator>();
-        StartCoroutine(setLine());
-        Turnstile.resetAll();
-
-        Portal.ResetPortals();
-        DimentionalObjects.ResetAllObj();
-    }
-    public IEnumerator CauseParadox()
-    {
-        if (IsImmune)
-        {
-            yield break;
-        }
-
-        reseting = true;
-        // Get all post-processing effects
-        Vignette vignette= null;
-        ChromaticAberration chromatic = null;
-        FilmGrain noise= null;
-        LensDistortion distortion= null;
-        Bloom bloom= null; // For screen-space flare effect
-
-        allowedToWalk = false;
-
-        // Verify all effects exist
-        bool effectsFound = volume.profile.TryGet(out vignette) &&
-                            volume.profile.TryGet(out chromatic) &&
-                            volume.profile.TryGet(out noise) &&
-                            volume.profile.TryGet(out distortion) &&
-                            volume.profile.TryGet(out bloom);
-
-        if (!effectsFound)
-        {
-            Debug.LogError("Missing required post-processing effects!");
-            yield break;
-        }
-
-        // Initial values
-        float vignetteValue = 0;
-        float chromaticValue = 0;
-        float noiseValue = 0;
-        float distortionValue = 0;
-        float bloomValue = bloom.intensity.value;
-
-        // PHASE 1: Reality distortion buildup (3 seconds)
-        float duration = 3f;
-        float elapsed = 0f;
-
-        while (elapsed < duration)
-        {
-            float t = elapsed / duration;
-
-            // Animate all effects simultaneously
-            vignetteValue = Mathf.Lerp(0, 6f, t/10f);
-            chromaticValue = Mathf.Lerp(0, 2, t * 2f); // Chromatic aberration grows faster
-            noiseValue = Mathf.Lerp(0.35f, 0.8f, t);
-            distortionValue = Mathf.Lerp(0, -1f, t); // Negative for "implosion" effect
-            bloomValue = Mathf.Lerp(bloom.intensity.value, 10f, t); // Hyper-bright flare
-
-            // Apply values
-            vignette.intensity.Override(vignetteValue);
-            chromatic.intensity.Override(chromaticValue);
-            noise.intensity.Override(noiseValue);
-            distortion.intensity.Override(distortionValue);
-            bloom.intensity.Override(bloomValue);
-
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-
-        // PHASE 2: Reality reset (teleport/cleanup)
-        //yield return new WaitForSeconds(0.5f); // Hold at peak distortion
-        CheckPoint checkPoint = checkPoints.Last();
-        transform.position = checkPoint.location;
-        timeEngine.direction = checkPoint.direction;
-        resetGame();
-        time = 0;
-        duration = 2f;
-        elapsed = 0f;
-
-        while (elapsed < duration)
-        {
-            float t = elapsed / duration;
-
-            vignetteValue = Mathf.Lerp(10, 0, t*2f);
-            chromaticValue = Mathf.Lerp(2, 0, t * 1.5f); // Chromatic fades faster
-            noiseValue = Mathf.Lerp(0.8f, 0.35f, t);
-            distortionValue = Mathf.Lerp(-1f, 0, t);
-            bloomValue = Mathf.Lerp(10f, bloom.intensity.value, t);
-
-            vignette.intensity.Override(vignetteValue);
-            chromatic.intensity.Override(chromaticValue);
-            noise.intensity.Override(noiseValue);
-            distortion.intensity.Override(distortionValue);
-            bloom.intensity.Override(bloomValue);
-
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-
-        reseting = false;
-        
-
-
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.layer == 12)
-        {
-            StartCoroutine(CauseParadox());
-        }
-        
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.layer == 16)
-        {
-            CheckPoint checkPoint = new CheckPoint(timeEngine.CurrentTime, transform.position, timeEngine.CurrentTime,
-                timeEngine.CurrentDimensionalNode);
-            checkPoints.Add(checkPoint);
-            
-            
-        }
-
-        if (other.gameObject.layer == 17)
-        {
-            StartCoroutine(CauseParadox());
-        }
-    }
-
-    public IEnumerator BecomeImmune(int legnth)
-    {
-        IsImmune = true;
-        yield return new WaitForSeconds(legnth);
-        IsImmune = false;
-    }
-}
-
-public class CheckPoint
-{
-    public int time;
-    public Vector3 location;
-    public int direction;
-    public DimensionalNode Node;
-
-    public CheckPoint(int time, Vector3 location, int direction, DimensionalNode node)
-    {
-        this.time = time;
-        this.location = new Vector3(location.x, location.y, location.z);
-        this.direction = direction;
-        Node = node;
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class flameThrower : MonoBehaviour
 {
-    [SerializeField] private Player_Controller player;
+    [SerializeField] private Player player;
     private Animator ani;
     private string currentAnimation = "";
     private bool stopped = false;

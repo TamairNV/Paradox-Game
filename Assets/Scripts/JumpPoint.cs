@@ -8,13 +8,13 @@ public class JumpPoint : MonoBehaviour
     [SerializeField] private float upwardBoost = 0.3f;
 
     private Transform player;
-    private Player_Controller playerController;
+    private Player playerController;
     private static JumpPoint activeJumpPoint; // Track which jump point is currently active
 
     void Start()
     {
         player = GameObject.Find("player").transform;
-        playerController = player.GetComponent<Player_Controller>();
+        playerController = player.GetComponent<Player>();
     }
 
     void Update()

@@ -13,14 +13,14 @@ public class LevelPorter : MonoBehaviour
 
     [SerializeField] public int LevelNumber;
     
-    private Player_Controller player;
+    private Player player;
     
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player = GameObject.Find("player").GetComponent<Player_Controller>();
+        player = GameObject.Find("player").GetComponent<Player>();
     }
 
     // Update is called once per frame

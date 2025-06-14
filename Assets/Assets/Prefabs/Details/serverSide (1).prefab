@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6835383572613801759}
   - component: {fileID: 5548827703638753239}
   - component: {fileID: 8940062653115415647}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: serverSide (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 72848641
-  m_SortingLayer: 4
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 1702155960, guid: 2fb1fb2825d814ff0a4c53bd8ed96e9a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -145,7 +145,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8740912016023654323}
   - component: {fileID: 1656681972895752780}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
