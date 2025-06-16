@@ -30,11 +30,22 @@ public class DimentionalObjects : MonoBehaviour
     [HideInInspector]
     public Vector3 startingScale;
     
+    
 
-    private bool holding = false;
+
+    public int Temp = 0;
+    private int StartTemp;
+
+    private Rigidbody2D rb;
+    private float startingMass;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+        startingMass = rb.mass;
+        StartTemp = Temp;
+        changeBoxType();
         startingScale = transform.localScale;
         Objects.Add(this);
         GameObject playerObj = GameObject.Find("player");
@@ -76,6 +87,11 @@ public class DimentionalObjects : MonoBehaviour
         {
              step = moveSpeed * Time.deltaTime;
             transform.position = Vector3.Lerp(transform.position, targetPosition, step);
+            if (Vector3.Distance(transform.position, targetPosition) > 0.05f && Temp != 0)
+            {
+                StartCoroutine(player.CauseParadox());
+                print("past self moved a object that is currently unmovable");
+            }
         }
 
         if (!targetRotationNull)
@@ -98,10 +114,17 @@ public class DimentionalObjects : MonoBehaviour
             }
         }
 
+        Temp = Math.Clamp(Temp, -1, 1);
 
-
-
-
+        if (Temp == -1)
+        {
+            rb.mass = 10000f;
+        }
+        else
+        {
+            rb.mass = startingMass;
+        }
+        
 
     }
 
@@ -122,6 +145,8 @@ public class DimentionalObjects : MonoBehaviour
         beenInteractedWith = false;
         GetComponent<SpriteRenderer>().enabled = true;
         data = new Dictionary<int, objData>();
+        Temp = StartTemp;
+        changeBoxType();
         MomentUpdate();
 
     }
@@ -168,26 +193,39 @@ public class DimentionalObjects : MonoBehaviour
         if (other.gameObject.layer == 13)
         {
             beenInteractedWith = true;
-            if (data.ContainsKey(player.timeEngine.CurrentTime))
-            {
-                StartCoroutine(player.CauseParadox());
-                
-            }
+
             //other.transform.GetComponent<Player_Controller>().UpdateDimObjects();
         }
+
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+
+
+    public void changeBoxType()
     {
-        if (other.gameObject.layer == 17)
+        if (Temp == 0)
         {
-            isDestoryed = false;
-            isBurning = false;
-            burnTimer = 0;
+            transform.GetChild(0).gameObject.SetActive(false);
+            transform.GetChild(1).gameObject.SetActive(false);
         }
-        
+
+        if (Temp == -1)
+        {
+            transform.GetChild(0).gameObject.SetActive(false);
+            transform.GetChild(1).gameObject.SetActive(true);
+        }
+
+        if (Temp == 1)
+        {
+            transform.GetChild(0).gameObject.SetActive(true);
+            transform.GetChild(1).gameObject.SetActive(false);
+        }
     }
 
+
+    
+    
+    
     private IEnumerator PulseWhite()
     {
         while (true)

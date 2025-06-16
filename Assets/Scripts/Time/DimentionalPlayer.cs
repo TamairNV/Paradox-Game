@@ -152,4 +152,20 @@ public class DimentionalPlayer : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == 18)
+        {
+            StartCoroutine(Player.CauseParadox());
+            print("past self hit by bomb");
+        }
+        if (other.gameObject.layer == 21)
+        {
+
+            StartCoroutine(Player.CauseParadox());
+            print("Past self Went through wall");
+            
+        }
+    }
+    
 }

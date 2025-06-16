@@ -14,8 +14,6 @@ public class Activator : MonoBehaviour
     private Transform activeLine;
     public bool isPressed = false;
     
-    // Cache the color white to avoid creating new Color instances
-    private static readonly float WhiteColor = 0.5f;
     
     // Layer masks for more efficient collision checking
     private const int PlayerLayer = 13;

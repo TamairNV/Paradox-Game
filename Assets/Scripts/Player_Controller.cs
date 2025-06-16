@@ -142,7 +142,7 @@ public class Player_Controller : MonoBehaviour
         }
 
         bool shooting = animateFire();
-        print(anyDirectionPressed());
+
         if (anyDirectionPressed() && !player.isJumping)
         {
 

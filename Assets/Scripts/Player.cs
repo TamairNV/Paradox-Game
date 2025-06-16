@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -17,7 +18,9 @@ public class Player : MonoBehaviour
     [HideInInspector] public Vector3 jumpStartPosition;
     [HideInInspector] public Vector3 jumpPeakPosition;
     [HideInInspector] public Vector3 jumpTargetPosition;
+
     public bool hasFlamethrower = false;
+
     //[SerializeField] public List<DimentionalObjects> DimentionalObjects = new List<DimentionalObjects>();
     //private Dictionary<int, List<Tuple<int, objData>>> objDatas = new Dictionary<int, List<Tuple<int, objData>>>();
     public List<DimentionalPlayer> DimentionalPlayers = new List<DimentionalPlayer>();
@@ -28,7 +31,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] public GameObject DimPlayer;
 
-     public Vector3 direction;
+    public Vector3 direction;
     public Vector2 lastDirection;
     public bool IsImmune = false;
     public DimensionalLinkedList timeEngine;
@@ -39,25 +42,34 @@ public class Player : MonoBehaviour
     [SerializeField] public float yStep = 0.5f;
     [SerializeField] public LineRenderer line;
 
-    [SerializeField]
-    private AudioClip footSteps;
+    [SerializeField] private AudioClip footSteps;
     public bool isJumping = false;
 
-    [SerializeField] 
-    public AudioSource audioSource;
+    [SerializeField] public AudioSource audioSource;
 
-    [HideInInspector]
-    public bool isFootSteps = false;
-    
+    [HideInInspector] public bool isFootSteps = false;
+
     private List<CheckPoint> checkPoints = new List<CheckPoint>();
-
+    [HideInInspector]
     public bool allowedToWalk = true;
     private bool reseting = false;
+    
+    [HideInInspector]
     public Collider2D collider;
 
     [SerializeField] private GameObject bomb;
+    [SerializeField] private float bombPlaceDistance = 0.1f;
+    public int bombCount = 5;
+    [SerializeField] private Text bombCountText;
+    [SerializeField] private Image entropyMeter;
+    public float Entropy = 0;
+    public float EntropyPlayerCollideValue = 5;
+    public float EntropyBoxCollideValue = 5;
 
-        
+    public float MaxEntropy = 15;
+    
+
+
     IEnumerator setLine()
     {
         while (true)
@@ -74,7 +86,7 @@ public class Player : MonoBehaviour
     {
         //UpdateDimObjects();
         DimentionalObjects.UpdateAllDimObjects();
-        
+
         timeEngine.stepNode();
 
         timeEngine.CurrentDimensionalNode.data = CreateMoment();
@@ -115,9 +127,10 @@ public class Player : MonoBehaviour
 
     public DimentionalPlayer ReverseDirection()
     {
+        Entropy += 1;
         GameObject dimPlayer = GameObject.Instantiate(DimPlayer);
         dimPlayer.GetComponent<DimentionalPlayer>()
-            .InitDimPlayer(timeEngine.CurrentDimensionalNode, timeEngine, MomentRate,this);
+            .InitDimPlayer(timeEngine.CurrentDimensionalNode, timeEngine, MomentRate, this);
         dimPlayer.transform.position = transform.position;
         DimentionalPlayers.Add(dimPlayer.GetComponent<DimentionalPlayer>());
         timeEngine.reverseDirection();
@@ -128,43 +141,49 @@ public class Player : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        collider = GetComponent<Collider2D>();   
+        collider = GetComponent<Collider2D>();
 
-        
+
         timeEngine = new DimensionalLinkedList(xStep, yStep, line);
 
         timeEngine.CurrentDimensionalNode = new DimensionalNode(null, null, null, null, timeEngine.CurrentTime);
         timeEngine.CurrentDimensionalNode.data = CreateMoment();
         checkPoints.Add(
             new CheckPoint(0, transform.position, timeEngine.CurrentTime, timeEngine.CurrentDimensionalNode));
-        
-        StartCoroutine(setLine());
-        
 
+        StartCoroutine(setLine());
     }
 
     private float bombTimer = 0;
+
     // Update is called once per frame
     void Update()
     {
-
+        bombCountText.text = bombCount.ToString();
+        entropyMeter.fillAmount = Entropy / MaxEntropy;
+        if (Entropy >=MaxEntropy)
+        {
+            StartCoroutine(CauseParadox());
+            print("Entropy too high");
+        }
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            if (bombTimer > 0.5f)
+            if (bombTimer > 0.5f && bombCount > 0)
             {
-                GameObject b =  Instantiate(bomb);
-                b.transform.position = transform.position;
+                bombCount--;
+                GameObject b = Instantiate(bomb);
+                b.transform.position = transform.position + (Vector3)(bombPlaceDistance * lastDirection) ;
                 bombTimer = 0;
             }
-
         }
 
         bombTimer += Time.deltaTime;
-        
+
 
         if (Keyboard.current.backspaceKey.wasPressedThisFrame)
         {
             StartCoroutine(CauseParadox());
+            print("reset");
         }
 
 
@@ -178,22 +197,20 @@ public class Player : MonoBehaviour
         if (timeEngine.CurrentTime <= 0)
         {
             StartCoroutine(CauseParadox());
+            print("time went negative");
         }
-
-
-
+        
+        
     }
 
-    
 
     [SerializeField] public Volume volume;
 
 
     public void resetGame()
     {
-
         allowedToWalk = true;
-        
+
 
         // Destroy players created after checkpoint
         DimentionalPlayers.RemoveAll(player =>
@@ -206,11 +223,9 @@ public class Player : MonoBehaviour
         //objDatas = new Dictionary<int, List<Tuple<int, objData>>>();
 
 
-        
         // Final cleanup
         foreach (var bridge in Bridge.Bridges)
         {
-
             bridge.reset();
         }
 
@@ -226,8 +241,24 @@ public class Player : MonoBehaviour
 
         Portal.ResetPortals();
         DimentionalObjects.ResetAllObj();
+        Transform box = GetComponent<PlayerBoxHolder>().boxHolding;
+        if (box != null)
+        {
+            box.GetComponent<BoxCollider2D>().enabled = true;
+        }
+        else
+        {
+            GetComponent<PlayerBoxHolder>().boxHolding = null;
+        }
+        
+
+
+
+
         Bomb.DestroyALlBombs();
+        line.transform.position = line.transform.GetComponent<UILineRenderer>().startPosition;
     }
+
     public IEnumerator CauseParadox()
     {
         if (IsImmune)
@@ -237,11 +268,11 @@ public class Player : MonoBehaviour
 
         reseting = true;
         // Get all post-processing effects
-        Vignette vignette= null;
+        Vignette vignette = null;
         ChromaticAberration chromatic = null;
-        FilmGrain noise= null;
-        LensDistortion distortion= null;
-        Bloom bloom= null; // For screen-space flare effect
+        FilmGrain noise = null;
+        LensDistortion distortion = null;
+        Bloom bloom = null; // For screen-space flare effect
 
         allowedToWalk = false;
 
@@ -274,7 +305,7 @@ public class Player : MonoBehaviour
             float t = elapsed / duration;
 
             // Animate all effects simultaneously
-            vignetteValue = Mathf.Lerp(0, 6f, t/10f);
+            vignetteValue = Mathf.Lerp(0, 6f, t / 10f);
             chromaticValue = Mathf.Lerp(0, 2, t * 2f); // Chromatic aberration grows faster
             noiseValue = Mathf.Lerp(0.35f, 0.8f, t);
             distortionValue = Mathf.Lerp(0, -1f, t); // Negative for "implosion" effect
@@ -305,7 +336,7 @@ public class Player : MonoBehaviour
         {
             float t = elapsed / duration;
 
-            vignetteValue = Mathf.Lerp(10, 0, t*2f);
+            vignetteValue = Mathf.Lerp(10, 0, t * 2f);
             chromaticValue = Mathf.Lerp(2, 0, t * 1.5f); // Chromatic fades faster
             noiseValue = Mathf.Lerp(0.8f, 0.35f, t);
             distortionValue = Mathf.Lerp(-1f, 0, t);
@@ -322,19 +353,8 @@ public class Player : MonoBehaviour
         }
 
         reseting = false;
-        
-
-
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.layer == 12)
-        {
-            StartCoroutine(CauseParadox());
-        }
-        
-    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -343,14 +363,42 @@ public class Player : MonoBehaviour
             CheckPoint checkPoint = new CheckPoint(timeEngine.CurrentTime, transform.position, timeEngine.CurrentTime,
                 timeEngine.CurrentDimensionalNode);
             checkPoints.Add(checkPoint);
-            
+        }
+
+        if (other.gameObject.layer == 18)
+        {
+            StartCoroutine(CauseParadox());
+            print("player hit by bomb");
+        }
+
+
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.layer == 15)
+        {
+            DimentionalObjects box = other.GetComponent<DimentionalObjects>();
+            if(box.beenInteractedWith && box.data.ContainsKey(timeEngine.CurrentTime))
+            {
+                Entropy += EntropyBoxCollideValue * Time.deltaTime;
+            }
+
+            if (box.Temp == 1)
+            {
+                StartCoroutine(CauseParadox());
+                print("Player burnt by object");
+            }
             
         }
 
-        if (other.gameObject.layer == 17)
+        if (other.gameObject.layer == 12)
         {
-            StartCoroutine(CauseParadox());
+            Entropy += EntropyPlayerCollideValue * Time.deltaTime;
+            
         }
+
+
     }
 
     public IEnumerator BecomeImmune(int legnth)
