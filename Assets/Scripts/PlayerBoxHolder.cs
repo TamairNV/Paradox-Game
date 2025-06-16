@@ -13,7 +13,7 @@ public class PlayerBoxHolder : MonoBehaviour
     private Vector3 lastValidDirection;
     
     private Player player;
-    private Transform boxHolding;
+    public Transform boxHolding;
     public float holdingSizeMul = 0.85f;
 
     void Start()
@@ -51,6 +51,15 @@ public class PlayerBoxHolder : MonoBehaviour
 
         if (boxHolding != null)
         {
+            int t = boxHolding.GetComponent<DimentionalObjects>().Temp; 
+            if (t == 1)
+            {
+                StartCoroutine(player.CauseParadox());
+            }
+            else if (t == -1)
+            {
+                boxHolding = null;
+            }
             boxHolding.position = boxHoldPosition;
             if (boxHolding.TryGetComponent<DimentionalObjects>(out var dimObj))
             {
@@ -78,7 +87,7 @@ public class PlayerBoxHolder : MonoBehaviour
             }
         }
 
-        if (closestBox != null)
+        if (closestBox != null && closestBox.GetComponent<DimentionalObjects>().Temp == 0)
         {
             boxHolding = closestBox;
             // Start from current position to avoid teleportation

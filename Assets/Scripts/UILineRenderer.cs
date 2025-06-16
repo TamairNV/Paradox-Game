@@ -12,10 +12,12 @@ public class UILineRenderer : MonoBehaviour
     [SerializeField] private float buffer = 50;
     private Vector3 startingPosition;
     [SerializeField] private Player player;
+    public Vector3 startPosition;
 
     private void Start()
     {
         startingPosition = transform.position;
+        startPosition = transform.position;
     }
 
     public void UpdateLine()
@@ -32,20 +34,16 @@ public class UILineRenderer : MonoBehaviour
         if (lastPointX > lineMaxWidth && player.timeEngine.direction == 1)
         {
             float overshootAmount = lastPointX - (lineMaxWidth);
-            float smoothSpeed = 14f; // Adjust for desired smoothness
-    
-            // Smoothly move the transform left
-          
-            transform.position = transform.position - new Vector3(overshootAmount, 0, 0);;
+            
+            transform.position -= new Vector3(overshootAmount, 0, 0);;
         }
 
         else if (lastPointX < lineMinWidth + buffer&& player.timeEngine.direction == 0)
         {
             float undershootAmount = (lineMinWidth + buffer) - lastPointX;
-            float smoothSpeed = 14f; // Same smoothness as right boundary
     
       
-            transform.position = transform.position + new Vector3(undershootAmount, 0, 0);;
+            transform.position += new Vector3(undershootAmount, 0, 0);;
         }
 
         

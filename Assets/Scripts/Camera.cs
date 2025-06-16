@@ -6,14 +6,10 @@ using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 public class CameraController : MonoBehaviour
 {
     [SerializeField] private Player player;
-    [SerializeField] private float smoothSpeed = 5f;
     [SerializeField] private float minZoom = 5f;
     [SerializeField] private float maxZoom = 15f;
     [SerializeField] private float zoomSpeed = 2f;
-    [SerializeField] private float dragSpeed = 2f;
     [SerializeField] private float autoSpeed = 10f;
-    [SerializeField] private float easeSpeed = 0.5f;
-    [SerializeField] private float easeEaseSpeed = 1f;
     [SerializeField] private float autoKickInTime = 1.25f;
     private float timer = 0;
     private float targetSpeed;
@@ -88,9 +84,7 @@ public class CameraController : MonoBehaviour
         }
 
 
-
-
-        float speed=0;
+        
         if (Mouse.current.leftButton.isPressed && isDragging)
         {
             Vector3 difference = dragOrigin - mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());

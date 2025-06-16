@@ -1,11 +1,12 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
     
-    private TMP_Text text;
+    private Text text;
     private Player player;
     
     
@@ -13,7 +14,7 @@ public class Timer : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1f;
-        text = GetComponent<TMP_Text>();
+        text = GetComponent<Text>();
         player = GameObject.Find("player").GetComponent<Player>();
     }
 
@@ -34,6 +35,6 @@ public class Timer : MonoBehaviour
             player.time = 0;
         }
         
-        text.text = Math.Round(player.time, 2).ToString();
+        text.text = Math.Round(player.time, 1).ToString("0.0");
     }
 }

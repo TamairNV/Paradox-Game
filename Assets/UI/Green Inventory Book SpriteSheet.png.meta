@@ -1,0 +1,5806 @@
+fileFormatVersion: 2
+guid: 83c1d4ecab9d6814087c95f9d141ea9b
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 5083
+        width: 346
+        height: 432
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a39eeba146179e1428bd99a185226077
+      internalID: 594815284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 1093
+        y: 5083
+        width: 346
+        height: 450
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7cfea44fb8e3974dba8f6caaf33cb80
+      internalID: 2052870178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 1925
+        y: 5083
+        width: 346
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4443fd791520e942b00a5112cfc4d1a
+      internalID: 2003138571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 2555
+        y: 5080
+        width: 629
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 847c0e7109fa11f4c843d8d63d04a9ec
+      internalID: 1592813975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 3377
+        y: 5080
+        width: 669
+        height: 424
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a54adef3006378a428557bedfe48c1f7
+      internalID: -1068571353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 4248
+        y: 5094
+        width: 302
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56641faee8448704cb6a56150e2e3f74
+      internalID: -2033956429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 4698
+        y: 5096
+        width: 299
+        height: 383
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ed18dedbfcccf44e9e54e314fa39b0f
+      internalID: -116351103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 5177
+        y: 5105
+        width: 189
+        height: 435
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92d5cac3783d0594581e0d9f35dd9afe
+      internalID: -532478352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 4248
+        y: 4597
+        width: 302
+        height: 367
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c53245991714ea4eb861210a6abd2d6
+      internalID: -1910123816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 4698
+        y: 4601
+        width: 299
+        height: 381
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c36e2c216a6b384f998376c1f1d1c32
+      internalID: -1422193864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 5177
+        y: 4608
+        width: 189
+        height: 435
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fe97ff42dc87ec43b83ec66dde57af4
+      internalID: 1787252340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 4359
+        width: 43
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cf18e6f19b491b47be140801d424d50
+      internalID: 303465578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_14
+      rect:
+        serializedVersion: 2
+        x: 1147
+        y: 4359
+        width: 234
+        height: 465
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41726a2c67f06ea46817f4112715f7c9
+      internalID: -1471007570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_15
+      rect:
+        serializedVersion: 2
+        x: 1785
+        y: 4359
+        width: 590
+        height: 494
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9643cddcdf78a5b43a3a4026510e3493
+      internalID: 1849356602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_16
+      rect:
+        serializedVersion: 2
+        x: 2563
+        y: 4359
+        width: 669
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ca9a60bf7df54242af0e35e02dca5f9
+      internalID: 444851954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_18
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 3639
+        width: 670
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27c18c95a139f1144a1271fa25be0530
+      internalID: -1009922058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_19
+      rect:
+        serializedVersion: 2
+        x: 931
+        y: 3639
+        width: 670
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e947daedb65102468ca1963740203fa
+      internalID: -1581905629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_20
+      rect:
+        serializedVersion: 2
+        x: 1745
+        y: 3639
+        width: 670
+        height: 450
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e4682438699b9e43bd44634f8b8e2b2
+      internalID: 1324008379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_21
+      rect:
+        serializedVersion: 2
+        x: 2563
+        y: 3639
+        width: 669
+        height: 439
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac9026f3034ab8a4d9cf64e1861a5d6c
+      internalID: 1340267907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_22
+      rect:
+        serializedVersion: 2
+        x: 3377
+        y: 3639
+        width: 669
+        height: 439
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 362b82cc29c829f4e8b1972ee83cfbeb
+      internalID: -573789283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_23
+      rect:
+        serializedVersion: 2
+        x: 4194
+        y: 3639
+        width: 670
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 663a9e8b249a1dc45809bae1a9723362
+      internalID: -1948557633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_24
+      rect:
+        serializedVersion: 2
+        x: 5008
+        y: 3639
+        width: 672
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f09c43d35194d54f879ae95fc3b6b1f
+      internalID: 581076283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_25
+      rect:
+        serializedVersion: 2
+        x: 5826
+        y: 3639
+        width: 669
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 977670a621fcd8e4e97b488b1910129d
+      internalID: -615559360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_26
+      rect:
+        serializedVersion: 2
+        x: 6641
+        y: 3639
+        width: 672
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35fe9c000604b5b4d892aff94fd7b84e
+      internalID: -49037222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_28
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 2919
+        width: 670
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 903ef2335de81564c80a31d4946a81c7
+      internalID: 807906677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_29
+      rect:
+        serializedVersion: 2
+        x: 931
+        y: 2919
+        width: 670
+        height: 436
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 691d040fda63f144b99eddfa6c6ca1dc
+      internalID: -625976614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_30
+      rect:
+        serializedVersion: 2
+        x: 1745
+        y: 2919
+        width: 670
+        height: 461
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93ad19c2a3ff1d04c95f637cfdf0c73a
+      internalID: 331469276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_31
+      rect:
+        serializedVersion: 2
+        x: 2563
+        y: 2919
+        width: 669
+        height: 464
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ccd3b5deb73be243973797b3dcbaa05
+      internalID: 1017720999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_32
+      rect:
+        serializedVersion: 2
+        x: 3377
+        y: 2919
+        width: 669
+        height: 457
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 872f85bdcf2cf62488c130f7c0d76095
+      internalID: 1201733472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_33
+      rect:
+        serializedVersion: 2
+        x: 4194
+        y: 2919
+        width: 670
+        height: 439
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f4b7f693548aef4e984bd66341b6c38
+      internalID: -1984910239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_34
+      rect:
+        serializedVersion: 2
+        x: 5008
+        y: 2919
+        width: 672
+        height: 428
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be1912a80457b7243b4ab95976ab8077
+      internalID: 193861239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_35
+      rect:
+        serializedVersion: 2
+        x: 5826
+        y: 2919
+        width: 669
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9aca7bd0202b924eaea44a227f8e1b3
+      internalID: -725009946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_37
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 2199
+        width: 670
+        height: 424
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd2e6c7c9cac8d543955e6904199b35c
+      internalID: 1458127187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_38
+      rect:
+        serializedVersion: 2
+        x: 931
+        y: 2199
+        width: 670
+        height: 428
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f65770c91331a44a91a22a7e201ff58
+      internalID: 1275252845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_39
+      rect:
+        serializedVersion: 2
+        x: 1745
+        y: 2199
+        width: 670
+        height: 439
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b75634611cd53d24f8b529487a548fff
+      internalID: 1491432178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_40
+      rect:
+        serializedVersion: 2
+        x: 2563
+        y: 2199
+        width: 669
+        height: 457
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3707db64cfc98134a8770518fc4d6b7f
+      internalID: 1621320494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_41
+      rect:
+        serializedVersion: 2
+        x: 3377
+        y: 2199
+        width: 669
+        height: 464
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0e4da1444bc86545a59441bb00784e6
+      internalID: -1204167512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_42
+      rect:
+        serializedVersion: 2
+        x: 4194
+        y: 2199
+        width: 670
+        height: 461
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5847af3cffaadec4fba12e14877c3fb5
+      internalID: 631725501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_43
+      rect:
+        serializedVersion: 2
+        x: 5008
+        y: 2199
+        width: 672
+        height: 435
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b20686b61f9c63d46a64d9b6629e9497
+      internalID: -1217147962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_44
+      rect:
+        serializedVersion: 2
+        x: 5826
+        y: 2199
+        width: 669
+        height: 424
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fa2149ef71ca764fa4bc2e8ce128906
+      internalID: -2147362647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_46
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 1478
+        width: 696
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38b6d6d77a41c974c8c29ad9e98e6a64
+      internalID: -259266046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_47
+      rect:
+        serializedVersion: 2
+        x: 931
+        y: 1478
+        width: 702
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 475085ecb8a07b749a50d8dc2280f257
+      internalID: 848398624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_48
+      rect:
+        serializedVersion: 2
+        x: 1745
+        y: 1478
+        width: 706
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3f9616454e07bb42badc3ee89005587
+      internalID: -1768407491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_49
+      rect:
+        serializedVersion: 2
+        x: 2563
+        y: 1478
+        width: 702
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24e5fb4789a4dbd47b77d36192938c26
+      internalID: -780121312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_50
+      rect:
+        serializedVersion: 2
+        x: 3377
+        y: 1478
+        width: 705
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6646cde149a116543bbe740ab8289644
+      internalID: -1654353722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_51
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 758
+        width: 706
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0bb1d12d3eb6d24bb16e3e0fbca72f7
+      internalID: 777656225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_52
+      rect:
+        serializedVersion: 2
+        x: 931
+        y: 758
+        width: 702
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ef18725606f64d42b2afd6cc0487c91
+      internalID: -1141365811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_53
+      rect:
+        serializedVersion: 2
+        x: 1745
+        y: 758
+        width: 706
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1efaa76957449f4a8ac08c70061084f
+      internalID: -158401471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_54
+      rect:
+        serializedVersion: 2
+        x: 2563
+        y: 758
+        width: 702
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8630459050ecf1c4a8d7159cafaf0a6d
+      internalID: -135544067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_55
+      rect:
+        serializedVersion: 2
+        x: 3377
+        y: 758
+        width: 705
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93d7377827ee69a44b11668c6623962a
+      internalID: -1074701963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_56
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 546
+        width: 303
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b096d5733e8a0046a9603f8483af670
+      internalID: 65088418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_57
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 546
+        width: 213
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96ccc7b97256c274089345f3c3cf55c7
+      internalID: 545595518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_58
+      rect:
+        serializedVersion: 2
+        x: 1544
+        y: 546
+        width: 219
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d0af9bdeedf8d7488eb6d832f291751
+      internalID: 1421447504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_59
+      rect:
+        serializedVersion: 2
+        x: 2552
+        y: 546
+        width: 284
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4e31c8c15c60ca4f9f8cde585a90dcc
+      internalID: -1288163354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_60
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 297
+        width: 220
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df8606f6dc185d74b8eec17f3f8184fc
+      internalID: 273714096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_61
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 492
+        width: 57
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d090943f908860a408d97a47e1f6fa3c
+      internalID: -1422026818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_62
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 492
+        width: 108
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c33eb2d5410ff448b3fe14a6b704c74
+      internalID: 1653804569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_63
+      rect:
+        serializedVersion: 2
+        x: 899
+        y: 463
+        width: 43
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdcc813bd2012024e9f73ac1d590cd20
+      internalID: -1143455163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_64
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 463
+        width: 47
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 762f09323ee10254482db5f591a7473f
+      internalID: 1881614805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_65
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 463
+        width: 43
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3109585f19660d549ba6e6c24b690ff1
+      internalID: -1768784353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_66
+      rect:
+        serializedVersion: 2
+        x: 1169
+        y: 463
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d83ab2d12bbfe046be15ca33fae8919
+      internalID: -711455428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_67
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 495
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20ba39a1fe16ae44c8f4dd7787678180
+      internalID: -658510687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_68
+      rect:
+        serializedVersion: 2
+        x: 1601
+        y: 497
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 755a6835f1f516c4b94755254992c08a
+      internalID: 626938087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_69
+      rect:
+        serializedVersion: 2
+        x: 1616
+        y: 495
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad0dd4396c054dd4f8db349d754b6505
+      internalID: 945791768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_70
+      rect:
+        serializedVersion: 2
+        x: 1632
+        y: 495
+        width: 33
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e44467c4b42479647943e0b2b44c3f86
+      internalID: -1136518275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_71
+      rect:
+        serializedVersion: 2
+        x: 1679
+        y: 495
+        width: 33
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06d020ff65164c54980e66dad21e4432
+      internalID: -879990554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_72
+      rect:
+        serializedVersion: 2
+        x: 1723
+        y: 492
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 645b253ada0fe1748aab959fbea20a6f
+      internalID: 1264982344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_73
+      rect:
+        serializedVersion: 2
+        x: 1774
+        y: 492
+        width: 21
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b6d8ae382866ea46821d4dd9b196474
+      internalID: 640694964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_74
+      rect:
+        serializedVersion: 2
+        x: 1821
+        y: 494
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d2d224ea485aac4ea620e15c9929b0e
+      internalID: 749060375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_75
+      rect:
+        serializedVersion: 2
+        x: 1867
+        y: 492
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6300d914dd4f4324fa7f90edf1bffd57
+      internalID: -1931133417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_76
+      rect:
+        serializedVersion: 2
+        x: 1914
+        y: 492
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d1a2e7af2184ac4ab8477efd88c2f5f
+      internalID: 733414049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_77
+      rect:
+        serializedVersion: 2
+        x: 1965
+        y: 492
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d23506bf72cfa174083626d59f5194d8
+      internalID: 1609615207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_78
+      rect:
+        serializedVersion: 2
+        x: 2012
+        y: 459
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 626fd19305830a849b65c78b9e5330b3
+      internalID: 872044026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_79
+      rect:
+        serializedVersion: 2
+        x: 2091
+        y: 459
+        width: 57
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74d4a97a22939464ea51ddb38c4c302f
+      internalID: 729300231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_80
+      rect:
+        serializedVersion: 2
+        x: 2573
+        y: 416
+        width: 87
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4ca94a3120b5954d97d295024a62371
+      internalID: -1547423428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_81
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 459
+        width: 57
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb738183a8fb7f842b6001bb74bf7993
+      internalID: 1612682097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_82
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 459
+        width: 108
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d685d89cc0af3ba45adb64c0ac22743b
+      internalID: 358570206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_83
+      rect:
+        serializedVersion: 2
+        x: 1587
+        y: 466
+        width: 28
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b856b5d9c35e8a41a64c53e06fd7d8d
+      internalID: 2075068037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_84
+      rect:
+        serializedVersion: 2
+        x: 1619
+        y: 466
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12253ba4c13ca4040ac59b8fe567ee49
+      internalID: -861745305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_85
+      rect:
+        serializedVersion: 2
+        x: 1633
+        y: 466
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f84059f6e7f24cb4fbf3b1c1357bdd4b
+      internalID: -1148235203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_86
+      rect:
+        serializedVersion: 2
+        x: 1723
+        y: 459
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 616345e4c2944da47a900ba2c946135b
+      internalID: 1039028309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_87
+      rect:
+        serializedVersion: 2
+        x: 1770
+        y: 459
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a619ae34d5fc13b4dbf1c76208c140c9
+      internalID: -425287370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_88
+      rect:
+        serializedVersion: 2
+        x: 1821
+        y: 459
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6eb9e9ebaee5bd4eb16a0b98b411137
+      internalID: -1644042313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_89
+      rect:
+        serializedVersion: 2
+        x: 1867
+        y: 459
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b16de70473a448e4ca24830f5a3c0018
+      internalID: 1167705777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_90
+      rect:
+        serializedVersion: 2
+        x: 1914
+        y: 459
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91dc08f9fb5712b47a18d4a8391644be
+      internalID: -1730143102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_91
+      rect:
+        serializedVersion: 2
+        x: 1965
+        y: 460
+        width: 25
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77d0eb1e92823f9418d3fbdd3c9bf09a
+      internalID: 1653240636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_92
+      rect:
+        serializedVersion: 2
+        x: 2188
+        y: 380
+        width: 104
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ec05f083b2e27544b08df5a4b687058
+      internalID: 456713181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_93
+      rect:
+        serializedVersion: 2
+        x: 2328
+        y: 380
+        width: 105
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb1dec02c94c20e4395fef44e0aa25d5
+      internalID: -1490525378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_94
+      rect:
+        serializedVersion: 2
+        x: 2696
+        y: 423
+        width: 68
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98f5b0e63972b4c4d8e21f0ef735c3fb
+      internalID: -1435063496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_95
+      rect:
+        serializedVersion: 2
+        x: 2790
+        y: 423
+        width: 68
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95c23a7c0b893fd4499289e8459d4f1c
+      internalID: 8232245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_96
+      rect:
+        serializedVersion: 2
+        x: 2887
+        y: 423
+        width: 68
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30e0e5d4d5b51054fa20b2a7166a2041
+      internalID: 1305301144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_97
+      rect:
+        serializedVersion: 2
+        x: 2984
+        y: 423
+        width: 68
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b2e3485aa43f044eaf19887fdfbded2
+      internalID: -730526509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_98
+      rect:
+        serializedVersion: 2
+        x: 3078
+        y: 423
+        width: 68
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1d173894df4ce14a867cf8d27df4932
+      internalID: -1080264299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_99
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 333
+        width: 118
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f84e8aaf4aaf83c40bcb4c882d76dfd8
+      internalID: 462232797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_100
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 427
+        width: 57
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dc2c8cdc641ffe4c94f8b728f0388d4
+      internalID: 1412829180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_101
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 427
+        width: 108
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b865d346d7702c4fbc1cf971b735750
+      internalID: -555207360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_102
+      rect:
+        serializedVersion: 2
+        x: 895
+        y: 389
+        width: 43
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33b493069f6c4764d818b1a29d22b88f
+      internalID: 1222384262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_103
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 389
+        width: 44
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc5c0f3524546b84f84946d6e38852f5
+      internalID: 125957840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_104
+      rect:
+        serializedVersion: 2
+        x: 1071
+        y: 389
+        width: 43
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9ce8e237a67c444382f94512d06071c
+      internalID: 1397950862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_105
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 389
+        width: 43
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf023099c47c5434c94a336f1c12fb8f
+      internalID: 154531757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_106
+      rect:
+        serializedVersion: 2
+        x: 1579
+        y: 427
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a57e23075caad8b40928c3ce44e3e337
+      internalID: -874643205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_107
+      rect:
+        serializedVersion: 2
+        x: 1612
+        y: 427
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fee4ca27629491a4e970d3a1af098b99
+      internalID: -879774423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_108
+      rect:
+        serializedVersion: 2
+        x: 1644
+        y: 427
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4da11eee5f809794e89edc85d574d377
+      internalID: -1500899062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_109
+      rect:
+        serializedVersion: 2
+        x: 1677
+        y: 427
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0bcb10553fcf384f83aa690fd59a0ea
+      internalID: 1742136034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_110
+      rect:
+        serializedVersion: 2
+        x: 1723
+        y: 427
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70f2de7076edaa241b576bde6b952835
+      internalID: 853391407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_111
+      rect:
+        serializedVersion: 2
+        x: 1756
+        y: 427
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7dc05928ea891248aaaac4c38d60dcf
+      internalID: -632356088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_112
+      rect:
+        serializedVersion: 2
+        x: 2011
+        y: 398
+        width: 58
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f2f5c13d8f3c2741a5274b2216191a8
+      internalID: -1003976187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_113
+      rect:
+        serializedVersion: 2
+        x: 2091
+        y: 394
+        width: 57
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ad227a393958d74599d169ea85b6407
+      internalID: 383278914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_114
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 366
+        width: 39
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9ababb4d30b6b4478ade166da6af05b
+      internalID: -1025931660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_115
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 366
+        width: 50
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1438088b2a87ff489ba3593ef4e8bc1
+      internalID: 1713751011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_116
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 366
+        width: 39
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cf77d612c44c6243a7fff72458f5828
+      internalID: 620658443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_117
+      rect:
+        serializedVersion: 2
+        x: 938
+        y: 366
+        width: 61
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 213fc2fa81dc85f41a10c8f061fcaad8
+      internalID: 953275513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_118
+      rect:
+        serializedVersion: 2
+        x: 1111
+        y: 366
+        width: 65
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1e7241925ac1df43bd79d5528775d3c
+      internalID: 400997348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_119
+      rect:
+        serializedVersion: 2
+        x: 1601
+        y: 373
+        width: 29
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c4e10a8931e9b449bbbbc3557df5950
+      internalID: 624804500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_120
+      rect:
+        serializedVersion: 2
+        x: 1651
+        y: 373
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0465639aa18c614ca0da23dec26f833
+      internalID: 2061714411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_121
+      rect:
+        serializedVersion: 2
+        x: 1727
+        y: 384
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ece1faff6ed38ee4893fc3bd884c7be2
+      internalID: 86453920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_122
+      rect:
+        serializedVersion: 2
+        x: 1756
+        y: 380
+        width: 25
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 589731b2a657785459cd9af20c3cb4df
+      internalID: -1604192718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_123
+      rect:
+        serializedVersion: 2
+        x: 1788
+        y: 380
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80f3bb362c0a84d40817ead824f565b9
+      internalID: -1501070088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_124
+      rect:
+        serializedVersion: 2
+        x: 1821
+        y: 380
+        width: 21
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9f0860f5eb6298499b826307ea4454d
+      internalID: -2037700458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_125
+      rect:
+        serializedVersion: 2
+        x: 1853
+        y: 380
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b3ac17b25e66cb4f8019942c8fa3f3f
+      internalID: 940708964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_126
+      rect:
+        serializedVersion: 2
+        x: 1885
+        y: 380
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbe59a2b84456e2409055f1905f2b929
+      internalID: 1004939343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_127
+      rect:
+        serializedVersion: 2
+        x: 2019
+        y: 331
+        width: 43
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a0587edf6df2394a8e3eeaefd7a9753
+      internalID: 865247367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_128
+      rect:
+        serializedVersion: 2
+        x: 2091
+        y: 331
+        width: 57
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27b2b5a623b7aab4aa33ecb8bfa5de60
+      internalID: -1678880143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_129
+      rect:
+        serializedVersion: 2
+        x: 2714
+        y: 366
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e9e34e880c56e547890282ae6880d24
+      internalID: -2129962854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_130
+      rect:
+        serializedVersion: 2
+        x: 2804
+        y: 358
+        width: 43
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89ac1d4a8420b7f44baa0be391ed88f1
+      internalID: -556794963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_131
+      rect:
+        serializedVersion: 2
+        x: 2905
+        y: 366
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a69580117f8e84340810a3fa77baebdb
+      internalID: 1142700714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_132
+      rect:
+        serializedVersion: 2
+        x: 2992
+        y: 362
+        width: 49
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b03c540f39a32045b8f146d5409158d
+      internalID: 1185901542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_133
+      rect:
+        serializedVersion: 2
+        x: 3096
+        y: 366
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce494cce5eed26a4a85948599f708ac6
+      internalID: -319069830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_134
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 333
+        width: 39
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0639c2254c88e748a2b292418845890
+      internalID: -1311280312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_135
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 333
+        width: 50
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 836ea500d943861478e6674b5449f034
+      internalID: -1169746805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_136
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 333
+        width: 39
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7105a2037c6b5a34ba7285e57ae34403
+      internalID: -1986564404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_137
+      rect:
+        serializedVersion: 2
+        x: 1601
+        y: 340
+        width: 29
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 187156a046d57f842a32c076c6fe7333
+      internalID: -2026194713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_138
+      rect:
+        serializedVersion: 2
+        x: 1651
+        y: 340
+        width: 29
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0c0906928535ba4699a47b8ddf1e5fa
+      internalID: 1370226542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_139
+      rect:
+        serializedVersion: 2
+        x: 1727
+        y: 351
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0857922038791f44797c059b774f93d1
+      internalID: -60054265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_140
+      rect:
+        serializedVersion: 2
+        x: 1756
+        y: 348
+        width: 25
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dce443775baf0224fa332791f02a986b
+      internalID: 476059304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_141
+      rect:
+        serializedVersion: 2
+        x: 1788
+        y: 348
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e27b4b67506c254fbfc6a6d577c0090
+      internalID: 1220706578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_142
+      rect:
+        serializedVersion: 2
+        x: 1821
+        y: 348
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3abf6cbe7b9efe4c9373bfb284b9e2b
+      internalID: 1004856031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_143
+      rect:
+        serializedVersion: 2
+        x: 1853
+        y: 348
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0742e48426c5cd744ba0fc988be16248
+      internalID: 188124222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_144
+      rect:
+        serializedVersion: 2
+        x: 1885
+        y: 348
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76765b348abfb39459bf4c2c25210c6f
+      internalID: -668972760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_145
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 236
+        width: 83
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9969d6d1cc524e04aaa619c7adde9e20
+      internalID: 296612873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_146
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 301
+        width: 39
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d90e228ac6d00954fac44e57ac4b9245
+      internalID: 19838700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_147
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 301
+        width: 50
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 795633f684a12a54f94423b451cfa5fc
+      internalID: -479440083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_148
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 301
+        width: 39
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbc789f8b97d7e84a9e0d41faa21d2db
+      internalID: -649424484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_149
+      rect:
+        serializedVersion: 2
+        x: 913
+        y: 290
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 296391be82799c94f84585691de9ca8c
+      internalID: -2049837696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_150
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 304
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e0e9e2cb85c9c6499118048d5accaeb
+      internalID: -1891640696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_151
+      rect:
+        serializedVersion: 2
+        x: 1605
+        y: 308
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ffb6eb1a202a0e4f98f0dda428d9e58
+      internalID: -836497878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_152
+      rect:
+        serializedVersion: 2
+        x: 1651
+        y: 308
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fecb3a5208274bd42b5e3a4036dc1b5b
+      internalID: -1806595182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_153
+      rect:
+        serializedVersion: 2
+        x: 1727
+        y: 319
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d144b637d24dd8b42b3cf11244046c25
+      internalID: -486663750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_154
+      rect:
+        serializedVersion: 2
+        x: 1756
+        y: 315
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 613641e77236e9c4985066c18f839bf2
+      internalID: 293550084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_155
+      rect:
+        serializedVersion: 2
+        x: 1788
+        y: 315
+        width: 22
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba4d6cffc6671b24baf7f2e3ad8a2cda
+      internalID: 1314427398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_156
+      rect:
+        serializedVersion: 2
+        x: 1821
+        y: 319
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa2e7d0b9f3193940a1d272159f552bb
+      internalID: -500282970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_157
+      rect:
+        serializedVersion: 2
+        x: 1853
+        y: 315
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 190aa6efb35177a4cb312761a92e0e77
+      internalID: -760796304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_158
+      rect:
+        serializedVersion: 2
+        x: 1882
+        y: 315
+        width: 27
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe17e5ae2c3a905489a734acf6971487
+      internalID: -1422697826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_159
+      rect:
+        serializedVersion: 2
+        x: 2019
+        y: 272
+        width: 43
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4f3983751941484b814014acd838a8f
+      internalID: 107788794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_160
+      rect:
+        serializedVersion: 2
+        x: 2091
+        y: 268
+        width: 57
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ef4ca1165161d24b96a0a290409b65b
+      internalID: 1498504423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_161
+      rect:
+        serializedVersion: 2
+        x: 2202
+        y: 283
+        width: 62
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48436423199877942a66192a0f20fc24
+      internalID: 225969303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_162
+      rect:
+        serializedVersion: 2
+        x: 2274
+        y: 283
+        width: 62
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e66d759b3835b314dabaee36bb97f46d
+      internalID: -337438537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_163
+      rect:
+        serializedVersion: 2
+        x: 2346
+        y: 283
+        width: 58
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db779eebcd57c3e46b5b279565e58f0a
+      internalID: 142175773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_164
+      rect:
+        serializedVersion: 2
+        x: 2692
+        y: 310
+        width: 72
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b56f6775d29594541afdb8ff991d6780
+      internalID: -940238026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_165
+      rect:
+        serializedVersion: 2
+        x: 2787
+        y: 310
+        width: 74
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5ecacbf01c8e654ea6118813b45044a
+      internalID: -885636218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_166
+      rect:
+        serializedVersion: 2
+        x: 2883
+        y: 310
+        width: 72
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 354bcfc9193d52e4987af0eccb55fdce
+      internalID: -1097675769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_167
+      rect:
+        serializedVersion: 2
+        x: 2980
+        y: 310
+        width: 72
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3ddc7e9dbf19a94db53bcbeee8cdbeb
+      internalID: -2096639775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_168
+      rect:
+        serializedVersion: 2
+        x: 3075
+        y: 310
+        width: 74
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7951869557cbd5a4d99f3ef7a43c5253
+      internalID: -803660459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_169
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 268
+        width: 43
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27f5406ea2d9436489812c1a9bdc7e3d
+      internalID: 1666902049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_170
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 268
+        width: 43
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a2691e9ab345434b95727223441ef26
+      internalID: 621206263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_171
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 272
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea483142edb5dfb45b67b66d2fda7bd0
+      internalID: -974490805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_172
+      rect:
+        serializedVersion: 2
+        x: 1262
+        y: 272
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54c031222cb5e3f419708648068566d1
+      internalID: -1097765346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_173
+      rect:
+        serializedVersion: 2
+        x: 1295
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 551376cbacc292e4b929d220c821ec03
+      internalID: -1997543688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_174
+      rect:
+        serializedVersion: 2
+        x: 1327
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4198477db3503f42b9fa8b150b18c7a
+      internalID: 954323869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_175
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af3257dcc98b64747bac3476c3a71bad
+      internalID: 1907982801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_176
+      rect:
+        serializedVersion: 2
+        x: 1392
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86b74f3630dfe234987dfee7b0126a39
+      internalID: -158071803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_177
+      rect:
+        serializedVersion: 2
+        x: 1601
+        y: 277
+        width: 29
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14ebc6176cbdaa242b2f6484d3df5bb6
+      internalID: 1274850340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_178
+      rect:
+        serializedVersion: 2
+        x: 1723
+        y: 268
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23378f21c72b85d44b1cb6b507e57dc1
+      internalID: 661493042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_179
+      rect:
+        serializedVersion: 2
+        x: 1756
+        y: 268
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f7b1062b85f80f4aaed3bdb135974a1
+      internalID: -1273091821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_180
+      rect:
+        serializedVersion: 2
+        x: 1788
+        y: 268
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45fe708ff4bc4b944b07c0e67a4934f3
+      internalID: 371759192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_181
+      rect:
+        serializedVersion: 2
+        x: 1819
+        y: 268
+        width: 27
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d730e8463b20a740890e06a1129b93a
+      internalID: -127520913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_182
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 240
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48658c0087d6a56488214f45a109e1eb
+      internalID: 486136286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_183
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 240
+        width: 25
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8620082a2c0b8b848a94bff2d6ae9825
+      internalID: -1334629937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_184
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 240
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cb9c0bf57654194c95d2373ad50b4ba
+      internalID: 415527943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_185
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 218
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4f92985fdac5cd4c800dca8a7f2c66b
+      internalID: -142210704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_186
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 222
+        width: 39
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99fe0ee7b76df81429293155cec81c0b
+      internalID: -1475219512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_187
+      rect:
+        serializedVersion: 2
+        x: 913
+        y: 243
+        width: 29
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 177f8d5b0e39bc240b3a62ffc5dac23c
+      internalID: -1619191639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_188
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 243
+        width: 32
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6098a970b5aac7a41ac2459d1bb69226
+      internalID: -87746111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_189
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 243
+        width: 31
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cd38ee1230db7d43b3a4baaeee34923
+      internalID: 1014726164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_190
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 243
+        width: 29
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 117590156612a994c9aaea2fa914d067
+      internalID: -629481315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_191
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 243
+        width: 32
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 256a3872ed8a8514ea76e8862f522506
+      internalID: 113541296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_192
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 243
+        width: 31
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 974e6622cab33c643aa69027ed76054d
+      internalID: -1675132032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_193
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 240
+        width: 21
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 176f501ae1caa904194853e43d5da369
+      internalID: -182766835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_194
+      rect:
+        serializedVersion: 2
+        x: 1262
+        y: 240
+        width: 22
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44edd3eca385b0e479c0b30513b0929a
+      internalID: -1656139172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_195
+      rect:
+        serializedVersion: 2
+        x: 1295
+        y: 240
+        width: 19
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3acd43443ebd4d443a8e948fb2c53c40
+      internalID: 519060128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_196
+      rect:
+        serializedVersion: 2
+        x: 1327
+        y: 240
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c3e429ded117ee47b2c1c539b537fa5
+      internalID: -562272574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_197
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 240
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e73861fbab7495343a228491aad2160e
+      internalID: 934560873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_198
+      rect:
+        serializedVersion: 2
+        x: 1392
+        y: 240
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c29c3b012c66cea43a735fba6d63efe0
+      internalID: 245378263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_199
+      rect:
+        serializedVersion: 2
+        x: 1723
+        y: 236
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a6d7c02719e54246852d0eff6329010
+      internalID: -1055025161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_200
+      rect:
+        serializedVersion: 2
+        x: 1756
+        y: 236
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 780caec2d024d374ca32c9a0da38ff9f
+      internalID: -133199385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_201
+      rect:
+        serializedVersion: 2
+        x: 1788
+        y: 236
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0a6ea456d4e35e438455994e9f0bf9c
+      internalID: 1484730030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_202
+      rect:
+        serializedVersion: 2
+        x: 2012
+        y: 204
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c26086a5ecc271479f8f0bfdf20f040
+      internalID: 1191492820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_203
+      rect:
+        serializedVersion: 2
+        x: 2091
+        y: 204
+        width: 57
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbb121a097a7f664ea9458678cf44104
+      internalID: 1559589672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_204
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 193
+        width: 39
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a2360e27eb64674a83d7644603300ab
+      internalID: -2074151563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_205
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 193
+        width: 39
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbd7c41cad4bc5349b397c755293d22b
+      internalID: 1073493278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_206
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 193
+        width: 40
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 240709779dc185f4bb05980706c0e504
+      internalID: 694609548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_207
+      rect:
+        serializedVersion: 2
+        x: 913
+        y: 196
+        width: 29
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc232aa2c3da758499ae1885e4d93f03
+      internalID: -379496090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_208
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 196
+        width: 32
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f95a963b747579f408e23a8762026aae
+      internalID: 5846866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_209
+      rect:
+        serializedVersion: 2
+        x: 1007
+        y: 196
+        width: 32
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c641619f83b66bb4a8b224276a3615b1
+      internalID: -938295232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_210
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 196
+        width: 29
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44d2a07214f269044b7102d080de2b31
+      internalID: -1636526263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_211
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 196
+        width: 32
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0bfc897199a1f84d894a312d15650c1
+      internalID: 2141355340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_212
+      rect:
+        serializedVersion: 2
+        x: 1151
+        y: 196
+        width: 32
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0245ff7ac07096a459062f27cd65e225
+      internalID: -350997175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_213
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 207
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfd6f4a75165fb2479806ed0d46c66be
+      internalID: -873917785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_214
+      rect:
+        serializedVersion: 2
+        x: 1262
+        y: 207
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0ab372e53b2a6249b1915c077362726
+      internalID: -838485908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_215
+      rect:
+        serializedVersion: 2
+        x: 1551
+        y: 157
+        width: 403
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dae325a95b3c84143a9e3b42442a5a2f
+      internalID: -1145770905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_216
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 128
+        width: 29
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0724f206aa73bec4f8683b633588bcca
+      internalID: -1989651222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_217
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 124
+        width: 48
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7eb5fbdd15913584b96d23683fc008ad
+      internalID: -880534314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_218
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 143
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b136abfce95d167488e89ea1ae48c14b
+      internalID: -1410760981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_219
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 143
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f23d1faacf9eb68479add7afb8813976
+      internalID: -1064384449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_220
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 142
+        width: 22
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cac57e6b73572545adbbd3015e4e12c
+      internalID: 1955122107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_221
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 63
+        width: 54
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d95abd94ce6cb14a84b7af2e2531de5
+      internalID: -84018821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_222
+      rect:
+        serializedVersion: 2
+        x: 913
+        y: 146
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d70668ed5a029244c81bf1d00704e9dc
+      internalID: -95668816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_223
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 146
+        width: 32
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7715a477139c3d40bb8ee9688563278
+      internalID: 1737211996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_224
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 160
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c38b4231609664d4a883dd9b3f4eb17f
+      internalID: 692475803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_225
+      rect:
+        serializedVersion: 2
+        x: 2011
+        y: 139
+        width: 58
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1daeb88fa538f134f9db0970cf28de47
+      internalID: 423728200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_226
+      rect:
+        serializedVersion: 2
+        x: 2091
+        y: 139
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7a77464505d68b4ba20f174457847cf
+      internalID: -2094393073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_227
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 143
+        width: 76
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92ce4281639fce54bbb9f7b27cc1de8d
+      internalID: -1607912053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_228
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 128
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9554aed83163014aaeb748a03aeae83
+      internalID: 1164841004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_229
+      rect:
+        serializedVersion: 2
+        x: 1262
+        y: 128
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b64dad4498d1d6479b500a8d6fec160
+      internalID: 1400554416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_230
+      rect:
+        serializedVersion: 2
+        x: 1295
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f8c9d05bdeba7547b6949e4e664d971
+      internalID: -1772993268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_231
+      rect:
+        serializedVersion: 2
+        x: 1327
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5913551e0e8fda4da9f4b0ef9daaae8
+      internalID: 2019474715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_232
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f22f8f42fd771f409f61e43c7a10dc3
+      internalID: -385881021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_233
+      rect:
+        serializedVersion: 2
+        x: 1392
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e932ba829811394d84c5633631b35f2
+      internalID: -1607279280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_234
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 92
+        width: 14
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3031afe207786ef43b4c194872417321
+      internalID: -347925537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_235
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 131
+        width: 50
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ee16225e2599424ebd3f24b09b84625
+      internalID: 630222400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_236
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 92
+        width: 39
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72f78c62261ca774b89b86e76f714d7b
+      internalID: -1595494912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_237
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 113
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d7e723b95dd00d4bb7fdbc9d1037c7c
+      internalID: -542571093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_238
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 113
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee98931fd71b7ef4fbd9809157017797
+      internalID: 164345189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_239
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 95
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de1af8340ff8fd842a2fcb0da682d40c
+      internalID: 2141282993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_240
+      rect:
+        serializedVersion: 2
+        x: 1262
+        y: 95
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56ac53955f059b744b0b0f56d26a6e65
+      internalID: -789415395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_241
+      rect:
+        serializedVersion: 2
+        x: 1295
+        y: 95
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c387af8e57c33f4d88899d09972bc07
+      internalID: -278407637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_242
+      rect:
+        serializedVersion: 2
+        x: 1327
+        y: 95
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a6a3cdd3ecc7524bba838cf9cc8c033
+      internalID: 1447716708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_243
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 95
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ed72a6b4c0137145a57f7d9b100ed53
+      internalID: -334271360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_244
+      rect:
+        serializedVersion: 2
+        x: 1392
+        y: 95
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eca172e47ed615e4185e3591a1edca61
+      internalID: -980673098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_245
+      rect:
+        serializedVersion: 2
+        x: 1554
+        y: 74
+        width: 61
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b7241e80b3f64a4cb79bd48c603ba87
+      internalID: -1722988297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_246
+      rect:
+        serializedVersion: 2
+        x: 1619
+        y: 74
+        width: 61
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a00d60db4ec520409e367fc31630117
+      internalID: 72164367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_247
+      rect:
+        serializedVersion: 2
+        x: 1681
+        y: 74
+        width: 125
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db4be4fa3ef938d419fe353d754718ec
+      internalID: 1446778896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_248
+      rect:
+        serializedVersion: 2
+        x: 1810
+        y: 74
+        width: 61
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9530047eac33dbb448e6ce2d3ee5965b
+      internalID: -529900360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_249
+      rect:
+        serializedVersion: 2
+        x: 1875
+        y: 74
+        width: 61
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7342c7f553693544bb09e8046270384
+      internalID: 825536058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_250
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 63
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6fa060610007db49b55531705a0a1b3
+      internalID: 1280604730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_251
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 63
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb623e0985db15b478a4229bb371dc07
+      internalID: -807423885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Inventory Book SpriteSheet_252
+      rect:
+        serializedVersion: 2
+        x: 1262
+        y: 63
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e970b7abcfcdf043a1da97573552a4a
+      internalID: 1480256519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 38bf9e039f1d0664d82f6a15b361c626
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Green Inventory Book SpriteSheet_0: -1700096097
+      Green Inventory Book SpriteSheet_1: 594815284
+      Green Inventory Book SpriteSheet_10: -1910123816
+      Green Inventory Book SpriteSheet_100: 1412829180
+      Green Inventory Book SpriteSheet_101: -555207360
+      Green Inventory Book SpriteSheet_102: 1222384262
+      Green Inventory Book SpriteSheet_103: 125957840
+      Green Inventory Book SpriteSheet_104: 1397950862
+      Green Inventory Book SpriteSheet_105: 154531757
+      Green Inventory Book SpriteSheet_106: -874643205
+      Green Inventory Book SpriteSheet_107: -879774423
+      Green Inventory Book SpriteSheet_108: -1500899062
+      Green Inventory Book SpriteSheet_109: 1742136034
+      Green Inventory Book SpriteSheet_11: -1422193864
+      Green Inventory Book SpriteSheet_110: 853391407
+      Green Inventory Book SpriteSheet_111: -632356088
+      Green Inventory Book SpriteSheet_112: -1003976187
+      Green Inventory Book SpriteSheet_113: 383278914
+      Green Inventory Book SpriteSheet_114: -1025931660
+      Green Inventory Book SpriteSheet_115: 1713751011
+      Green Inventory Book SpriteSheet_116: 620658443
+      Green Inventory Book SpriteSheet_117: 953275513
+      Green Inventory Book SpriteSheet_118: 400997348
+      Green Inventory Book SpriteSheet_119: 624804500
+      Green Inventory Book SpriteSheet_12: 1787252340
+      Green Inventory Book SpriteSheet_120: 2061714411
+      Green Inventory Book SpriteSheet_121: 86453920
+      Green Inventory Book SpriteSheet_122: -1604192718
+      Green Inventory Book SpriteSheet_123: -1501070088
+      Green Inventory Book SpriteSheet_124: -2037700458
+      Green Inventory Book SpriteSheet_125: 940708964
+      Green Inventory Book SpriteSheet_126: 1004939343
+      Green Inventory Book SpriteSheet_127: 865247367
+      Green Inventory Book SpriteSheet_128: -1678880143
+      Green Inventory Book SpriteSheet_129: -2129962854
+      Green Inventory Book SpriteSheet_13: 303465578
+      Green Inventory Book SpriteSheet_130: -556794963
+      Green Inventory Book SpriteSheet_131: 1142700714
+      Green Inventory Book SpriteSheet_132: 1185901542
+      Green Inventory Book SpriteSheet_133: -319069830
+      Green Inventory Book SpriteSheet_134: -1311280312
+      Green Inventory Book SpriteSheet_135: -1169746805
+      Green Inventory Book SpriteSheet_136: -1986564404
+      Green Inventory Book SpriteSheet_137: -2026194713
+      Green Inventory Book SpriteSheet_138: 1370226542
+      Green Inventory Book SpriteSheet_139: -60054265
+      Green Inventory Book SpriteSheet_14: -1471007570
+      Green Inventory Book SpriteSheet_140: 476059304
+      Green Inventory Book SpriteSheet_141: 1220706578
+      Green Inventory Book SpriteSheet_142: 1004856031
+      Green Inventory Book SpriteSheet_143: 188124222
+      Green Inventory Book SpriteSheet_144: -668972760
+      Green Inventory Book SpriteSheet_145: 296612873
+      Green Inventory Book SpriteSheet_146: 19838700
+      Green Inventory Book SpriteSheet_147: -479440083
+      Green Inventory Book SpriteSheet_148: -649424484
+      Green Inventory Book SpriteSheet_149: -2049837696
+      Green Inventory Book SpriteSheet_15: 1849356602
+      Green Inventory Book SpriteSheet_150: -1891640696
+      Green Inventory Book SpriteSheet_151: -836497878
+      Green Inventory Book SpriteSheet_152: -1806595182
+      Green Inventory Book SpriteSheet_153: -486663750
+      Green Inventory Book SpriteSheet_154: 293550084
+      Green Inventory Book SpriteSheet_155: 1314427398
+      Green Inventory Book SpriteSheet_156: -500282970
+      Green Inventory Book SpriteSheet_157: -760796304
+      Green Inventory Book SpriteSheet_158: -1422697826
+      Green Inventory Book SpriteSheet_159: 107788794
+      Green Inventory Book SpriteSheet_16: 444851954
+      Green Inventory Book SpriteSheet_160: 1498504423
+      Green Inventory Book SpriteSheet_161: 225969303
+      Green Inventory Book SpriteSheet_162: -337438537
+      Green Inventory Book SpriteSheet_163: 142175773
+      Green Inventory Book SpriteSheet_164: -940238026
+      Green Inventory Book SpriteSheet_165: -885636218
+      Green Inventory Book SpriteSheet_166: -1097675769
+      Green Inventory Book SpriteSheet_167: -2096639775
+      Green Inventory Book SpriteSheet_168: -803660459
+      Green Inventory Book SpriteSheet_169: 1666902049
+      Green Inventory Book SpriteSheet_17: -1940853185
+      Green Inventory Book SpriteSheet_170: 621206263
+      Green Inventory Book SpriteSheet_171: -974490805
+      Green Inventory Book SpriteSheet_172: -1097765346
+      Green Inventory Book SpriteSheet_173: -1997543688
+      Green Inventory Book SpriteSheet_174: 954323869
+      Green Inventory Book SpriteSheet_175: 1907982801
+      Green Inventory Book SpriteSheet_176: -158071803
+      Green Inventory Book SpriteSheet_177: 1274850340
+      Green Inventory Book SpriteSheet_178: 661493042
+      Green Inventory Book SpriteSheet_179: -1273091821
+      Green Inventory Book SpriteSheet_18: -1009922058
+      Green Inventory Book SpriteSheet_180: 371759192
+      Green Inventory Book SpriteSheet_181: -127520913
+      Green Inventory Book SpriteSheet_182: 486136286
+      Green Inventory Book SpriteSheet_183: -1334629937
+      Green Inventory Book SpriteSheet_184: 415527943
+      Green Inventory Book SpriteSheet_185: -142210704
+      Green Inventory Book SpriteSheet_186: -1475219512
+      Green Inventory Book SpriteSheet_187: -1619191639
+      Green Inventory Book SpriteSheet_188: -87746111
+      Green Inventory Book SpriteSheet_189: 1014726164
+      Green Inventory Book SpriteSheet_19: -1581905629
+      Green Inventory Book SpriteSheet_190: -629481315
+      Green Inventory Book SpriteSheet_191: 113541296
+      Green Inventory Book SpriteSheet_192: -1675132032
+      Green Inventory Book SpriteSheet_193: -182766835
+      Green Inventory Book SpriteSheet_194: -1656139172
+      Green Inventory Book SpriteSheet_195: 519060128
+      Green Inventory Book SpriteSheet_196: -562272574
+      Green Inventory Book SpriteSheet_197: 934560873
+      Green Inventory Book SpriteSheet_198: 245378263
+      Green Inventory Book SpriteSheet_199: -1055025161
+      Green Inventory Book SpriteSheet_2: 2052870178
+      Green Inventory Book SpriteSheet_20: 1324008379
+      Green Inventory Book SpriteSheet_200: -133199385
+      Green Inventory Book SpriteSheet_201: 1484730030
+      Green Inventory Book SpriteSheet_202: 1191492820
+      Green Inventory Book SpriteSheet_203: 1559589672
+      Green Inventory Book SpriteSheet_204: -2074151563
+      Green Inventory Book SpriteSheet_205: 1073493278
+      Green Inventory Book SpriteSheet_206: 694609548
+      Green Inventory Book SpriteSheet_207: -379496090
+      Green Inventory Book SpriteSheet_208: 5846866
+      Green Inventory Book SpriteSheet_209: -938295232
+      Green Inventory Book SpriteSheet_21: 1340267907
+      Green Inventory Book SpriteSheet_210: -1636526263
+      Green Inventory Book SpriteSheet_211: 2141355340
+      Green Inventory Book SpriteSheet_212: -350997175
+      Green Inventory Book SpriteSheet_213: -873917785
+      Green Inventory Book SpriteSheet_214: -838485908
+      Green Inventory Book SpriteSheet_215: -1145770905
+      Green Inventory Book SpriteSheet_216: -1989651222
+      Green Inventory Book SpriteSheet_217: -880534314
+      Green Inventory Book SpriteSheet_218: -1410760981
+      Green Inventory Book SpriteSheet_219: -1064384449
+      Green Inventory Book SpriteSheet_22: -573789283
+      Green Inventory Book SpriteSheet_220: 1955122107
+      Green Inventory Book SpriteSheet_221: -84018821
+      Green Inventory Book SpriteSheet_222: -95668816
+      Green Inventory Book SpriteSheet_223: 1737211996
+      Green Inventory Book SpriteSheet_224: 692475803
+      Green Inventory Book SpriteSheet_225: 423728200
+      Green Inventory Book SpriteSheet_226: -2094393073
+      Green Inventory Book SpriteSheet_227: -1607912053
+      Green Inventory Book SpriteSheet_228: 1164841004
+      Green Inventory Book SpriteSheet_229: 1400554416
+      Green Inventory Book SpriteSheet_23: -1948557633
+      Green Inventory Book SpriteSheet_230: -1772993268
+      Green Inventory Book SpriteSheet_231: 2019474715
+      Green Inventory Book SpriteSheet_232: -385881021
+      Green Inventory Book SpriteSheet_233: -1607279280
+      Green Inventory Book SpriteSheet_234: -347925537
+      Green Inventory Book SpriteSheet_235: 630222400
+      Green Inventory Book SpriteSheet_236: -1595494912
+      Green Inventory Book SpriteSheet_237: -542571093
+      Green Inventory Book SpriteSheet_238: 164345189
+      Green Inventory Book SpriteSheet_239: 2141282993
+      Green Inventory Book SpriteSheet_24: 581076283
+      Green Inventory Book SpriteSheet_240: -789415395
+      Green Inventory Book SpriteSheet_241: -278407637
+      Green Inventory Book SpriteSheet_242: 1447716708
+      Green Inventory Book SpriteSheet_243: -334271360
+      Green Inventory Book SpriteSheet_244: -980673098
+      Green Inventory Book SpriteSheet_245: -1722988297
+      Green Inventory Book SpriteSheet_246: 72164367
+      Green Inventory Book SpriteSheet_247: 1446778896
+      Green Inventory Book SpriteSheet_248: -529900360
+      Green Inventory Book SpriteSheet_249: 825536058
+      Green Inventory Book SpriteSheet_25: -615559360
+      Green Inventory Book SpriteSheet_250: 1280604730
+      Green Inventory Book SpriteSheet_251: -807423885
+      Green Inventory Book SpriteSheet_252: 1480256519
+      Green Inventory Book SpriteSheet_26: -49037222
+      Green Inventory Book SpriteSheet_27: -1544205471
+      Green Inventory Book SpriteSheet_28: 807906677
+      Green Inventory Book SpriteSheet_29: -625976614
+      Green Inventory Book SpriteSheet_3: 2003138571
+      Green Inventory Book SpriteSheet_30: 331469276
+      Green Inventory Book SpriteSheet_31: 1017720999
+      Green Inventory Book SpriteSheet_32: 1201733472
+      Green Inventory Book SpriteSheet_33: -1984910239
+      Green Inventory Book SpriteSheet_34: 193861239
+      Green Inventory Book SpriteSheet_35: -725009946
+      Green Inventory Book SpriteSheet_36: 263642749
+      Green Inventory Book SpriteSheet_37: 1458127187
+      Green Inventory Book SpriteSheet_38: 1275252845
+      Green Inventory Book SpriteSheet_39: 1491432178
+      Green Inventory Book SpriteSheet_4: 1592813975
+      Green Inventory Book SpriteSheet_40: 1621320494
+      Green Inventory Book SpriteSheet_41: -1204167512
+      Green Inventory Book SpriteSheet_42: 631725501
+      Green Inventory Book SpriteSheet_43: -1217147962
+      Green Inventory Book SpriteSheet_44: -2147362647
+      Green Inventory Book SpriteSheet_45: -1070908574
+      Green Inventory Book SpriteSheet_46: -259266046
+      Green Inventory Book SpriteSheet_47: 848398624
+      Green Inventory Book SpriteSheet_48: -1768407491
+      Green Inventory Book SpriteSheet_49: -780121312
+      Green Inventory Book SpriteSheet_5: -1068571353
+      Green Inventory Book SpriteSheet_50: -1654353722
+      Green Inventory Book SpriteSheet_51: 777656225
+      Green Inventory Book SpriteSheet_52: -1141365811
+      Green Inventory Book SpriteSheet_53: -158401471
+      Green Inventory Book SpriteSheet_54: -135544067
+      Green Inventory Book SpriteSheet_55: -1074701963
+      Green Inventory Book SpriteSheet_56: 65088418
+      Green Inventory Book SpriteSheet_57: 545595518
+      Green Inventory Book SpriteSheet_58: 1421447504
+      Green Inventory Book SpriteSheet_59: -1288163354
+      Green Inventory Book SpriteSheet_6: -2033956429
+      Green Inventory Book SpriteSheet_60: 273714096
+      Green Inventory Book SpriteSheet_61: -1422026818
+      Green Inventory Book SpriteSheet_62: 1653804569
+      Green Inventory Book SpriteSheet_63: -1143455163
+      Green Inventory Book SpriteSheet_64: 1881614805
+      Green Inventory Book SpriteSheet_65: -1768784353
+      Green Inventory Book SpriteSheet_66: -711455428
+      Green Inventory Book SpriteSheet_67: -658510687
+      Green Inventory Book SpriteSheet_68: 626938087
+      Green Inventory Book SpriteSheet_69: 945791768
+      Green Inventory Book SpriteSheet_7: -116351103
+      Green Inventory Book SpriteSheet_70: -1136518275
+      Green Inventory Book SpriteSheet_71: -879990554
+      Green Inventory Book SpriteSheet_72: 1264982344
+      Green Inventory Book SpriteSheet_73: 640694964
+      Green Inventory Book SpriteSheet_74: 749060375
+      Green Inventory Book SpriteSheet_75: -1931133417
+      Green Inventory Book SpriteSheet_76: 733414049
+      Green Inventory Book SpriteSheet_77: 1609615207
+      Green Inventory Book SpriteSheet_78: 872044026
+      Green Inventory Book SpriteSheet_79: 729300231
+      Green Inventory Book SpriteSheet_8: -532478352
+      Green Inventory Book SpriteSheet_80: -1547423428
+      Green Inventory Book SpriteSheet_81: 1612682097
+      Green Inventory Book SpriteSheet_82: 358570206
+      Green Inventory Book SpriteSheet_83: 2075068037
+      Green Inventory Book SpriteSheet_84: -861745305
+      Green Inventory Book SpriteSheet_85: -1148235203
+      Green Inventory Book SpriteSheet_86: 1039028309
+      Green Inventory Book SpriteSheet_87: -425287370
+      Green Inventory Book SpriteSheet_88: -1644042313
+      Green Inventory Book SpriteSheet_89: 1167705777
+      Green Inventory Book SpriteSheet_9: 196692954
+      Green Inventory Book SpriteSheet_90: -1730143102
+      Green Inventory Book SpriteSheet_91: 1653240636
+      Green Inventory Book SpriteSheet_92: 456713181
+      Green Inventory Book SpriteSheet_93: -1490525378
+      Green Inventory Book SpriteSheet_94: -1435063496
+      Green Inventory Book SpriteSheet_95: 8232245
+      Green Inventory Book SpriteSheet_96: 1305301144
+      Green Inventory Book SpriteSheet_97: -730526509
+      Green Inventory Book SpriteSheet_98: -1080264299
+      Green Inventory Book SpriteSheet_99: 462232797
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -23,10 +23,10 @@ TagManager:
   - box
   - CheckPoint
   - kill
-  - 
-  - 
-  - 
-  - 
+  - Bomb
+  - LavaTile
+  - BurnWall
+  - WallKillZone
   - 
   - 
   - 
