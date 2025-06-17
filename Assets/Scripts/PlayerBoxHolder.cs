@@ -36,17 +36,7 @@ public class PlayerBoxHolder : MonoBehaviour
         // Pickup/drop logic
         if (Keyboard.current.eKey.wasPressedThisFrame)
         {
-            if (boxHolding == null)
-            {
-                TryPickupBox();
-            }
-            else{
-            
-                boxHolding.GetComponent<BoxCollider2D>().enabled = true;
-                boxHolding = null;
-                
-                
-            }
+            pickUp();
         }
 
         if (boxHolding != null)
@@ -66,6 +56,21 @@ public class PlayerBoxHolder : MonoBehaviour
                 boxHolding.localScale = dimObj.startingScale * holdingSizeMul;
             }
             boxHolding.GetComponent<BoxCollider2D>().enabled = false;
+        }
+    }
+
+    public void pickUp()
+    {
+        if (boxHolding == null)
+        {
+            TryPickupBox();
+        }
+        else{
+            
+            boxHolding.GetComponent<BoxCollider2D>().enabled = true;
+            boxHolding = null;
+                
+                
         }
     }
 
@@ -90,6 +95,12 @@ public class PlayerBoxHolder : MonoBehaviour
         if (closestBox != null && closestBox.GetComponent<DimentionalObjects>().Temp == 0)
         {
             boxHolding = closestBox;
+            DimentionalObjects box = boxHolding.GetComponent<DimentionalObjects>();
+            if (!box.beenInteractedWith)
+            {
+                box.data.Add( player.timeEngine.CurrentTime,new objData(box));
+                box.beenInteractedWith = true;
+            }
             // Start from current position to avoid teleportation
             boxHoldPosition = closestBox.position;
         }

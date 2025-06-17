@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - CheckPoint
+  - Turnstile
   layers:
   - Default
   - TransparentFX
@@ -83,11 +85,11 @@ TagManager:
   - name: New Layer 6
     uniqueID: 3244958257
     locked: 0
-  - name: UI
-    uniqueID: 1556399543
-    locked: 0
   - name: wall
     uniqueID: 24890453
+    locked: 0
+  - name: UI
+    uniqueID: 1556399543
     locked: 0
   m_RenderingLayers:
   - Default

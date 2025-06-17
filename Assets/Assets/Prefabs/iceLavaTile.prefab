@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7355283641489047706}
   - component: {fileID: 7239563572817457465}
   - component: {fileID: 1257881271180279934}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: iceLavaTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2027457639
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 1976954363, guid: 5ab8505f1f538e84da3a0c20c623e0f8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

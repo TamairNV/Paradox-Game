@@ -49,40 +49,13 @@ public class Turnstile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.timeEngine.direction == 1)
-        {
-            if (input.GetComponent<Collider2D>().IsTouching(player.collider))
-            {
-                overTernstile = true;
-            }
-            else
-            {
-                overTernstile = false;
-            }
-        }
-        else
-        {
-            if (output.GetComponent<Collider2D>().IsTouching(player.collider))
-            {
-                overTernstile = true;
-            }
-            else
-            {
-                overTernstile = false;
-            }
-        }
-        if (overTernstile)
+
+        if (Keyboard.current.eKey.isPressed)
         {
             checkForInteraction();
         }
-        else
-        {
-            if (player != null)
-            {
-                player.transform.GetChild(0).gameObject.SetActive(false);   
-            }
-            
-        }
+        
+        
         if (player !=null && animationTimes.Contains(player.timeEngine.CurrentTime))
         {
             if (player.timeEngine.direction == 1 || true)
@@ -112,23 +85,46 @@ public class Turnstile : MonoBehaviour
         
     }
 
-    private bool overTernstile = false;
-    
-
-    private void checkForInteraction()
+    private void LateUpdate()
     {
-
-        if (!working)
+        if (player.timeEngine.direction == 1)
         {
-            player.transform.GetChild(0).gameObject.SetActive(true);   
+            if (input.GetComponent<Collider2D>().IsTouching(player.collider))
+            {
+                overTernstile = true;
+            }
+            else
+            {
+                overTernstile = false;
+            }
         }
         else
         {
-            player.transform.GetChild(0).gameObject.SetActive(false);   
+            if (output.GetComponent<Collider2D>().IsTouching(player.collider))
+            {
+                overTernstile = true;
+            }
+            else
+            {
+                overTernstile = false;
+            }
         }
- 
+
+        if (overTernstile && !working && player.GetComponent<PlayerBoxHolder>().boxHolding == null)
+        {
+            player.InteractButtonOn = true;
+        }
+
+    }
+
+    public bool overTernstile = false;
+    
+
+    
+    public void checkForInteraction()
+    {
         
-        if (!working && Keyboard.current.eKey.isPressed)
+        if (overTernstile && !working && player.GetComponent<PlayerBoxHolder>().boxHolding == null)
         {
             startTime = Time.time;
             working = true; 
@@ -147,9 +143,7 @@ public class Turnstile : MonoBehaviour
             StartCoroutine(reverse());
 
         }
-            
         
-     
     }
 
     IEnumerator reverse()
