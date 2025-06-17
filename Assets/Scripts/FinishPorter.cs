@@ -11,7 +11,7 @@ using UnityEngine.Rendering.Universal;
 
 public class FinishPorter : MonoBehaviour
 {
-    [SerializeField] private Transform spawnPoint;
+
 
     [SerializeField] private int level = 0;
 
@@ -20,6 +20,7 @@ public class FinishPorter : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("player").GetComponent<Player>();
+        
     }
 
     // Update is called once per frame
@@ -60,7 +61,9 @@ public class FinishPorter : MonoBehaviour
             timer += Time.deltaTime;
             yield return new WaitForSeconds(Time.deltaTime);
         }
-        player.transform.position = spawnPoint.position;
+
+        player.transform.position = player.StartPosition;
+        player.resetPlayer();
         timer = 0;
         while (timer < 1)
         {

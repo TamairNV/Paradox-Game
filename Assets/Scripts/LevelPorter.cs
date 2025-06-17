@@ -10,10 +10,11 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 public class LevelPorter : MonoBehaviour
 {
-
+    private SceneLoader sceneLoader;
     [SerializeField] public int LevelNumber;
     
     private Player player;
+
     
     
     
@@ -21,15 +22,14 @@ public class LevelPorter : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("player").GetComponent<Player>();
+        sceneLoader = GameObject.Find("_SceneLoader").GetComponent<SceneLoader>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        
-        
-        
+
     }
 
     public void OnTriggerEnter2D(Collider2D other)
@@ -43,6 +43,8 @@ public class LevelPorter : MonoBehaviour
 
     public IEnumerator SendPlayerToLevel()
     {
+        
+        sceneLoader.LoadLevel("Level_" + LevelNumber);
         Vignette vignette= null;
         ChromaticAberration chromatic = null;
         FilmGrain noise= null;
@@ -86,10 +88,11 @@ public class LevelPorter : MonoBehaviour
         }
 
         player.resetGame();
-
+        
         player.transform.position = Level.Levels[LevelNumber].startLocation.position;
         Level.CurrentLevel = Level.Levels[LevelNumber];
         elapsed = 0;
+        
         while (elapsed < duration)
         {
             float t = elapsed / duration;

@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 6734284078343011822}
   m_Layer: 0
   m_Name: output
-  m_TagString: Untagged
+  m_TagString: Turnstile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -370,7 +370,7 @@ GameObject:
   - component: {fileID: 4194757020620683643}
   m_Layer: 0
   m_Name: input
-  m_TagString: Untagged
+  m_TagString: Turnstile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

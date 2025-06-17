@@ -6,7 +6,7 @@ public class SceneLoader : MonoBehaviour
     // Use a static instance to be able to access this from anywhere
     public static SceneLoader Instance { get; private set; }
 
-    private string currentLoadedLevel;
+    public string currentLoadedLevel;
 
     // This is called when the script instance is being loaded.
     private void Awake()
@@ -23,6 +23,7 @@ public class SceneLoader : MonoBehaviour
 
         // Make this GameObject persistent across scene loads.
         DontDestroyOnLoad(gameObject);
+       
     }
 
     // Call this method to load a new level

@@ -64,6 +64,21 @@ public class CameraController : MonoBehaviour
 
     private void HandleCameraMovement()
     {
+        
+        Vector3 target = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
+        if (timer > autoKickInTime)
+        {
+            
+            transform.position = Vector3.Lerp(transform.position,
+                target,autoSpeed * Time.deltaTime);
+        }
+
+        if (Vector3.Distance(transform.position, target) < 0.05f)
+        {
+            transform.position = target;
+        }
+        timer += Time.deltaTime;
+        return;
         // Mouse input
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
@@ -76,9 +91,9 @@ public class CameraController : MonoBehaviour
         {
             
             Vector3 newPostion = Vector3.Lerp(transform.position, targetPostion ,10 * Time.deltaTime);
-            if (Level.CurrentLevel == null || Level.CurrentLevel.collider.OverlapPoint(newPostion))
+            
+            if ( Level.CurrentLevel == null || Level.CurrentLevel.collider.OverlapPoint(newPostion))
             {
-
                 transform.position = new Vector3(newPostion.x,newPostion.y,transform.position.z);
             }
         }
@@ -101,18 +116,6 @@ public class CameraController : MonoBehaviour
 
 
 
-        Vector3 target = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
-        if (timer > autoKickInTime)
-        {
-            
-            transform.position = Vector3.Lerp(transform.position,
-                target,autoSpeed * Time.deltaTime);
-        }
-
-        if (Vector3.Distance(transform.position, target) < 0.05f)
-        {
-            transform.position = target;
-        }
 
 
             

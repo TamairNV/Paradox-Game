@@ -193,7 +193,11 @@ public class DimentionalObjects : MonoBehaviour
         if (other.gameObject.layer == 13)
         {
             beenInteractedWith = true;
-
+            if (!data.ContainsKey(player.timeEngine.CurrentTime))
+            {
+                data.Add( player.timeEngine.CurrentTime,new objData(this));
+            }
+            
             //other.transform.GetComponent<Player_Controller>().UpdateDimObjects();
         }
 
