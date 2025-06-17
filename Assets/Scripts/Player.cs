@@ -164,6 +164,51 @@ public class Player : MonoBehaviour
 
     private float bombTimer = 0;
 
+    public void reset()
+    {
+        StartCoroutine(CauseParadox());
+    }
+
+    public void GoHome()
+    {
+        StartCoroutine(sendPlayerHome());
+    }
+    private IEnumerator sendPlayerHome()
+    {
+        Vignette vignette= null;
+        volume.profile.TryGet(out vignette);
+        float timer = 0;
+        while (timer < 1)
+        {
+
+            float t = timer / 1f;
+
+            vignette.intensity.Override(t*10f);
+
+            
+            timer += Time.deltaTime;
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+
+        transform.position = StartPosition;
+        resetPlayer();
+        timer = 0;
+        while (timer < 1)
+        {
+
+            float t = timer / 1f;
+            timer += Time.deltaTime;
+            
+            vignette.intensity.Override((1-t)*10f);
+            
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+        resetGame();
+        time = 0;
+        
+        
+    }
+
     
     // Update is called once per frame
     void Update()

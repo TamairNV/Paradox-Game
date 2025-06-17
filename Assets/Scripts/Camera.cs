@@ -36,7 +36,7 @@ public class CameraController : MonoBehaviour
             );
         }
         
-        mainCamera.orthographicSize = minZoom;
+        mainCamera.orthographicSize= 1.6f;
         targetPostion = player.transform.position;
     }
 
