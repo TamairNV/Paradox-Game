@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     
-    private TextMesh text;
+    private Text text;
     private Player player;
     
     
@@ -14,7 +14,7 @@ public class Timer : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1f;
-        text = GetComponent<TextMesh>();
+        text = GetComponent<Text>();
         player = GameObject.Find("player").GetComponent<Player>();
     }
 
