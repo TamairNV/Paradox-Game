@@ -11,6 +11,10 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+
+    [SerializeField] public GameObject InteractButton;
+    public bool InteractButtonOn = false;
+    public Vector3 StartPosition;
     public int lastLevelCompleted = 0;
     [SerializeField] public GameObject doorLine;
     public double time = 0;
@@ -67,8 +71,11 @@ public class Player : MonoBehaviour
     public float EntropyBoxCollideValue = 5;
 
     public float MaxEntropy = 15;
-    
 
+    public void resetPlayer()
+    {
+        DimentionalObjects.Objects = new List<DimentionalObjects>();
+    }
 
     IEnumerator setLine()
     {
@@ -152,10 +159,12 @@ public class Player : MonoBehaviour
             new CheckPoint(0, transform.position, timeEngine.CurrentTime, timeEngine.CurrentDimensionalNode));
 
         StartCoroutine(setLine());
+        StartPosition = transform.position;
     }
 
     private float bombTimer = 0;
 
+    
     // Update is called once per frame
     void Update()
     {
@@ -168,13 +177,7 @@ public class Player : MonoBehaviour
         }
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            if (bombTimer > 0.5f && bombCount > 0)
-            {
-                bombCount--;
-                GameObject b = Instantiate(bomb);
-                b.transform.position = transform.position + (Vector3)(bombPlaceDistance * lastDirection) ;
-                bombTimer = 0;
-            }
+            PlaceBomb();
         }
 
         bombTimer += Time.deltaTime;
@@ -201,6 +204,17 @@ public class Player : MonoBehaviour
         }
         
         
+    }
+
+    public void PlaceBomb()
+    {
+        if (bombTimer > 0.5f && bombCount > 0)
+        {
+            bombCount--;
+            GameObject b = Instantiate(bomb);
+            b.transform.position = transform.position + (Vector3)(bombPlaceDistance * lastDirection) ;
+            bombTimer = 0;
+        }
     }
 
 
@@ -367,8 +381,12 @@ public class Player : MonoBehaviour
 
         if (other.gameObject.layer == 18)
         {
-            StartCoroutine(CauseParadox());
-            print("player hit by bomb");
+            if (other.gameObject.transform.parent.GetComponent<Bomb>().isExploding)
+            {
+                StartCoroutine(CauseParadox());
+                print("player hit by bomb");
+            }
+
         }
 
 

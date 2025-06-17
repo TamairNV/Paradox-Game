@@ -7,13 +7,17 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
 
 public class Player_Controller : MonoBehaviour
 {
+
+    [SerializeField] VariableJoystick variableJoystick;
     [SerializeField] private LayerMask layer;
     [SerializeField] private float distance = 2f;
     [SerializeField] private float sideRayDistance;
     [SerializeField] private Transform flameThrower;
+    [SerializeField] public bool OnMobile = true;
     private Player player;
     private Animator ani;
     private string currentAnimation = "sdsf";
@@ -37,8 +41,10 @@ public class Player_Controller : MonoBehaviour
         ani = GetComponent<Animator>();
         fireParticleSystem = flameThrower.GetChild(0).GetComponent<ParticleSystem>();
         startingFireSpeed = fireParticleSystem.main.startSpeed.constant;
-
+        
     }
+    
+    
 
     // Update is called once per frame
     void Update()
@@ -59,7 +65,97 @@ public class Player_Controller : MonoBehaviour
         float angle = Mathf.Atan2(player.lastDirection.y, player.lastDirection.x) * Mathf.Rad2Deg;
         flameThrower.transform.rotation = Quaternion.Euler(0, 0, angle);
 
+        
+        if (OnMobile)
+        {
+            player.direction = MoveMobile();
+        }
+        else
+        {
+            player.direction = MovePC();
+        }
+
+        TestForInteractions();
+    }
+    
+
+    private void FixedUpdate()
+    {
         Move();
+    }
+
+    private List<Collider2D> touchingTurnstiles = new List<Collider2D>();
+    private List<Collider2D> touchingBoxes = new List<Collider2D>();
+    public void Interact()
+    {
+       
+        if (GetComponent<PlayerBoxHolder>().boxHolding != null)
+        {
+            GetComponent<PlayerBoxHolder>().pickUp();
+        }
+        touchingTurnstiles.Clear();
+        player.collider.GetContacts(touchingTurnstiles);
+        
+        foreach (Collider2D turnstileCollider in touchingTurnstiles)
+        {
+            if (turnstileCollider.CompareTag("Turnstile"))
+            {
+                turnstileCollider.GetComponentInParent<Turnstile>().checkForInteraction();
+                return;
+                
+            }
+        }
+        touchingBoxes.Clear();
+        player.collider.GetContacts(touchingBoxes);
+        
+        foreach (Collider2D boxCollider in touchingBoxes)
+        {
+            if (boxCollider.gameObject.layer == 15)
+            {
+                GetComponent<PlayerBoxHolder>().pickUp();
+                return;
+                
+            }
+        }
+        
+        
+    }
+
+    private void TestForInteractions()
+    {
+        if (GetComponent<PlayerBoxHolder>().boxHolding != null)
+        {
+            player.InteractButton.transform.GetChild(0).GetComponent<Text>().text = "Drop Box";
+            player.InteractButton.SetActive(true);
+            return;
+        }
+        touchingTurnstiles.Clear();
+        player.collider.GetContacts(touchingTurnstiles);
+        
+        foreach (Collider2D turnstileCollider in touchingTurnstiles)
+        {
+            if (turnstileCollider.CompareTag("Turnstile") && turnstileCollider.GetComponentInParent<Turnstile>().overTernstile)
+            {
+                player.InteractButton.transform.GetChild(0).GetComponent<Text>().text = "Enter";
+                player.InteractButton.SetActive(true);
+                return;
+                
+            }
+        }
+        touchingBoxes.Clear();
+        player.collider.GetContacts(touchingBoxes);
+        
+        foreach (Collider2D boxCollider in touchingBoxes)
+        {
+            if (boxCollider.gameObject.layer == 15)
+            {
+                player.InteractButton.transform.GetChild(0).GetComponent<Text>().text = "Pick Up Box";
+                player.InteractButton.SetActive(true);
+                return;
+                
+            }
+        }
+        player.InteractButton.SetActive(false);
     }
 
     bool rayCastHit(String direction)
@@ -88,18 +184,45 @@ public class Player_Controller : MonoBehaviour
     bool anyDirectionPressed()
     {
         return Keyboard.current.sKey.isPressed || Keyboard.current.wKey.isPressed || Keyboard.current.aKey.isPressed ||
-               Keyboard.current.dKey.isPressed;
+               Keyboard.current.dKey.isPressed || Vector2.Distance(variableJoystick.Direction,new Vector2(0,0) ) > 0.1f;
     }
-    
-    void Move()
+
+    Vector2 MoveMobile()
     {
-        player.direction = new Vector2(0, 0);
+        Vector3 d = Vector3.forward * variableJoystick.Vertical + Vector3.right * variableJoystick.Horizontal;
+        Vector2 direction = new Vector2(d.x, d.z);
+
+        if (direction.x < 0 && !rayCastHit("A"))
+        {
+            direction.x = 0;
+        }
+        if (direction.x > 0 && !rayCastHit("D"))
+        {
+            direction.x = 0;
+        }
+        if (direction.y < 0 && !rayCastHit("S"))
+        {
+            direction.y = 0;
+        }
+        if (direction.y > 0 && !rayCastHit("W"))
+        {
+            direction.y = 0;
+        }
+
+        return direction;
+
+
+    }
+
+    Vector2 MovePC()
+    {
+        Vector2 direction = new Vector2(0, 0);
         if (Keyboard.current.aKey.isPressed)
         {
 
             if (rayCastHit("A"))
             {
-                player.direction.x -= 1;
+                direction.x -= 1;
             }
 
             
@@ -110,7 +233,7 @@ public class Player_Controller : MonoBehaviour
         {
             if (rayCastHit("D"))
             {
-                player.direction.x += 1;
+                direction.x += 1;
             }
             
        
@@ -120,7 +243,7 @@ public class Player_Controller : MonoBehaviour
         {
             if (rayCastHit("W"))
             {
-                player.direction.y += 1;
+                direction.y += 1;
             }
 
 
@@ -130,12 +253,17 @@ public class Player_Controller : MonoBehaviour
         {
             if (rayCastHit("S"))
             {
-                player.direction.y -= 1;
+                direction.y -= 1;
             }
-        
-       
         }
 
+        return direction;
+
+    }
+    
+    void Move()
+    {
+        
         if (player.allowedToWalk)
         {
             player.direction = player.direction.normalized;

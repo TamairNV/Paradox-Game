@@ -156,8 +156,12 @@ public class DimentionalPlayer : MonoBehaviour
     {
         if (other.gameObject.layer == 18)
         {
-            StartCoroutine(Player.CauseParadox());
-            print("past self hit by bomb");
+            if (other.gameObject.transform.parent.GetComponent<Bomb>().isExploding)
+            {
+                StartCoroutine(Player.CauseParadox());
+                print("past self hit by bomb");
+            }
+
         }
         if (other.gameObject.layer == 21)
         {

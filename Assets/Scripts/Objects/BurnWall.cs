@@ -32,11 +32,13 @@ public class BurnWall : MonoBehaviour
             {
                 sr.enabled = false;
                 transform.GetChild(0).GetComponent<BoxCollider2D>().enabled = false;
+                transform.GetChild(1).GetComponent<BoxCollider2D>().enabled = false;
             }
             else
             {
                 sr.enabled = true;
                 transform.GetChild(0).GetComponent<BoxCollider2D>().enabled = true;
+                transform.GetChild(1).GetComponent<BoxCollider2D>().enabled = true;
                 
             }
         }
@@ -52,12 +54,14 @@ public class BurnWall : MonoBehaviour
             {
                 sr.enabled = false;
                 transform.GetChild(0).GetComponent<BoxCollider2D>().enabled = false;
+                transform.GetChild(1).GetComponent<BoxCollider2D>().enabled = false;
             
             }
             else
             {
                 sr.enabled = true;
                 transform.GetChild(0).GetComponent<BoxCollider2D>().enabled = true;
+                transform.GetChild(1).GetComponent<BoxCollider2D>().enabled = true;
               
             }
         }

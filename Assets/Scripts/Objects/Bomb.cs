@@ -14,7 +14,7 @@ public class Bomb : MonoBehaviour
     private int direction;
 
     private string currentAnimation = "";
-    
+    public bool isExploding = false;
     
     private Dictionary<int,string> explosionList = new Dictionary<int, string>();
     private SpriteRenderer sr;
@@ -129,7 +129,7 @@ public class Bomb : MonoBehaviour
         
         if (!cancelCountDown)
         {
-            
+            isExploding = true;
             sr.enabled = false;
             if (direction == 1)
             {
@@ -148,6 +148,7 @@ public class Bomb : MonoBehaviour
                 yield return null;
                 if (direction != startDirection)
                 {
+                    isExploding = false;
                     cancelExplosion = true;
                     break;
                 }
@@ -175,6 +176,11 @@ public class Bomb : MonoBehaviour
                     }
                 }
 
+                if (exTimer > animationLength / 2)
+                {
+                    isExploding = false;
+                }
+
             }
             
 
@@ -198,6 +204,7 @@ public class Bomb : MonoBehaviour
             }
             else
             {
+                
                 if (direction == 0)
                 {
                     changeAnimation("explosion_reverse");
@@ -222,6 +229,8 @@ public class Bomb : MonoBehaviour
                         
                     
                 }
+
+                isExploding = false;
 
                 
                 while (exTimer > 0)
@@ -258,7 +267,8 @@ public class Bomb : MonoBehaviour
         {
             changeAnimation("explosion_inverse_reverse");
         }
-        
+
+        isExploding = false;
         List<DimentionalObjects> hitBoxes = new List<DimentionalObjects>();
         float exTimer = 0;
         while (exTimer <= animationLength)
@@ -273,7 +283,7 @@ public class Bomb : MonoBehaviour
                 
                 if (!hitBoxes.Contains(b))
                 {
-                    print(b.name);
+                    
                     hitBoxes.Add(b);
                     if (isHot)
                     {
@@ -288,9 +298,15 @@ public class Bomb : MonoBehaviour
                 }
             }
 
+            if (exTimer > animationLength / 2)
+            {
+                isExploding = true;
+            }
+            
+
         }
         
-        
+        isExploding = false;
         
         sr.enabled = true;
         yield return new WaitForSeconds(countDownTime);
