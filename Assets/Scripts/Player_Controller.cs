@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
@@ -125,7 +126,7 @@ public class Player_Controller : MonoBehaviour
     {
         if (GetComponent<PlayerBoxHolder>().boxHolding != null)
         {
-            player.InteractButton.transform.GetChild(0).GetComponent<Text>().text = "Drop Box";
+            player.InteractButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Drop Box";
             player.InteractButton.SetActive(true);
             return;
         }
@@ -136,7 +137,7 @@ public class Player_Controller : MonoBehaviour
         {
             if (turnstileCollider.CompareTag("Turnstile") && turnstileCollider.GetComponentInParent<Turnstile>().overTernstile)
             {
-                player.InteractButton.transform.GetChild(0).GetComponent<Text>().text = "Enter";
+                player.InteractButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Enter";
                 player.InteractButton.SetActive(true);
                 return;
                 
@@ -149,7 +150,7 @@ public class Player_Controller : MonoBehaviour
         {
             if (boxCollider.gameObject.layer == 15)
             {
-                player.InteractButton.transform.GetChild(0).GetComponent<Text>().text = "Pick Up Box";
+                player.InteractButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Pick Up Box";
                 player.InteractButton.SetActive(true);
                 return;
                 

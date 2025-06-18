@@ -6,7 +6,11 @@ using UnityEngine;
 public class Bomb : MonoBehaviour
 {
     private Animator ani;
-
+    [SerializeField] private AudioClip beep;
+    [SerializeField] private AudioClip beepReverse;
+    [SerializeField] private AudioClip explosionForward;
+    [SerializeField] private AudioClip explosionBackwards;
+    private AudioSource AS;
     [SerializeField] private float countDownTime = 3f;
 
     private Player player;
@@ -63,14 +67,13 @@ public class Bomb : MonoBehaviour
         collider = transform.GetChild(0).GetComponent<CircleCollider2D>();
         StartCoroutine(TriggerExplosion());
         currentMoment = player.timeEngine.CurrentTime;
+        AS = GetComponent<AudioSource>();
     }
 
     private int currentMoment;
     // Update is called once per frame
     void Update()
     {
-
-
         if (currentMoment == player.timeEngine.CurrentTime)
         {
             return;
@@ -115,8 +118,14 @@ public class Bomb : MonoBehaviour
         bool cancelCountDown = false;
         int startDirection = direction;
         float timer = 0;
+        float beepTimer = 0;
         while (timer <= countDownTime)
         {
+            if (timer > beepTimer)
+            {
+                AS.PlayOneShot(beep);
+                beepTimer += 1;
+            }
             yield return null;
             if (direction != startDirection)
             {
@@ -131,13 +140,17 @@ public class Bomb : MonoBehaviour
         {
             isExploding = true;
             sr.enabled = false;
+            AS.PlayOneShot(explosionForward);
             if (direction == 1)
             {
+                
                 changeAnimation("explosion");
+                AS.PlayOneShot(explosionForward);
             }
             else
             {
                 changeAnimation("explosion_inverse");
+                AS.PlayOneShot(explosionBackwards);
             }
 
             List<DimentionalObjects> hitBoxes = new List<DimentionalObjects>();
@@ -189,6 +202,7 @@ public class Bomb : MonoBehaviour
                             
                 if (!explosionList.ContainsKey(player.timeEngine.CurrentTime))
                 {
+                    
                     if (direction == 1)
                     {
                         explosionList.Add(player.timeEngine.CurrentTime, "reverse_explosion");
@@ -204,14 +218,16 @@ public class Bomb : MonoBehaviour
             }
             else
             {
-                
+                AS.PlayOneShot(explosionBackwards);
                 if (direction == 0)
                 {
                     changeAnimation("explosion_reverse");
+                    AS.PlayOneShot(explosionBackwards);
                 }
                 else
                 {
                     changeAnimation("explosion_inverse_reverse");
+                    AS.PlayOneShot(explosionForward);
                 }
               
                 foreach (var box in hitBoxes)
@@ -235,11 +251,24 @@ public class Bomb : MonoBehaviour
                 
                 while (exTimer > 0)
                 {
+
                     exTimer -= Time.deltaTime;
                     yield return null;
                 }
                 sr.enabled = true;
-                yield return new WaitForSeconds(countDownTime);
+                timer = 0;
+                beepTimer = 0;
+                while (timer < countDownTime)
+                {
+                    if (timer < beepTimer)
+                    {
+                        AS.PlayOneShot(beepReverse);
+                        beepTimer--;
+                    }
+                    timer += Time.deltaTime;
+                    yield return null;
+                }
+                
                 sr.enabled = false;
              
             }   
@@ -249,6 +278,11 @@ public class Bomb : MonoBehaviour
         {
             while (timer > 0)
             {
+                if (timer < beepTimer)
+                {
+                    AS.PlayOneShot(beepReverse);
+                    beepTimer--;
+                }
                 timer -= Time.deltaTime;
                 yield return null;
             }
@@ -259,13 +293,16 @@ public class Bomb : MonoBehaviour
     private IEnumerator TriggerReverseExplosion()
     {
         sr.enabled = false;
+        
         if (direction == 0)
         {
             changeAnimation("explosion_reverse");
+            AS.PlayOneShot(explosionBackwards);
         }
         else
         {
             changeAnimation("explosion_inverse_reverse");
+            AS.PlayOneShot(explosionForward);
         }
 
         isExploding = false;
@@ -309,7 +346,19 @@ public class Bomb : MonoBehaviour
         isExploding = false;
         
         sr.enabled = true;
-        yield return new WaitForSeconds(countDownTime);
+        float timer = 0;
+        float beepTimer = 0;
+        while (timer < countDownTime)
+        {
+            if (timer > beepTimer)
+            {
+                AS.PlayOneShot(beepReverse);
+                beepTimer++;
+            }
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        
         sr.enabled = false;
     }
     
