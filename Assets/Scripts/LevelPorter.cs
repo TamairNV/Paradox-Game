@@ -45,66 +45,22 @@ public class LevelPorter : MonoBehaviour
     {
         
         sceneLoader.LoadLevel("Level_" + LevelNumber);
-        Vignette vignette= null;
-        ChromaticAberration chromatic = null;
-        FilmGrain noise= null;
-        LensDistortion distortion= null;
-        Bloom bloom= null; // For screen-space flare effect
+
 
         player.allowedToWalk = false;
-        Volume volume = player.volume;
-
-        // Verify all effects exist
-        bool effectsFound = volume.profile.TryGet(out vignette) &&
-                            volume.profile.TryGet(out chromatic) &&
-                            volume.profile.TryGet(out noise) &&
-                            volume.profile.TryGet(out distortion) &&
-                            volume.profile.TryGet(out bloom);
-
-        if (!effectsFound)
-        {
-            Debug.LogError("Missing required post-processing effects!");
-            yield break;
-        }
-        
-        
         float duration = 2f;
         float elapsed = 0f;
-        float vignetteValue = 0;
-
-        while (elapsed < duration)
-        {
-            float t = elapsed / duration;
-
-         
-            vignetteValue = Mathf.Lerp(0, 6f, t/4f);
-            
-            
-            vignette.intensity.Override(vignetteValue);
+        yield return StartCoroutine(player.RunCircleWipe());
 
 
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
 
         player.resetGame();
         
         player.transform.position = Level.Levels[LevelNumber].startLocation.position;
         Level.CurrentLevel = Level.Levels[LevelNumber];
-        elapsed = 0;
-        
-        while (elapsed < duration)
-        {
-            float t = elapsed / duration;
 
-         
-            vignetteValue = Mathf.Lerp(6f, 0, t);
-            vignette.intensity.Override(vignetteValue);
-            
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-        vignette.intensity.Override(0);
+        yield return new WaitForSeconds(0.5f);
+        yield return StartCoroutine(player.ReverseCircleWipe());
         player.allowedToWalk = true;
         player.time = 0;
         yield return new WaitForSeconds(2f);

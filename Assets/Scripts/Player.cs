@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
@@ -11,7 +12,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-
+    [SerializeField] private SpriteRenderer circleWipe;
     [SerializeField] public GameObject InteractButton;
     public bool InteractButtonOn = false;
     public Vector3 StartPosition;
@@ -64,7 +65,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject bomb;
     [SerializeField] private float bombPlaceDistance = 0.1f;
     public int bombCount = 5;
-    [SerializeField] private Text bombCountText;
+    [SerializeField] private TMP_Text bombCountText;
     [SerializeField] private Image entropyMeter;
     public float Entropy = 0;
     public float EntropyPlayerCollideValue = 5;
@@ -175,35 +176,14 @@ public class Player : MonoBehaviour
     }
     private IEnumerator sendPlayerHome()
     {
-        Vignette vignette= null;
-        volume.profile.TryGet(out vignette);
-        float timer = 0;
-        while (timer < 1)
-        {
-
-            float t = timer / 1f;
-
-            vignette.intensity.Override(t*10f);
-
-            
-            timer += Time.deltaTime;
-            yield return new WaitForSeconds(Time.deltaTime);
-        }
+        yield return StartCoroutine(RunCircleWipe());
 
         transform.position = StartPosition;
         resetPlayer();
-        timer = 0;
-        while (timer < 1)
-        {
 
-            float t = timer / 1f;
-            timer += Time.deltaTime;
-            
-            vignette.intensity.Override((1-t)*10f);
-            
-            yield return new WaitForSeconds(Time.deltaTime);
-        }
+        yield return new WaitForSeconds(0.6f);
         resetGame();
+        yield return StartCoroutine(ReverseCircleWipe());
         time = 0;
         
         
@@ -215,7 +195,7 @@ public class Player : MonoBehaviour
     {
         bombCountText.text = bombCount.ToString();
         entropyMeter.fillAmount = Entropy / MaxEntropy;
-        if (Entropy >=MaxEntropy)
+        if (Entropy >=MaxEntropy && !reseting)
         {
             StartCoroutine(CauseParadox());
             print("Entropy too high");
@@ -269,7 +249,7 @@ public class Player : MonoBehaviour
     public void resetGame()
     {
         allowedToWalk = true;
-
+        Entropy = 0;
 
         // Destroy players created after checkpoint
         DimentionalPlayers.RemoveAll(player =>
@@ -318,6 +298,33 @@ public class Player : MonoBehaviour
         line.transform.position = line.transform.GetComponent<UILineRenderer>().startPosition;
     }
 
+    public float circleWipeSpeed = 2f;
+    public IEnumerator RunCircleWipe()
+    {
+        float radius = 1.5f;
+        
+
+        while (radius > -0.2f)
+        {
+            circleWipe.material.SetFloat("_Radius" , radius);
+            radius -= circleWipeSpeed * Time.deltaTime;
+            yield return null;
+        }
+    }
+    public IEnumerator ReverseCircleWipe()
+    {
+        float radius = -0.2f;
+        
+
+        while (radius < 1.5f)
+        {
+
+            circleWipe.material.SetFloat("_Radius" , radius);
+            radius += circleWipeSpeed * Time.deltaTime;
+            yield return null;
+        }
+    }
+
     public IEnumerator CauseParadox()
     {
         if (IsImmune)
@@ -336,7 +343,7 @@ public class Player : MonoBehaviour
         allowedToWalk = false;
 
         // Verify all effects exist
-        bool effectsFound = volume.profile.TryGet(out vignette) &&
+        bool effectsFound = 
                             volume.profile.TryGet(out chromatic) &&
                             volume.profile.TryGet(out noise) &&
                             volume.profile.TryGet(out distortion) &&
@@ -349,40 +356,33 @@ public class Player : MonoBehaviour
         }
 
         // Initial values
-        float vignetteValue = 0;
+
         float chromaticValue = 0;
         float noiseValue = 0;
         float distortionValue = 0;
         float bloomValue = bloom.intensity.value;
 
         // PHASE 1: Reality distortion buildup (3 seconds)
-        float duration = 3f;
+        float duration = 2f;
         float elapsed = 0f;
-
-        while (elapsed < duration)
+        float radius = 3f;
+        while (elapsed < duration || radius > -0.2f)
         {
+            
+            circleWipe.material.SetFloat("_Radius" , radius);
+            radius -= circleWipeSpeed * Time.deltaTime;
+
             float t = elapsed / duration;
-
-            // Animate all effects simultaneously
-            vignetteValue = Mathf.Lerp(0, 6f, t / 10f);
+            
             chromaticValue = Mathf.Lerp(0, 2, t * 2f); // Chromatic aberration grows faster
-            noiseValue = Mathf.Lerp(0.35f, 0.8f, t);
             distortionValue = Mathf.Lerp(0, -1f, t); // Negative for "implosion" effect
-            bloomValue = Mathf.Lerp(bloom.intensity.value, 10f, t); // Hyper-bright flare
-
-            // Apply values
-            vignette.intensity.Override(vignetteValue);
             chromatic.intensity.Override(chromaticValue);
-            noise.intensity.Override(noiseValue);
             distortion.intensity.Override(distortionValue);
-            bloom.intensity.Override(bloomValue);
 
             elapsed += Time.deltaTime;
             yield return null;
         }
-
-        // PHASE 2: Reality reset (teleport/cleanup)
-        //yield return new WaitForSeconds(0.5f); // Hold at peak distortion
+        
         CheckPoint checkPoint = checkPoints.Last();
         transform.position = checkPoint.location;
         timeEngine.direction = checkPoint.direction;
@@ -390,22 +390,19 @@ public class Player : MonoBehaviour
         time = 0;
         duration = 2f;
         elapsed = 0f;
-
-        while (elapsed < duration)
+   
+        yield return new WaitForSeconds(0.4f);
+        while (elapsed < duration || radius < 1.5f)
         {
+            circleWipe.material.SetFloat("_Radius" , radius);
+            radius += circleWipeSpeed * Time.deltaTime;
+          
             float t = elapsed / duration;
-
-            vignetteValue = Mathf.Lerp(10, 0, t * 2f);
+            
             chromaticValue = Mathf.Lerp(2, 0, t * 1.5f); // Chromatic fades faster
-            noiseValue = Mathf.Lerp(0.8f, 0.35f, t);
             distortionValue = Mathf.Lerp(-1f, 0, t);
-            bloomValue = Mathf.Lerp(10f, bloom.intensity.value, t);
-
-            vignette.intensity.Override(vignetteValue);
             chromatic.intensity.Override(chromaticValue);
-            noise.intensity.Override(noiseValue);
             distortion.intensity.Override(distortionValue);
-            bloom.intensity.Override(bloomValue);
 
             elapsed += Time.deltaTime;
             yield return null;
