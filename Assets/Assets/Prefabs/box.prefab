@@ -79,8 +79,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 72848641
-  m_SortingLayer: 8
+  m_SortingLayerID: -2048659475
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: 998928639, guid: 8af774d21dcdc4264b538882f709c493, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -384,7 +384,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9202073887926948912
 Transform:
   m_ObjectHideFlags: 0
@@ -5154,7 +5154,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 263e3db17a36c524f815367cb62eac25, type: 2}
+  - {fileID: 2100000, guid: 4d13121a93087b940a4dab1fbbf471fb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

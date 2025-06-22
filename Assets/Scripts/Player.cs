@@ -222,7 +222,7 @@ public class Player : MonoBehaviour
             MomentUpdate();
         }
 
-        if (timeEngine.CurrentTime <= 0)
+        if (timeEngine.CurrentTime <= 0 && !reseting)
         {
             StartCoroutine(CauseParadox());
             print("time went negative");
@@ -423,7 +423,7 @@ public class Player : MonoBehaviour
 
         if (other.gameObject.layer == 18)
         {
-            if (other.gameObject.transform.parent.GetComponent<Bomb>().isExploding)
+            if (other.gameObject.transform.parent.GetComponent<Bomb>().isExploding && !reseting)
             {
                 StartCoroutine(CauseParadox());
                 print("player hit by bomb");
@@ -444,7 +444,7 @@ public class Player : MonoBehaviour
                 Entropy += EntropyBoxCollideValue * Time.deltaTime;
             }
 
-            if (box.Temp == 1)
+            if (box.Temp == 1 && !reseting)
             {
                 StartCoroutine(CauseParadox());
                 print("Player burnt by object");

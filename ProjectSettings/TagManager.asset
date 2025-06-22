@@ -29,7 +29,7 @@ TagManager:
   - LavaTile
   - BurnWall
   - WallKillZone
-  - 
+  - Lift
   - 
   - 
   - 
@@ -42,6 +42,15 @@ TagManager:
   m_SortingLayers:
   - name: invis
     uniqueID: 2267509657
+    locked: 0
+  - name: lift
+    uniqueID: 2700330581
+    locked: 0
+  - name: lift_person
+    uniqueID: 1270267745
+    locked: 0
+  - name: lift_doors
+    uniqueID: 4094272329
     locked: 0
   - name: floor
     uniqueID: 3184121811
