@@ -39,6 +39,12 @@ public class FinishPorter : MonoBehaviour
                 player.lastLevelCompleted = level;
                 
             }
+            Animator ani = GetComponent<Animator>();
+            if (ani != null)
+            {
+                ani.enabled = true;
+            }
+            
 
             StartCoroutine(sendPlayer());
 
@@ -47,34 +53,14 @@ public class FinishPorter : MonoBehaviour
 
     private IEnumerator sendPlayer()
     {
-        Vignette vignette= null;
-        player.volume.profile.TryGet(out vignette);
-        float timer = 0;
-        while (timer < 1)
-        {
-
-            float t = timer / 1f;
-
-            vignette.intensity.Override(t*10f);
-
-            
-            timer += Time.deltaTime;
-            yield return new WaitForSeconds(Time.deltaTime);
-        }
+        yield return new WaitForSeconds(0.4f);
+        yield return StartCoroutine(player.RunCircleWipe());
+        
 
         player.transform.position = player.StartPosition;
         player.resetPlayer();
-        timer = 0;
-        while (timer < 1)
-        {
-
-            float t = timer / 1f;
-            timer += Time.deltaTime;
-            
-            vignette.intensity.Override((1-t)*10f);
-            
-            yield return new WaitForSeconds(Time.deltaTime);
-        }
+        yield return new WaitForSeconds(0.75f);
+        yield return StartCoroutine(player.ReverseCircleWipe());
         player.resetGame();
         player.time = 0;
         

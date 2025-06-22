@@ -446,80 +446,9 @@ public class Player_Controller : MonoBehaviour
         }
     }
 
-    public float getInLiftSpeed = 2;
-    public float liftSpeed = 5;
-    [SerializeField] public GameObject playerShadow;
-    IEnumerator EnterLift(Transform lift)
-    {
-       float  timer = 0;
-        player.allowedToWalk = false;
-        while (Vector3.Distance(player.transform.position, lift.GetChild(1).position) > 0.01f && timer < 1f)
-        {
-            player.transform.position =
-                Vector3.Lerp(player.transform.position, lift.position, getInLiftSpeed * Time.deltaTime);
-            timer += Time.deltaTime;
-            yield return null;
-        }
-
-        player.transform.position = lift.GetChild(1).position;
-
-        player.direction = new Vector3(0, -1, 0);
-        player.lastDirection = new Vector3(0, -1, 0);
-        AnimateMovement();
-        Transform liftDoors = lift.GetChild(0);
-        liftDoors.GetComponent<Animator>().Play("doorClose");
-        transform.GetComponent<SpriteRenderer>().sortingLayerName = "lift_person";
-        playerShadow.SetActive(false);
-        yield return new WaitForSeconds(1.2f);
-        
-
-
-        gameObject.layer = 4;
-        lift.gameObject.layer = 5;
-        liftDoors.gameObject.layer = 6;
-        Vector3 distance = new Vector3(0,0,0);
-        
-        Vector3 startPosition = new Vector3(lift.position.x, lift.position.y, lift.position.z);
-        timer = 0;
-        CameraController cam = Camera.main.transform.GetComponent<CameraController>();
-        cam.enabled = false;
-        while (timer < 1f)
-        {
-            timer += Time.deltaTime;
-            Vector3 movement =  Vector3.down * liftSpeed * Time.deltaTime;
-            distance += movement;
-            player.transform.position += movement;
-            lift.position += movement;
-            yield return null;
-        }
-        yield return StartCoroutine(player.RunCircleWipe());
-
-        yield return new WaitForSeconds(0.6f);
-        lift.position = startPosition;
-        transform.GetComponent<SpriteRenderer>().sortingLayerName = "Player";
-        yield return StartCoroutine(player.ReverseCircleWipe());
-        
-        player.allowedToWalk = true;
-        playerShadow.SetActive(true);
-        cam.enabled = true;
 
 
 
-
-    }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.gameObject.layer == 22)
-        {
-            if (Keyboard.current.eKey.wasPressedThisFrame)
-            {
-                print("lift");
-                StartCoroutine(EnterLift(other.transform));
-            }
-
-        }
-    }
 
     public void UseEntropyReverser()
     {

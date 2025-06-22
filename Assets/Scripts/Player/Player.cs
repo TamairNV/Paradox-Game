@@ -23,7 +23,8 @@ public class Player : MonoBehaviour
     [HideInInspector] public Vector3 jumpStartPosition;
     [HideInInspector] public Vector3 jumpPeakPosition;
     [HideInInspector] public Vector3 jumpTargetPosition;
-
+    [SerializeField] public GameObject shadow;
+    
     public bool hasFlamethrower = false;
 
     //[SerializeField] public List<DimentionalObjects> DimentionalObjects = new List<DimentionalObjects>();
@@ -439,7 +440,7 @@ public class Player : MonoBehaviour
         if (other.gameObject.layer == 15)
         {
             DimentionalObjects box = other.GetComponent<DimentionalObjects>();
-            if(box.beenInteractedWith && box.data.ContainsKey(timeEngine.CurrentTime))
+            if(box.beenInteractedWith && box.data.ContainsKey(timeEngine.CurrentTime) && !IsImmune)
             {
                 Entropy += EntropyBoxCollideValue * Time.deltaTime;
             }
@@ -452,7 +453,7 @@ public class Player : MonoBehaviour
             
         }
 
-        if (other.gameObject.layer == 12)
+        if (other.gameObject.layer == 12 && !IsImmune)
         {
             Entropy += EntropyPlayerCollideValue * Time.deltaTime;
             
