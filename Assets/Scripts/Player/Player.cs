@@ -12,6 +12,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] public GameObject Book;
     [SerializeField] private SpriteRenderer circleWipe;
     [SerializeField] public GameObject InteractButton;
     public bool InteractButtonOn = false;
@@ -146,10 +147,15 @@ public class Player : MonoBehaviour
         return dimPlayer.GetComponent<DimentionalPlayer>();
     }
 
+    private void Awake()
+    {
+
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        
         collider = GetComponent<Collider2D>();
 
 
@@ -162,6 +168,22 @@ public class Player : MonoBehaviour
 
         StartCoroutine(setLine());
         StartPosition = transform.position;
+        
+        
+        StartCoroutine(LoadDataAfterStart());
+    }
+
+
+    private IEnumerator LoadDataAfterStart()
+    {
+      
+        yield return null; 
+
+        
+        LevelSaveData.LoadAllData();
+       
+        LevelPorter.ReadSaveData();
+        
     }
 
     private float bombTimer = 0;
@@ -194,6 +216,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Book.activeSelf)
+        {
+            return;
+        }
         bombCountText.text = bombCount.ToString();
         entropyMeter.fillAmount = Entropy / MaxEntropy;
         if (Entropy >=MaxEntropy && !reseting)
@@ -259,11 +285,7 @@ public class Player : MonoBehaviour
             return true;
         });
 
-        // Reset objects
-        //objDatas = new Dictionary<int, List<Tuple<int, objData>>>();
 
-
-        // Final cleanup
         foreach (var bridge in Bridge.Bridges)
         {
             bridge.reset();

@@ -20,7 +20,11 @@ public class Timer : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {       if (player.Book.activeSelf)
+        {
+            text.text = "0:00";
+            return;
+        }
         if (player.timeEngine.direction == 1)
         {
             player.time += Time.deltaTime;

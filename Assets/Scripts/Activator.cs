@@ -150,20 +150,6 @@ public class Activator : MonoBehaviour
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public static Color GetColorFromNumber(int number)
     {
         // Use a consistent seed for the same number

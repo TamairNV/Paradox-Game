@@ -50,6 +50,10 @@ public class Player_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if  (player.Book.activeSelf)
+        {
+            return;
+        }
         //Debugging code 
         foreach (var direction in directions)
         {
@@ -87,6 +91,7 @@ public class Player_Controller : MonoBehaviour
 
     private List<Collider2D> touchingTurnstiles = new List<Collider2D>();
     private List<Collider2D> touchingBoxes = new List<Collider2D>();
+    private List<Collider2D> collectables = new List<Collider2D>();
     public void Interact()
     {
        
@@ -116,6 +121,16 @@ public class Player_Controller : MonoBehaviour
                 GetComponent<PlayerBoxHolder>().pickUp();
                 return;
                 
+            }
+        }
+        collectables.Clear();
+        player.collider.GetContacts(collectables);
+        foreach (var collectable in collectables)
+        {
+            if (collectable.gameObject.layer == 23)
+            {
+                collectable.transform.GetComponent<Collectable>().pickUp();
+                return;
             }
         }
         
@@ -154,6 +169,17 @@ public class Player_Controller : MonoBehaviour
                 player.InteractButton.SetActive(true);
                 return;
                 
+            }
+        }
+        collectables.Clear();
+        player.collider.GetContacts(collectables);
+        foreach (var collectable in collectables)
+        {
+            if (collectable.gameObject.layer == 23)
+            {
+                player.InteractButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Collect";
+                player.InteractButton.SetActive(true);
+                return;
             }
         }
         player.InteractButton.SetActive(false);
@@ -433,6 +459,49 @@ public class Player_Controller : MonoBehaviour
         else animName = "idle_gun_right_down"; // (No pure right)
 
         changeAnimation(animName);
+    }
+
+    public void RunCloseBook()
+    {
+        StartCoroutine(closeBook());
+    }
+
+    IEnumerator closeBook()
+    {
+        player.Book.GetComponent<Animator>().Play("bookclose");
+        yield return new WaitForSeconds(0.6f);
+        Vector3 startPos = player.Book.transform.position;
+        float speed = 10;
+        float t = 0;
+        while (t < 0.6f)
+        {
+            player.Book.transform.position += Vector3.down * speed * Time.deltaTime;
+            t += Time.deltaTime;
+            yield return null;
+        }
+        
+        player.Book.SetActive(false);
+        player.Book.transform.position = startPos;
+    }
+
+    public IEnumerator openBook()
+    {
+        float speed = 10;
+        Vector3 startPos = player.Book.transform.position;
+        player.Book.transform.position +=Vector3.down * speed * Time.deltaTime*60;
+        player.Book.SetActive(true);
+        float t = 0;
+        while (t < 0.6f)
+        {
+            player.Book.transform.position =
+                Vector3.Lerp(player.Book.transform.position, startPos, speed * Time.deltaTime);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        player.Book.GetComponent<Animator>().Play("bookopen");
+        yield return new WaitForSeconds(0.6f);
+        
+        player.Book.transform.position = startPos;
     }
     
 
