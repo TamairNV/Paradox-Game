@@ -158,6 +158,7 @@ public class Player : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Application.targetFrameRate = 500;
         QuoteMaker = GetComponent<Quotes>();
         collider = GetComponent<Collider2D>();
 
@@ -174,6 +175,12 @@ public class Player : MonoBehaviour
         
         
         StartCoroutine(LoadDataAfterStart());
+    }
+
+    public void DeleteSave()
+    {
+        LevelSaveData.deleteAllData();
+
     }
 
 

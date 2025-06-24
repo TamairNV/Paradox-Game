@@ -75,6 +75,13 @@ public class LevelSaveData
 
     }
 
+    public static void deleteAllData()
+    {
+        SaveData = new List<LevelSaveData>();
+        string json = JsonUtility.ToJson("", true);
+        File.WriteAllText(path, json);
+    }
+
     public static void SaveAllData()
     {
         // Create a wrapper for proper JSON serialization
