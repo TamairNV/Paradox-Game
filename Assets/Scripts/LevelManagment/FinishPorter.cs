@@ -25,7 +25,7 @@ public class FinishPorter : MonoBehaviour
 
     private IEnumerator loadSprite()
     {
-        while (Level.CurrentLevel == null)
+        while (Level.CurrentLevel == null ||  Level.CurrentLevel.FinishItemSprite == null)
         {
             yield return null;
         }
@@ -78,7 +78,6 @@ public class FinishPorter : MonoBehaviour
         Camera.main.transform.position = new Vector3(player.transform.position.x,player.transform.position.y,Camera.main.transform.position.z);
         yield return new WaitForSeconds(0.75f);
         Level.CurrentLevel = null;
-        Level.Levels.Clear();
         player.resetGame();
         player.time = 0;
         yield return StartCoroutine(player.ReverseCircleWipe());

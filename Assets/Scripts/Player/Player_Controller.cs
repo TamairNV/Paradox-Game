@@ -92,6 +92,7 @@ public class Player_Controller : MonoBehaviour
     private List<Collider2D> touchingTurnstiles = new List<Collider2D>();
     private List<Collider2D> touchingBoxes = new List<Collider2D>();
     private List<Collider2D> collectables = new List<Collider2D>();
+    private List<Collider2D> lifts = new List<Collider2D>();
     public void Interact()
     {
        
@@ -130,6 +131,16 @@ public class Player_Controller : MonoBehaviour
             if (collectable.gameObject.layer == 23)
             {
                 collectable.transform.GetComponent<Collectable>().pickUp();
+                return;
+            }
+        }
+        lifts.Clear();
+        player.collider.GetContacts(lifts);
+        foreach (var lift in lifts)
+        {
+            if (lift.gameObject.layer == 22)
+            {
+                StartCoroutine(lift.GetComponent<Lift>().EnterLift());
                 return;
             }
         }
@@ -178,6 +189,30 @@ public class Player_Controller : MonoBehaviour
             if (collectable.gameObject.layer == 23)
             {
                 player.InteractButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Collect";
+                player.InteractButton.SetActive(true);
+                return;
+            }
+        }
+        
+        collectables.Clear();
+        player.collider.GetContacts(collectables);
+        foreach (var collectable in collectables)
+        {
+            if (collectable.gameObject.layer == 23)
+            {
+                player.InteractButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Collect";
+                player.InteractButton.SetActive(true);
+                return;
+            }
+        }
+        
+        lifts.Clear();
+        player.collider.GetContacts(lifts);
+        foreach (var lift in lifts)
+        {
+            if (lift.gameObject.layer == 22 && player.lastLevelCompleted >= lift.gameObject.GetComponent<Lift>().MinLevel)
+            {
+                player.InteractButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Enter";
                 player.InteractButton.SetActive(true);
                 return;
             }

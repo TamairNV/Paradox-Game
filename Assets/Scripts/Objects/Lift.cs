@@ -20,6 +20,7 @@ public class Lift : MonoBehaviour
     private Player player;
     private BoxCollider2D boxCollider;
     private CapsuleCollider2D playerCollider;
+    [SerializeField] public int MinLevel = 0;
 
     public bool playerOver = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -43,7 +44,7 @@ public class Lift : MonoBehaviour
             playerOver = false;
         }
 
-        if (playerOver && Keyboard.current.eKey.wasPressedThisFrame)
+        if (playerOver && Keyboard.current.eKey.wasPressedThisFrame && player.lastLevelCompleted >= MinLevel)
         {
 
             StartCoroutine(EnterLift());
@@ -51,7 +52,7 @@ public class Lift : MonoBehaviour
         }
     }
 
-    IEnumerator EnterLift()
+    public IEnumerator EnterLift()
     {
         Transform lift = transform.GetChild(0);
         float  timer = 0;

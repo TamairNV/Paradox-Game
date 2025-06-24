@@ -1,16 +1,14 @@
-using System;
+
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine;
-using System.Collections.Generic;
+
 using System.IO;
-using System.Linq;
-using TouchPhase = UnityEngine.InputSystem.TouchPhase;
+
 public class Level : MonoBehaviour
 {
 
-    public static Dictionary<int, Level> Levels = new Dictionary<int, Level>();
+    
     public static Level CurrentLevel;
     [SerializeField] public int LevelNumber;
     [SerializeField] public Transform startLocation;
@@ -25,7 +23,7 @@ public class Level : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        Levels.Add(LevelNumber,this);
+        CurrentLevel = this;
         collider = GetComponent<BoxCollider2D>();
 
     }
@@ -103,14 +101,6 @@ public class LevelSaveData
             {
                 SaveData.AddRange(wrapper.data);
                 
-                foreach (var levelData in SaveData)
-                {
-                    if (Level.Levels.TryGetValue(levelData.levelNumber, out Level levelToLoad))
-                    {
-                        levelToLoad.hasCollectedBlueprint = levelData.hasCollectedBlueprint;
-                        levelToLoad.completed = levelData.completed;
-                    }
-                }
             }
         }
     }

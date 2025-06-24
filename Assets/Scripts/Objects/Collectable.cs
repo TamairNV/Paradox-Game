@@ -18,7 +18,7 @@ public class Collectable : MonoBehaviour
     }
     private IEnumerator loadBlueprintSprite()
     {
-        while (Level.CurrentLevel == null)
+        while (Level.CurrentLevel == null || Level.CurrentLevel.BlueprintSprite == null)
         {
             yield return null;
         }

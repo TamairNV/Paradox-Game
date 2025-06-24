@@ -24,6 +24,9 @@ public class Player : MonoBehaviour
     [HideInInspector] public Vector3 jumpStartPosition;
     [HideInInspector] public Vector3 jumpPeakPosition;
     [HideInInspector] public Vector3 jumpTargetPosition;
+
+    [HideInInspector]
+    public Quotes QuoteMaker;
     [SerializeField] public GameObject shadow;
     
     public bool hasFlamethrower = false;
@@ -33,7 +36,7 @@ public class Player : MonoBehaviour
     public List<DimentionalPlayer> DimentionalPlayers = new List<DimentionalPlayer>();
 
     public bool isMoving;
-
+    
     [SerializeField] public float speed = 100;
 
     [SerializeField] public GameObject DimPlayer;
@@ -155,7 +158,7 @@ public class Player : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        QuoteMaker = GetComponent<Quotes>();
         collider = GetComponent<Collider2D>();
 
 
@@ -190,11 +193,13 @@ public class Player : MonoBehaviour
 
     public void reset()
     {
+        Level.CurrentLevel = null;
         StartCoroutine(CauseParadox());
     }
 
     public void GoHome()
     {
+        Level.CurrentLevel = null;
         StartCoroutine(sendPlayerHome());
     }
     private IEnumerator sendPlayerHome()
@@ -275,6 +280,7 @@ public class Player : MonoBehaviour
 
     public void resetGame()
     {
+        
         allowedToWalk = true;
         Entropy = 0;
 
@@ -325,7 +331,7 @@ public class Player : MonoBehaviour
     public IEnumerator RunCircleWipe()
     {
         float radius = 1.5f;
-        
+        QuoteMaker.GenerateNewQuote();
 
         while (radius > -0.2f)
         {

@@ -90,15 +90,12 @@ public class LevelPorter : MonoBehaviour
 
 
         player.allowedToWalk = false;
-        float duration = 2f;
-        float elapsed = 0f;
         yield return StartCoroutine(player.RunCircleWipe());
 
 
 
         
-        player.transform.position = Level.Levels[LevelNumber].startLocation.position;
-        Level.CurrentLevel = Level.Levels[LevelNumber];
+        player.transform.position = Level.CurrentLevel.startLocation.position;
         Level.CurrentLevel.hasCollectedBlueprint = hasCollectedBlueprint;
         Level.CurrentLevel.FinishItemSprite = FinishItem.GetComponent<SpriteRenderer>().sprite;
         Level.CurrentLevel.BlueprintSprite = Blueprint.GetComponent<SpriteRenderer>().sprite;
