@@ -20,9 +20,11 @@ public class Timer : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {       if (player.Book.activeSelf)
+    
+    {
+        text.text = Math.Round(player.time, 1).ToString("0.0");
+        if (player.Book.bookOpen)
         {
-            text.text = "0:00";
             return;
         }
         if (player.timeEngine.direction == 1)
@@ -39,6 +41,6 @@ public class Timer : MonoBehaviour
             player.time = 0;
         }
         
-        text.text = Math.Round(player.time, 1).ToString("0.0");
+        
     }
 }

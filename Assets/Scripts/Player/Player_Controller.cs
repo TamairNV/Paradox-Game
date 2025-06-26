@@ -50,7 +50,7 @@ public class Player_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if  (player.Book.activeSelf)
+        if  (player.Book.bookOpen)
         {
             return;
         }
@@ -496,49 +496,8 @@ public class Player_Controller : MonoBehaviour
         changeAnimation(animName);
     }
 
-    public void RunCloseBook()
-    {
-        StartCoroutine(closeBook());
-    }
 
-    IEnumerator closeBook()
-    {
-        player.Book.GetComponent<Animator>().Play("bookclose");
-        yield return new WaitForSeconds(0.6f);
-        Vector3 startPos = player.Book.transform.position;
-        float speed = 10;
-        float t = 0;
-        while (t < 0.6f)
-        {
-            player.Book.transform.position += Vector3.down * speed * Time.deltaTime;
-            t += Time.deltaTime;
-            yield return null;
-        }
-        
-        player.Book.SetActive(false);
-        player.Book.transform.position = startPos;
-    }
 
-    public IEnumerator openBook()
-    {
-        float speed = 10;
-        Vector3 startPos = player.Book.transform.position;
-        player.Book.transform.position +=Vector3.down * speed * Time.deltaTime*60;
-        player.Book.SetActive(true);
-        float t = 0;
-        while (t < 0.6f)
-        {
-            player.Book.transform.position =
-                Vector3.Lerp(player.Book.transform.position, startPos, speed * Time.deltaTime);
-            t += Time.deltaTime;
-            yield return null;
-        }
-        player.Book.GetComponent<Animator>().Play("bookopen");
-        yield return new WaitForSeconds(0.6f);
-        
-        player.Book.transform.position = startPos;
-    }
-    
 
 
     public void changeAnimation(string animation)

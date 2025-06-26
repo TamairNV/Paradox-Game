@@ -75,7 +75,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2143581691
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -1908264506, guid: ad80eb2d10adb4234ad9d29766bb0db7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -237,7 +237,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1319915035
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 1649310248, guid: 180667e63e2154482a4bbc2f70346d7c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -326,11 +326,11 @@ AudioSource:
   m_GameObject: {fileID: 1816930398230850622}
   m_Enabled: 0
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -7110492940474642831, guid: f774819af6cde024290ec35969fe4516, type: 2}
   m_audioClip: {fileID: 8300000, guid: f9b627405a3127940b744cc955a05d4c, type: 3}
   m_Resource: {fileID: 8300000, guid: f9b627405a3127940b744cc955a05d4c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.629
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -427,7 +427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistance: 3
-  maxVolume: 1
+  maxVolume: 0.6
 --- !u!1 &8535796562737469648
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,7 +503,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2143581691
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 274824149, guid: ad80eb2d10adb4234ad9d29766bb0db7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

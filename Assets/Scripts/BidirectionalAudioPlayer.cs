@@ -17,6 +17,9 @@ public class BidirectionalAudioPlayer : MonoBehaviour
     void Start()
     {
         clipLength = forwardClip.length;
+        
+        audioSource.clip = reversedClip;
+        
         audioSource.clip = forwardClip;
         audioSource.loop = false;
         audioSource.Play();

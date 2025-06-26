@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,7 +9,7 @@ using System.IO;
 public class Level : MonoBehaviour
 {
 
-    
+    public Player player;
     public static Level CurrentLevel;
     [SerializeField] public int LevelNumber;
     [SerializeField] public Transform startLocation;
@@ -19,13 +20,19 @@ public class Level : MonoBehaviour
     public bool completed = false;
     [HideInInspector]
     public Collider2D collider;
-    
+    public bool addedToBook = false;
+    public bool starAddedToBook = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         CurrentLevel = this;
         collider = GetComponent<BoxCollider2D>();
 
+    }
+
+    private void Start()
+    {
+        player = GameObject.Find("player").GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -54,6 +61,9 @@ public class LevelSaveData
     public int levelNumber;
     public bool completed;
     public bool hasCollectedBlueprint;
+    public float EntropyAtEnd;
+    public bool addedToBook;
+    public bool starAddedToBook;
 
     public LevelSaveData(Level level)
     {
@@ -64,6 +74,9 @@ public class LevelSaveData
                 d.levelNumber = level.LevelNumber;
                 d.completed = level.completed;
                 d.hasCollectedBlueprint = level.hasCollectedBlueprint;
+                d.EntropyAtEnd = level.player.Entropy;
+                d.addedToBook = level.addedToBook;
+                d.starAddedToBook = level.starAddedToBook;
                 return;
             }
 
@@ -71,6 +84,9 @@ public class LevelSaveData
         levelNumber = level.LevelNumber;
         completed = level.completed;
         hasCollectedBlueprint = level.hasCollectedBlueprint;
+        EntropyAtEnd = level.player.Entropy;
+        addedToBook = level.addedToBook;
+        starAddedToBook = level.starAddedToBook;
         SaveData.Add(this);
 
     }

@@ -70,6 +70,7 @@ public class FinishPorter : MonoBehaviour
     {
         reseting = true;
         yield return StartCoroutine(player.RunCircleWipe());
+        StartCoroutine(player.Book.GetComponent<Book>().openBook("progress"));
         
 
         

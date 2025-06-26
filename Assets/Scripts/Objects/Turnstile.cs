@@ -46,6 +46,17 @@ public class Turnstile : MonoBehaviour
         }
     }
 
+
+    private bool isDimPlayerInside = false;
+    private IEnumerator runDimPlayerAni()
+    {
+        isDimPlayerInside = true;
+        changeAnimation("door");
+
+        yield return new WaitForSeconds(2.1f);
+        isDimPlayerInside = false;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -58,10 +69,10 @@ public class Turnstile : MonoBehaviour
         
         if (player !=null && animationTimes.Contains(player.timeEngine.CurrentTime))
         {
-            if (player.timeEngine.direction == 1 || true)
-            {
-                changeAnimation("door");
-            }
+
+            StartCoroutine(runDimPlayerAni());
+
+            
    
         }
         
@@ -71,14 +82,14 @@ public class Turnstile : MonoBehaviour
             lastLink = player.timeEngine.CurrentDimensionalNode.SameTimeNodes;
         }
         
-        if (working && !inReverser)
+        if (working && !inReverser && !isDimPlayerInside)
         {
             float timeElapsed = Time.time - startTime;
             float t = Mathf.SmoothStep(0, 1, timeElapsed / totalTime);
             player.transform.position = Vector3.Lerp(player.transform.position, goToPosition, t);
         }
 
-        if (working &&  Vector3.Distance(player.transform.position, goToPosition) < 0.01f)
+        if (working &&  Vector3.Distance(player.transform.position, goToPosition) < 0.01f && !isDimPlayerInside)
         {
             inReverser = true;
         }
@@ -124,7 +135,7 @@ public class Turnstile : MonoBehaviour
     public void checkForInteraction()
     {
         
-        if (overTernstile && !working && player.GetComponent<PlayerBoxHolder>().boxHolding == null)
+        if (overTernstile && !working && player.GetComponent<PlayerBoxHolder>().boxHolding == null && !isDimPlayerInside)
         {
             startTime = Time.time;
             working = true; 
@@ -157,11 +168,11 @@ public class Turnstile : MonoBehaviour
         animationTimes.Add(player.timeEngine.CurrentTime);
         if (player.timeEngine.direction == 1)
         {
-            animationTimes.Add(player.timeEngine.CurrentTime+ (int)player.MomentRate * 2); 
+            animationTimes.Add(player.timeEngine.CurrentTime+ (int)(player.MomentRate * 2.1f)); 
         }
         else
         {
-            animationTimes.Add(player.timeEngine.CurrentTime- (int)player.MomentRate * 2);
+            animationTimes.Add(player.timeEngine.CurrentTime- (int)(player.MomentRate * 2.1f));
         }
         
         yield return new WaitForSeconds(1f);
@@ -180,7 +191,7 @@ public class Turnstile : MonoBehaviour
         yield return new WaitForSeconds(1f);
         player.allowedToWalk = true;
         
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(4f);
         working = false;
         inReverser = false;
     }

@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 6006824371713871609}
   - component: {fileID: 4490431173395893946}
   - component: {fileID: 6180679352242650776}
-  - component: {fileID: 8817937791905228252}
+  - component: {fileID: 7494220596241231515}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -62,7 +62,7 @@ Transform:
   m_GameObject: {fileID: 8180602998338863541}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.087, y: 0.108, z: 0}
+  m_LocalPosition: {x: 0.0111, y: 0.0321, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -154,7 +154,7 @@ AudioSource:
   m_GameObject: {fileID: 8180602998338863541}
   m_Enabled: 0
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -7110492940474642831, guid: f774819af6cde024290ec35969fe4516, type: 2}
   m_audioClip: {fileID: 8300000, guid: c493e09036dc35b488678cb2d06b064e, type: 3}
   m_Resource: {fileID: 8300000, guid: c493e09036dc35b488678cb2d06b064e, type: 3}
   m_PlayOnAwake: 1
@@ -255,8 +255,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
---- !u!58 &8817937791905228252
-CircleCollider2D:
+--- !u!61 &7494220596241231515
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -289,5 +289,15 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0000009536743, y: 0}
-  m_Radius: 0.07999999
+  m_Offset: {x: 0.008762509, y: -0.007592663}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.16, y: 0.15}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.235882, y: 0.13481468}
+  m_EdgeRadius: 0

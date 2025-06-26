@@ -11,14 +11,16 @@ using UnityEngine.Rendering.Universal;
 public class LevelPorter : MonoBehaviour
 {
 
-    private static Dictionary<int, LevelPorter> levelPorters = new Dictionary<int,LevelPorter>();
+    public static Dictionary<int, LevelPorter> levelPorters = new Dictionary<int,LevelPorter>();
     private SceneLoader sceneLoader;
     [SerializeField] public int LevelNumber;
-    [SerializeField] private GameObject Blueprint;
-    [SerializeField] private GameObject FinishItem;
+    [SerializeField] public GameObject Blueprint;
+    [SerializeField] public GameObject FinishItem;
+    [SerializeField] public float TargetEntropy = 0.5f;
     private bool hasCollectedBlueprint = false;
     private bool completed = false;
     private Player player;
+    
 
     
     
@@ -29,8 +31,13 @@ public class LevelPorter : MonoBehaviour
         levelPorters[LevelNumber] = this;
         player = GameObject.Find("player").GetComponent<Player>();
         sceneLoader = GameObject.Find("_SceneLoader").GetComponent<SceneLoader>();
-        Blueprint.SetActive(false);
+        if (Blueprint != null)
+        {
+            Blueprint.SetActive(false);
+        }
+        
         FinishItem.SetActive(false);
+        
         
     }
 
@@ -91,7 +98,7 @@ public class LevelPorter : MonoBehaviour
 
         player.allowedToWalk = false;
         yield return StartCoroutine(player.RunCircleWipe());
-
+        StartCoroutine(player.Book.GetComponent<Book>().openBook("levelStart"));
 
 
         
@@ -99,12 +106,14 @@ public class LevelPorter : MonoBehaviour
         Level.CurrentLevel.hasCollectedBlueprint = hasCollectedBlueprint;
         Level.CurrentLevel.FinishItemSprite = FinishItem.GetComponent<SpriteRenderer>().sprite;
         Level.CurrentLevel.BlueprintSprite = Blueprint.GetComponent<SpriteRenderer>().sprite;
-        yield return new WaitForSeconds(0.5f);
+        player.Book.GetComponent<Book>().BlueprintImage.sprite= Blueprint.GetComponent<SpriteRenderer>().sprite;
+        player.Book.GetComponent<Book>().CollecableImage.sprite = FinishItem.GetComponent<SpriteRenderer>().sprite;
+        yield return new WaitForSeconds(0.75f);
         yield return StartCoroutine(player.ReverseCircleWipe());
         player.resetGame();
         player.allowedToWalk = true;
         player.time = 0;
-        StartCoroutine(player.GetComponent<Player_Controller>().openBook());
+        
         
     }   
 }

@@ -12,7 +12,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] public GameObject Book;
+    [SerializeField] public Book Book;
     [SerializeField] private SpriteRenderer circleWipe;
     [SerializeField] public GameObject InteractButton;
     public bool InteractButtonOn = false;
@@ -228,7 +228,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Book.activeSelf)
+        if (Book.bookOpen)
         {
             return;
         }
