@@ -51,8 +51,6 @@ public class CollectionMenu : MonoBehaviour
 
     IEnumerator setVisibility()
     {
-        yield return null;
-
         
         int i = 0;
         foreach (var levelNumber in LevelPorter.levelPorters.Keys)
@@ -72,7 +70,7 @@ public class CollectionMenu : MonoBehaviour
             piece.material = blackOutMat;
         }
 
-        yield return new WaitForSeconds(0.4f);
+        
         foreach (var data in LevelSaveData.SaveData)
         {
             

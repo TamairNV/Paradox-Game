@@ -38,6 +38,7 @@ public class Player : MonoBehaviour
     public bool isMoving;
     
     [SerializeField] public float speed = 100;
+    [HideInInspector] public float startingSpeed;
 
     [SerializeField] public GameObject DimPlayer;
 
@@ -77,7 +78,7 @@ public class Player : MonoBehaviour
     public float EntropyBoxCollideValue = 5;
 
     public float MaxEntropy = 15;
-
+    
     public void resetPlayer()
     {
         DimentionalObjects.Objects = new List<DimentionalObjects>();
@@ -161,7 +162,7 @@ public class Player : MonoBehaviour
         Application.targetFrameRate = 500;
         QuoteMaker = GetComponent<Quotes>();
         collider = GetComponent<Collider2D>();
-
+        startingSpeed = speed;
 
         timeEngine = new DimensionalLinkedList(xStep, yStep, line);
 
@@ -290,7 +291,7 @@ public class Player : MonoBehaviour
         
         allowedToWalk = true;
         Entropy = 0;
-
+        speed = startingSpeed;
         // Destroy players created after checkpoint
         DimentionalPlayers.RemoveAll(player =>
         {
@@ -503,6 +504,28 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(legnth);
         IsImmune = false;
     }
+
+
+    public void GiveSpeedBoost(float value)
+    {
+        speed = startingSpeed * (1 + (value / 100f));
+    }
+
+    public void IncreaseMaxEntropy(float value)
+    {
+        MaxEntropy *= 1 + (value / 100f);
+    }
+
+    public void SetImmuneToPlayerEntropy()
+    {
+        
+    }
+
+    public void GiveEntropyReverser()
+    {
+        
+    }
+    
 }
 
 public class CheckPoint
