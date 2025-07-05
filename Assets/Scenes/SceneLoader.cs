@@ -27,22 +27,21 @@ public class SceneLoader : MonoBehaviour
     }
 
     // Call this method to load a new level
-    public void LoadLevel(string sceneName)
+    public AsyncOperation LoadLevel(string sceneName)
     {
-        // If a level is already loaded, unload it first.
         if (!string.IsNullOrEmpty(currentLoadedLevel))
         {
             SceneManager.UnloadSceneAsync(currentLoadedLevel);
         }
 
-        // Load the new scene additively (so it adds to the current scene)
-        // and handle what happens when it's fully loaded.
-        SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive).completed += (asyncOperation) =>
+        AsyncOperation loadOperation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+
+        loadOperation.completed += (asyncOperation) =>
         {
-            // Set the newly loaded scene as the active scene.
-            // This is important for lighting and other scene-specific settings.
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
             currentLoadedLevel = sceneName;
         };
+
+        return loadOperation;
     }
 }

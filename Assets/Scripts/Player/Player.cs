@@ -78,7 +78,8 @@ public class Player : MonoBehaviour
     public float EntropyBoxCollideValue = 5;
 
     public float MaxEntropy = 15;
-    
+    private SceneLoader sceneLoader;
+    public bool playingTutorial = false;
     public void resetPlayer()
     {
         DimentionalObjects.Objects = new List<DimentionalObjects>();
@@ -159,11 +160,12 @@ public class Player : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        
         Application.targetFrameRate = 500;
         QuoteMaker = GetComponent<Quotes>();
         collider = GetComponent<Collider2D>();
         startingSpeed = speed;
-
+        sceneLoader = GameObject.Find("_SceneLoader").GetComponent<SceneLoader>();
         timeEngine = new DimensionalLinkedList(xStep, yStep, line);
 
         timeEngine.CurrentDimensionalNode = new DimensionalNode(null, null, null, null, timeEngine.CurrentTime);
@@ -176,6 +178,15 @@ public class Player : MonoBehaviour
         
         
         StartCoroutine(LoadDataAfterStart());
+    }
+
+    public IEnumerator SendToTutorial()
+    {
+        yield return StartCoroutine(RunCircleWipe());
+        yield return sceneLoader.LoadLevel("Tutorial");
+        playingTutorial = true;
+        StartCoroutine(ReverseCircleWipe());
+        
     }
 
     public void DeleteSave()

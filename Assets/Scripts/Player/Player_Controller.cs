@@ -54,6 +54,15 @@ public class Player_Controller : MonoBehaviour
         {
             return;
         }
+
+        if (!player.allowedToWalk)
+        {
+            variableJoystick.gameObject.SetActive(false);
+        }
+        else
+        {
+            variableJoystick.gameObject.SetActive(true);
+        }
         //Debugging code 
         foreach (var direction in directions)
         {
