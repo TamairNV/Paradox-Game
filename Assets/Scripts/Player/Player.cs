@@ -185,6 +185,7 @@ public class Player : MonoBehaviour
         yield return StartCoroutine(RunCircleWipe());
         yield return sceneLoader.LoadLevel("Tutorial");
         playingTutorial = true;
+        yield return new WaitForSeconds(0.5f);
         StartCoroutine(ReverseCircleWipe());
         
     }

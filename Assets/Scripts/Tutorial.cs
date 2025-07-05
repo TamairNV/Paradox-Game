@@ -63,14 +63,75 @@ public class Tutorial : MonoBehaviour
             {
                 data = GameObject.Find("Level").GetComponent<TutorialData>();
                 player.transform.position = data.StartPosition.position;
+                Camera.main.transform.position = player.transform.position;
+            }
+            else
+            {
+                if (data.WalkedThroughDoorArea.IsTouching(player.collider) && !playingReverseAni)
+                {
+                    currentStage++;
+                    stages[currentStage].SetAsLastSibling();
+                    StartCoroutine(ReversePlayerMovements());
+                    print("sdfsdf");
+
+                }
+
             }
             
         }
+    }
+
+    private bool playingReverseAni = false;
+    private IEnumerator ReversePlayerMovements()
+    {
         
         
+        player.IsImmune = true;
+        isHidden = false;
+        ShowPaper();
+        playingReverseAni = true;
+        player.allowedToWalk = false;
+        yield return new WaitForSeconds(3.5f);
+        
+        
+        float time = player.timeEngine.CurrentTime;
+        DimentionalPlayer dimPlayer =  player.ReverseDirection();
+        dimPlayer.transform.position = player.transform.position;
+        player.GetComponent<SpriteRenderer>().enabled = false;
+        player.shadow.SetActive(false);
+        Camera.main.GetComponent<CameraController>().player = dimPlayer.transform;
 
-
-
+        float timer = 0;
+        while (timer < 12)
+        {
+            if (timer > 3.5f && !isHidden)
+            {
+                HidePaper();
+            }
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        
+        dimPlayer = player.ReverseDirection();
+        
+        while (player.timeEngine.CurrentTime <= time)
+        {
+            dimPlayer.setInvisable();
+            yield return null;
+        }
+        currentStage++;
+        stages[currentStage].SetAsLastSibling();
+        print("done");
+        player.GetComponent<SpriteRenderer>().enabled = true;
+        player.shadow.SetActive(true);
+        player.lastDirection = new Vector2(0,0);
+        Camera.main.GetComponent<CameraController>().player = player.transform;
+        player.allowedToWalk = true;
+        player.IsImmune = false;
+        
+        ShowPaper();
+        
+        
     }
 
     private IEnumerator ChangePaper(Transform stage)

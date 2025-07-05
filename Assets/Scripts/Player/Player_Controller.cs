@@ -13,7 +13,8 @@ using UnityEngine.UI;
 public class Player_Controller : MonoBehaviour
 {
 
-    [SerializeField] VariableJoystick variableJoystick;
+    [SerializeField]  public VariableJoystick variableJoystick;
+    private RectTransform joyStickMiddle;
     [SerializeField] private LayerMask layer;
     [SerializeField] private float distance = 2f;
     [SerializeField] private float sideRayDistance;
@@ -38,6 +39,7 @@ public class Player_Controller : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        joyStickMiddle = variableJoystick.transform.GetChild(0).GetChild(0).GetComponent<RectTransform>();
         player = transform.GetComponent<Player>();
         ani = GetComponent<Animator>();
         fireParticleSystem = flameThrower.GetChild(0).GetComponent<ParticleSystem>();
@@ -57,7 +59,11 @@ public class Player_Controller : MonoBehaviour
 
         if (!player.allowedToWalk)
         {
+            joyStickMiddle.anchoredPosition = Vector2.zero;
+            player.direction = Vector3.zero;
+            player.lastDirection = Vector2.zero;
             variableJoystick.gameObject.SetActive(false);
+            variableJoystick.OnDrag(null);
         }
         else
         {
@@ -79,17 +85,25 @@ public class Player_Controller : MonoBehaviour
         float angle = Mathf.Atan2(player.lastDirection.y, player.lastDirection.x) * Mathf.Rad2Deg;
         flameThrower.transform.rotation = Quaternion.Euler(0, 0, angle);
 
-        
-        if (OnMobile)
+        if (player.allowedToWalk)
         {
-            player.direction = MoveMobile();
+            if (OnMobile)
+            {
+                player.direction = MoveMobile();
+            }
+            else
+            {
+                player.direction = MovePC();
+            }
+            TestForInteractions();
         }
         else
         {
-            player.direction = MovePC();
+            player.direction = Vector3.zero;
         }
 
-        TestForInteractions();
+
+        
     }
     
 

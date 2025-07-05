@@ -11,7 +11,7 @@ public class DimentionalPlayer : MonoBehaviour
 
     private bool isMoving;
     private Vector2 direction;
-    private SpriteRenderer sp;
+    public SpriteRenderer sp;
     private Animator ani;
     private string currentAnimation = "";
     private float momentTime;

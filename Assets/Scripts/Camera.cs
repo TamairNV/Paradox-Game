@@ -5,7 +5,7 @@ using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] private Player player;
+    [SerializeField] public Transform player;
     [SerializeField] private float minZoom = 5f;
     [SerializeField] private float maxZoom = 15f;
     [SerializeField] private float zoomSpeed = 2f;
