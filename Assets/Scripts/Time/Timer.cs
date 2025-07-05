@@ -8,6 +8,8 @@ public class Timer : MonoBehaviour
     
     private TMP_Text text;
     private Player player;
+    [SerializeField] private Animator arrow;
+    private int currentDirection = 1;
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -40,7 +42,21 @@ public class Timer : MonoBehaviour
         {
             player.time = 0;
         }
-        
-        
+
+        if (player.timeEngine.direction != currentDirection)
+        {
+            if (player.timeEngine.direction == 1)
+            {
+                arrow.Play("SpinToLeft");
+            }
+            else
+            {
+                arrow.Play("SpinToRight");
+            }
+        }
+
+        currentDirection = player.timeEngine.direction;
+
+
     }
 }

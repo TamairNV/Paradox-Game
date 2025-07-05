@@ -49,15 +49,17 @@ public class Tutorial : MonoBehaviour
                 StartCoroutine(ChangePaper(stages[currentStage]));
             }
 
-            if (currentStage <= 2)
+            if (currentStage < 2)
             {
                 player.allowedToWalk = false;
             }
 
-            if (isHidden)
+            if (currentStage == 2)
             {
                 player.allowedToWalk = true;
             }
+
+
 
             if (data == null)
             {
@@ -72,7 +74,7 @@ public class Tutorial : MonoBehaviour
                     currentStage++;
                     stages[currentStage].SetAsLastSibling();
                     StartCoroutine(ReversePlayerMovements());
-                    print("sdfsdf");
+                   
 
                 }
 
@@ -91,44 +93,43 @@ public class Tutorial : MonoBehaviour
         ShowPaper();
         playingReverseAni = true;
         player.allowedToWalk = false;
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(3.25f);
         
         
         float time = player.timeEngine.CurrentTime;
-        DimentionalPlayer dimPlayer =  player.ReverseDirection();
-        dimPlayer.transform.position = player.transform.position;
+        DimentionalPlayer dimPlayer1 =  player.ReverseDirection();
+        dimPlayer1.transform.position = player.transform.position;
         player.GetComponent<SpriteRenderer>().enabled = false;
         player.shadow.SetActive(false);
-        Camera.main.GetComponent<CameraController>().player = dimPlayer.transform;
+        Camera.main.GetComponent<CameraController>().player = dimPlayer1.transform;
 
         float timer = 0;
         while (timer < 12)
         {
-            if (timer > 3.5f && !isHidden)
+            if (timer > 4f && !isHidden)
             {
-                HidePaper();
+                StartCoroutine(HidePaperAnimation());
             }
             timer += Time.deltaTime;
             yield return null;
         }
         
-        dimPlayer = player.ReverseDirection();
+        DimentionalPlayer dimPlayer2 = player.ReverseDirection();
         
         while (player.timeEngine.CurrentTime <= time)
         {
-            dimPlayer.setInvisable();
+            dimPlayer2.setInvisable();
             yield return null;
         }
         currentStage++;
         stages[currentStage].SetAsLastSibling();
         print("done");
+        player.transform.position = dimPlayer1.transform.position;
         player.GetComponent<SpriteRenderer>().enabled = true;
         player.shadow.SetActive(true);
         player.lastDirection = new Vector2(0,0);
         Camera.main.GetComponent<CameraController>().player = player.transform;
-        player.allowedToWalk = true;
         player.IsImmune = false;
-        
         ShowPaper();
         
         
@@ -186,6 +187,8 @@ public class Tutorial : MonoBehaviour
         {
             return;
         }
+
+        player.allowedToWalk = true;
         StartCoroutine(HidePaperAnimation());
     }
 
@@ -211,6 +214,7 @@ public class Tutorial : MonoBehaviour
         {
             return;
         }
+        player.allowedToWalk = true;
         StartCoroutine(ShowPaperAnimation());
     }
 
