@@ -37,7 +37,7 @@ public class SettingsManager : MonoBehaviour
         }
         else
         {
-            
+            print(saver.doneTutorial);
             if (!saver.doneTutorial)
             {
                 StartCoroutine(runTutorial());

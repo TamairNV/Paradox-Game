@@ -62,8 +62,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Amount: 0.7
-    - _TileCount: 14.49
+    - _Amount: 0.8
+    - _TileCount: 18.6
     - _TilingFactor: 4
     - _VoronoiScale: 10
     m_Colors: []

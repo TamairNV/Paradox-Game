@@ -11,6 +11,7 @@ public class Quotes : MonoBehaviour
 
     private System.Random ran;
     [SerializeField] private TMP_Text quoteText;
+    private float quoteTimer = 0;
     public List<string> quotes = new List<string>
     {
         "\"People who can't new-think are thralled by old-think.\"",
@@ -38,18 +39,18 @@ public class Quotes : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Level.CurrentLevel != null)
+        quoteTimer += Time.deltaTime;
+
+        if (quoteTimer > 125)
         {
-            quoteText.gameObject.SetActive(false);
-        }
-        else
-        {
-            quoteText.gameObject.SetActive(true);
+            quoteTimer = 0;
+            GenerateNewQuote();
         }
     }
 
     public void GenerateNewQuote()
     {
+        quoteTimer = 0;
         quoteText.text = quotes[ran.Next(0, quotes.Count - 1)];
     }
 }

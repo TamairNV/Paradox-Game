@@ -40,11 +40,17 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: SkyBox1
-    uniqueID: 2215124007
-    locked: 0
   - name: invis
     uniqueID: 2267509657
+    locked: 0
+  - name: Skybox3
+    uniqueID: 700319059
+    locked: 0
+  - name: Skybox2
+    uniqueID: 3849289479
+    locked: 0
+  - name: SkyBox1
+    uniqueID: 2215124007
     locked: 0
   - name: lift
     uniqueID: 2700330581
@@ -102,6 +108,9 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 1556399543
+    locked: 0
+  - name: 
+    uniqueID: 2814173231
     locked: 0
   m_RenderingLayers:
   - Default

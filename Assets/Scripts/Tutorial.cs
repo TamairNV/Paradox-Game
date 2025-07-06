@@ -10,7 +10,8 @@ public class Tutorial : MonoBehaviour
 {
     [SerializeField]
     private List<Transform> stages = new List<Transform>();
-
+    [SerializeField]
+    private List<GameObject> thingsToDisable = new List<GameObject>();
     [SerializeField] private Canvas canvas;
     
 
@@ -44,7 +45,7 @@ public class Tutorial : MonoBehaviour
     {
         if (player.playingTutorial)
         {
-            if (stages[currentStage].GetSiblingIndex() != transform.childCount-1 && !changingPaper)
+            if (stages[currentStage].GetSiblingIndex() != transform.GetChild(0).childCount-1 && !changingPaper)
             {
                 StartCoroutine(ChangePaper(stages[currentStage]));
             }
@@ -63,10 +64,14 @@ public class Tutorial : MonoBehaviour
 
             if (data == null)
             {
-				
+				transform.GetChild(0).gameObject.SetActive(true);
                 data = GameObject.Find("Level").GetComponent<TutorialData>();
                 player.transform.position = data.StartPosition.position;
                 Camera.main.transform.position = player.transform.position;
+                foreach (var obj in thingsToDisable)
+                {
+                    obj.SetActive(false);
+                }
             }
             else
             {
@@ -236,6 +241,17 @@ public class Tutorial : MonoBehaviour
             return;
         }
         currentStage -= amount;
+    }
+
+
+    public void FinishTutorial()
+    {
+        foreach (var obj in thingsToDisable)
+        {
+            obj.SetActive(true);
+        }
+        transform.GetChild(0).gameObject.SetActive(false);
+        player.GoHome();
     }
     
     
