@@ -23,7 +23,7 @@ public class SettingsManager : MonoBehaviour
     private SettingsSaver saver;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         
         
@@ -33,14 +33,16 @@ public class SettingsManager : MonoBehaviour
             musicManager.updateMasterVolume(MasterRocker.Value);
             musicManager.updateMusicVolume(SFXRocker.Value);
             musicManager.updateSoundEffectVolume(MusicRocker.Value);
-            saver.SaveData(MasterRocker.Value,SFXRocker.Value,MusicRocker.Value,false);
+            
         }
         else
         {
+            
             if (!saver.doneTutorial)
             {
                 StartCoroutine(runTutorial());
             }
+          
         }
 
         
@@ -51,6 +53,9 @@ public class SettingsManager : MonoBehaviour
         yield return null;
         Player player = GameObject.Find("player").GetComponent<Player>();
         StartCoroutine(player.SendToTutorial());
+        saver.doneTutorial = true;
+        saver.SaveData(MasterRocker.Value,SFXRocker.Value,MusicRocker.Value,saver.doneTutorial);
+
     }
 
     // Update is called once per frame
@@ -61,7 +66,8 @@ public class SettingsManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        saver.SaveData(MasterRocker.Value,SFXRocker.Value,MusicRocker.Value,false);
+        
+        saver.SaveData(MasterRocker.Value,SFXRocker.Value,MusicRocker.Value,saver.doneTutorial);
     }
 }
 
@@ -105,6 +111,7 @@ public class SettingsSaver
             settings.MasterRocker.Value = MasterVolume;
             settings.MusicRocker.Value = MusicVolume;
             settings.SFXRocker.Value = SFXVolume;
+            this.doneTutorial = data.doneTutorial;
             return true;
         }
 

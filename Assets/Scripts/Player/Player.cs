@@ -182,7 +182,8 @@ public class Player : MonoBehaviour
 
     public IEnumerator SendToTutorial()
     {
-        yield return StartCoroutine(RunCircleWipe());
+		circleWipe.material.SetFloat("_Radius" , -0.2f);
+        //yield return StartCoroutine(RunCircleWipe());
         yield return sceneLoader.LoadLevel("Tutorial");
         playingTutorial = true;
         yield return new WaitForSeconds(0.5f);

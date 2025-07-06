@@ -40,6 +40,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: SkyBox1
+    uniqueID: 2215124007
+    locked: 0
   - name: invis
     uniqueID: 2267509657
     locked: 0

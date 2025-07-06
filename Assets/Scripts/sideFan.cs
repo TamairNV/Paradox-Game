@@ -43,7 +43,11 @@ public class sideFan : MonoBehaviour
         {
             player.position -= direction * speed/1.25f * Time.deltaTime;
         }
-        
+
+        if (transform.localScale.x < 0)
+        {
+            flowDirection = !flowDirection;
+        }
         if (flowDirection)
         {
             particleSystem.transform.position = startLocation;
@@ -57,8 +61,13 @@ public class sideFan : MonoBehaviour
             particleSystem.GetComponent<Renderer>().material = rightArrow;
         }
     }
-    
-    
+
+    public void OnDrawGizmos()
+    {
+        Debug.DrawLine(particleSystem.transform.position,particleSystem.transform.position + new Vector3(particleWidth, 0, 0),Color.blue);
+    }
+
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == 13)

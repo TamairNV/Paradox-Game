@@ -63,6 +63,7 @@ public class Tutorial : MonoBehaviour
 
             if (data == null)
             {
+				
                 data = GameObject.Find("Level").GetComponent<TutorialData>();
                 player.transform.position = data.StartPosition.position;
                 Camera.main.transform.position = player.transform.position;
