@@ -51,10 +51,11 @@ public class CollectionMenu : MonoBehaviour
 
     IEnumerator setVisibility()
     {
-        
+        yield return null;
         int i = 0;
         foreach (var levelNumber in LevelPorter.levelPorters.Keys)
         {
+            
             collectionItemSlots[levelNumber - 1].enabled = true;
             collectionItemSlots[levelNumber-1].sprite = LevelPorter.levelPorters[levelNumber].FinishItem.GetComponent<SpriteRenderer>().sprite;
             collectionItemSlots[levelNumber-1].material = blackOutMat;

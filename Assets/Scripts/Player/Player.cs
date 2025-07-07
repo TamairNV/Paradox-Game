@@ -40,8 +40,8 @@ public class Player : MonoBehaviour
     [SerializeField] public float speed = 100;
     [HideInInspector] public float startingSpeed;
 
-    [SerializeField] public GameObject DimPlayer;
-
+    [SerializeField] public GameObject DimPlayer;   
+    
     public Vector3 direction;
     public Vector2 lastDirection;
     public bool IsImmune = false;
@@ -80,6 +80,7 @@ public class Player : MonoBehaviour
     public float MaxEntropy = 15;
     private SceneLoader sceneLoader;
     public bool playingTutorial = false;
+    private float lastEntropy;
     public void resetPlayer()
     {
         DimentionalObjects.Objects = new List<DimentionalObjects>();
@@ -252,7 +253,8 @@ public class Player : MonoBehaviour
         if (Entropy >=MaxEntropy && !reseting)
         {
             StartCoroutine(CauseParadox());
-            print("Entropy too high");
+            QuoteMaker.DisplayMessage("Entropy got too high.");
+           
         }
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
@@ -269,20 +271,28 @@ public class Player : MonoBehaviour
         }
 
 
+
+
+        if (timeEngine.CurrentTime <= 0 && !reseting)
+        {
+            StartCoroutine(CauseParadox());
+            QuoteMaker.DisplayMessage("Time ran out");
+        }
+
+
+       
+    }
+
+    private void LateUpdate()
+    {
         timer += Time.deltaTime;
         if (timer > 1 / MomentRate && !reseting)
         {
             timer = 0;
             MomentUpdate();
         }
-
-        if (timeEngine.CurrentTime <= 0 && !reseting)
-        {
-            StartCoroutine(CauseParadox());
-            print("time went negative");
-        }
-        
-        
+        increaseEntropyEffect();
+        lastEntropy = Entropy;
     }
 
     public void PlaceBomb()
@@ -341,9 +351,7 @@ public class Player : MonoBehaviour
             GetComponent<PlayerBoxHolder>().boxHolding = null;
         }
         
-
-
-
+        
 
         Bomb.DestroyALlBombs();
         line.transform.position = line.transform.GetComponent<UILineRenderer>().startPosition;
@@ -353,7 +361,6 @@ public class Player : MonoBehaviour
     public IEnumerator RunCircleWipe()
     {
         float radius = 1.5f;
-        QuoteMaker.GenerateNewQuote();
 
         while (radius > -0.2f)
         {
@@ -385,6 +392,7 @@ public class Player : MonoBehaviour
 
         reseting = true;
         // Get all post-processing effects
+        GetComponent<PlayerBoxHolder>().boxHolding = null;
         Vignette vignette = null;
         ChromaticAberration chromatic = null;
         FilmGrain noise = null;
@@ -408,9 +416,6 @@ public class Player : MonoBehaviour
 
         // Initial values
 
-        float chromaticValue = 0;
-        float noiseValue = 0;
-        float distortionValue = 0;
         float bloomValue = bloom.intensity.value;
 
         // PHASE 1: Reality distortion buildup (3 seconds)
@@ -425,8 +430,8 @@ public class Player : MonoBehaviour
 
             float t = elapsed / duration;
             
-            chromaticValue = Mathf.Lerp(0, 2, t * 2f); // Chromatic aberration grows faster
-            distortionValue = Mathf.Lerp(0, -1f, t); // Negative for "implosion" effect
+            chromaticValue = Mathf.Lerp(chromaticValue, 4, t * 2f); // Chromatic aberration grows faster
+            distortionValue = Mathf.Lerp(distortionValue, 0.75f, t); // Negative for "implosion" effect
             chromatic.intensity.Override(chromaticValue);
             distortion.intensity.Override(distortionValue);
 
@@ -450,8 +455,8 @@ public class Player : MonoBehaviour
           
             float t = elapsed / duration;
             
-            chromaticValue = Mathf.Lerp(2, 0, t * 1.5f); // Chromatic fades faster
-            distortionValue = Mathf.Lerp(-1f, 0, t);
+            chromaticValue = Mathf.Lerp(distortionValue, 0, t * 1.5f); // Chromatic fades faster
+            distortionValue = Mathf.Lerp(distortionValue, 0, t);
             chromatic.intensity.Override(chromaticValue);
             distortion.intensity.Override(distortionValue);
 
@@ -460,6 +465,61 @@ public class Player : MonoBehaviour
         }
 
         reseting = false;
+    }
+
+    float chromaticValue = 0;
+    float distortionValue = 0;
+    public float chromaticIncreaseValue = 2;
+    public float distortionValueIncrease = 2;
+    private void increaseEntropyEffect()
+    {
+        if (reseting)
+        {
+            return;
+        }
+        
+
+        ChromaticAberration chromatic = null;
+        LensDistortion distortion = null;
+        bool effectsFound =
+            volume.profile.TryGet(out chromatic) &&
+            volume.profile.TryGet(out distortion);
+        if (effectsFound)
+        {
+            if (lastEntropy < Entropy)
+            {   
+                distortionValue += distortionValueIncrease * Time.deltaTime;
+                chromaticValue += chromaticIncreaseValue * Time.deltaTime;
+                chromatic.intensity.Override(chromaticValue);
+                distortion.intensity.Override(distortionValue);
+            }
+
+            if (lastEntropy == Entropy && (distortionValue != 0 || chromaticValue !=0))
+            {
+                
+                
+                if (distortionValue < 0)
+                {
+                    distortionValue = 0;
+                }
+                else
+                {
+                    distortionValue -= distortionValueIncrease * Time.deltaTime;
+                }
+                if (chromaticValue < 0)
+                {
+                    chromaticValue = 0;
+                    
+                }
+                else
+                {
+                    chromaticValue -= chromaticIncreaseValue * Time.deltaTime;
+                }
+                chromatic.intensity.Override(chromaticValue);
+                distortion.intensity.Override(distortionValue);
+            }
+        }
+
     }
 
 
@@ -477,7 +537,7 @@ public class Player : MonoBehaviour
             if (other.gameObject.transform.parent.GetComponent<Bomb>().isExploding && !reseting)
             {
                 StartCoroutine(CauseParadox());
-                print("player hit by bomb");
+                QuoteMaker.DisplayMessage("You were blown up.");
             }
 
         }
@@ -490,15 +550,11 @@ public class Player : MonoBehaviour
         if (other.gameObject.layer == 15)
         {
             DimentionalObjects box = other.GetComponent<DimentionalObjects>();
-            if(box.beenInteractedWith && box.data.ContainsKey(timeEngine.CurrentTime) && !IsImmune)
-            {
-                Entropy += EntropyBoxCollideValue * Time.deltaTime;
-            }
-
+            
             if (box.Temp == 1 && !reseting)
             {
                 StartCoroutine(CauseParadox());
-                print("Player burnt by object");
+                QuoteMaker.DisplayMessage("You were burnt to a crisp!");
             }
             
         }

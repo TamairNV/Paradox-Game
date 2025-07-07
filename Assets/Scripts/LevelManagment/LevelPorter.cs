@@ -28,7 +28,11 @@ public class LevelPorter : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        levelPorters[LevelNumber] = this;
+        if (LevelNumber > 0)
+        {
+            levelPorters[LevelNumber] = this;
+        }
+        
         player = GameObject.Find("player").GetComponent<Player>();
         sceneLoader = GameObject.Find("_SceneLoader").GetComponent<SceneLoader>();
         if (Blueprint != null)
@@ -104,9 +108,21 @@ public class LevelPorter : MonoBehaviour
         
         player.transform.position = Level.CurrentLevel.startLocation.position;
         Level.CurrentLevel.hasCollectedBlueprint = hasCollectedBlueprint;
+        
         Level.CurrentLevel.FinishItemSprite = FinishItem.GetComponent<SpriteRenderer>().sprite;
-        Level.CurrentLevel.BlueprintSprite = Blueprint.GetComponent<SpriteRenderer>().sprite;
-        player.Book.GetComponent<Book>().BlueprintImage.sprite= Blueprint.GetComponent<SpriteRenderer>().sprite;
+        if (Blueprint != null)
+        {
+            Level.CurrentLevel.BlueprintSprite = Blueprint.GetComponent<SpriteRenderer>().sprite;
+            player.Book.GetComponent<Book>().BlueprintImage.sprite= Blueprint.GetComponent<SpriteRenderer>().sprite;
+        }
+        else
+        {
+            player.Book.GetComponent<Book>().BlueprintImage.sprite = null;
+        }
+
+        double num = Math.Ceiling((TargetEntropy / player.MaxEntropy)*10);
+        print(num + " " + num/10f);
+        player.Book.TargetEntropy.text = (num/10f).ToString() ;
         player.Book.GetComponent<Book>().CollecableImage.sprite = FinishItem.GetComponent<SpriteRenderer>().sprite;
         yield return new WaitForSeconds(0.75f);
         yield return StartCoroutine(player.ReverseCircleWipe());

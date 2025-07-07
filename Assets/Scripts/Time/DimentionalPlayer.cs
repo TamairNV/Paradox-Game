@@ -159,7 +159,8 @@ public class DimentionalPlayer : MonoBehaviour
             if (other.gameObject.transform.parent.GetComponent<Bomb>().isExploding)
             {
                 StartCoroutine(Player.CauseParadox());
-                print("past self hit by bomb");
+                Player.QuoteMaker.DisplayMessage("A past self was exploded by a bomb.");
+                
             }
 
         }
@@ -167,7 +168,8 @@ public class DimentionalPlayer : MonoBehaviour
         {
 
             StartCoroutine(Player.CauseParadox());
-            print("Past self Went through wall");
+            Player.QuoteMaker.DisplayMessage("A past self went through a solid wall");
+            
             
         }
     }

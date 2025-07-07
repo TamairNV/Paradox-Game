@@ -41,11 +41,17 @@ public class Quotes : MonoBehaviour
     {
         quoteTimer += Time.deltaTime;
 
-        if (quoteTimer > 125)
+        if (quoteTimer > 60)
         {
             quoteTimer = 0;
             GenerateNewQuote();
         }
+    }
+
+    public void DisplayMessage(string message)
+    {
+        quoteTimer = 0;
+        quoteText.text = "<color=\"yellow\">"+ message+"<color=\"white\">";
     }
 
     public void GenerateNewQuote()

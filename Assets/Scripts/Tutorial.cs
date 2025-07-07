@@ -65,7 +65,11 @@ public class Tutorial : MonoBehaviour
             if (data == null)
             {
 				transform.GetChild(0).gameObject.SetActive(true);
-                data = GameObject.Find("Level").GetComponent<TutorialData>();
+                if (GameObject.Find("Level") != null)
+                {
+                    data = GameObject.Find("Level").GetComponent<TutorialData>();
+                }
+                
                 player.transform.position = data.StartPosition.position;
                 Camera.main.transform.position = player.transform.position;
                 foreach (var obj in thingsToDisable)

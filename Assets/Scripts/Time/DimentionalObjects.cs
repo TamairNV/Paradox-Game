@@ -38,6 +38,9 @@ public class DimentionalObjects : MonoBehaviour
 
     private Rigidbody2D rb;
     private float startingMass;
+
+    public float playerInsideBannedBox = 0;
+    private float beforeInsideBannedBox = 0;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -124,8 +127,24 @@ public class DimentionalObjects : MonoBehaviour
         {
             rb.mass = startingMass;
         }
+
+        if (playerInsideBannedBox > 0.1f)
+        {
+            player.Entropy += player.EntropyBoxCollideValue * Time.deltaTime;
+        }
+
+        if (beforeInsideBannedBox == playerInsideBannedBox)
+        {
+            playerInsideBannedBox = 0;
+        }
+
         
 
+    }
+
+    public void FixedUpdate()
+    {
+        beforeInsideBannedBox = playerInsideBannedBox;
     }
 
     public static void ResetAllObj()
@@ -203,6 +222,17 @@ public class DimentionalObjects : MonoBehaviour
 
     }
 
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.layer == 13)
+        {
+            if (beenInteractedWith && data.ContainsKey(player.timeEngine.CurrentTime))
+            {
+                playerInsideBannedBox += Time.deltaTime;
+                
+            }
+        }
+    }
 
 
     public void changeBoxType()

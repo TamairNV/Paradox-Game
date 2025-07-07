@@ -122,6 +122,7 @@ public class Player_Controller : MonoBehaviour
         if (GetComponent<PlayerBoxHolder>().boxHolding != null)
         {
             GetComponent<PlayerBoxHolder>().pickUp();
+            return;
         }
         touchingTurnstiles.Clear();
         player.collider.GetContacts(touchingTurnstiles);

@@ -16,6 +16,7 @@ public class Book : MonoBehaviour
 
     [SerializeField] public Image BlueprintImage;
     [SerializeField] public Image CollecableImage;
+    [SerializeField] public TMP_Text TargetEntropy;
     public bool bookOpen = false;
     private bool isDoingThings = false;
     

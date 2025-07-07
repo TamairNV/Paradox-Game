@@ -64,6 +64,15 @@ public class SettingsManager : MonoBehaviour
         
     }
 
+    public void ResetTutorial()
+    {
+        Player player = GameObject.Find("player").GetComponent<Player>();
+        saver.doneTutorial = false;
+        player.Book.RunCloseBook();
+        StartCoroutine(runTutorial());
+        
+    }
+
     private void OnDestroy()
     {
         
