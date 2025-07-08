@@ -7,7 +7,7 @@ public class PlayerBoxHolder : MonoBehaviour
     [SerializeField] private float boxHoldSpeed = 5f; // Increased for more responsive movement
     [SerializeField] private LayerMask boxLayer;
     [SerializeField] private float pickupRadius = 1f;
-    
+    [SerializeField] private AudioClip pickUpSound;
     [HideInInspector] public Vector3 boxHoldPosition;
     private Vector3 targetBoxPosition;
     private Vector3 lastValidDirection;
@@ -66,8 +66,9 @@ public class PlayerBoxHolder : MonoBehaviour
             TryPickupBox();
         }
         else{
-            
+            player.audioSource.PlayOneShot(pickUpSound);
             boxHolding.GetComponent<BoxCollider2D>().enabled = true;
+            boxHolding.localScale = boxHolding.GetComponent<DimentionalObjects>().startingScale;
             boxHolding = null;
                 
                 
@@ -95,6 +96,7 @@ public class PlayerBoxHolder : MonoBehaviour
         if (closestBox != null && closestBox.GetComponent<DimentionalObjects>().Temp == 0)
         {
             boxHolding = closestBox;
+            player.audioSource.PlayOneShot(pickUpSound);
             DimentionalObjects box = boxHolding.GetComponent<DimentionalObjects>();
             if (!box.beenInteractedWith)
             {

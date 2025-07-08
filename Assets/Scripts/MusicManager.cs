@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -11,7 +12,14 @@ public class MusicManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        StartCoroutine(TurnListenerOn());
+    }
+
+    IEnumerator TurnListenerOn()
+    {
+        GetComponent<AudioListener>().enabled = false;
+        yield return new WaitForSeconds(1.2f);
+        GetComponent<AudioListener>().enabled = true;
     }
 
     // Update is called once per frame

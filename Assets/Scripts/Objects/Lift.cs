@@ -57,6 +57,7 @@ public class Lift : MonoBehaviour
         Transform lift = transform.GetChild(0);
         float  timer = 0;
         player.allowedToWalk = false;
+        player.collider.enabled = false;
         while (Vector3.Distance(player.transform.position, lift.GetChild(1).position) > 0.01f && timer < 1f)
         {
             player.transform.position =
@@ -74,6 +75,7 @@ public class Lift : MonoBehaviour
         liftDoors.GetComponent<Animator>().Play("doorClose");
         player.GetComponent<SpriteRenderer>().sortingLayerName = "lift_person";
         player.shadow.SetActive(false);
+        
         yield return new WaitForSeconds(1.2f);
         
 
@@ -112,6 +114,7 @@ public class Lift : MonoBehaviour
         yield return new WaitForSeconds(0.8f);
         player.GetComponent<SpriteRenderer>().sortingLayerName = "Player";
         player.allowedToWalk = true;
+        player.collider.enabled = true;
         player.shadow.SetActive(true);
         cam.enabled = true;
         

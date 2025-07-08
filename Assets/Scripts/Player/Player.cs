@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public Vector3 jumpStartPosition;
     [HideInInspector] public Vector3 jumpPeakPosition;
     [HideInInspector] public Vector3 jumpTargetPosition;
+    [SerializeField] public Collider2D FeetCollider;
 
     [HideInInspector]
     public Quotes QuoteMaker;
@@ -216,17 +217,29 @@ public class Player : MonoBehaviour
 
     public void reset()
     {
+        if (reseting)
+        {
+            return;
+        }
         Level.CurrentLevel = null;
-        StartCoroutine(CauseParadox());
+        StartCoroutine(CauseParadox(true));
+        
     }
 
     public void GoHome()
     {
-        Level.CurrentLevel = null;
-        StartCoroutine(sendPlayerHome());
+        if (!goingHome)
+        {
+            Level.CurrentLevel = null;
+            StartCoroutine(sendPlayerHome());
+        }
+
     }
+
+    private bool goingHome = false;
     private IEnumerator sendPlayerHome()
     {
+        goingHome = true;
         yield return StartCoroutine(RunCircleWipe());
 
         transform.position = StartPosition;
@@ -236,8 +249,9 @@ public class Player : MonoBehaviour
         resetGame();
         yield return StartCoroutine(ReverseCircleWipe());
         time = 0;
-        
-        
+        goingHome = false;
+
+
     }
 
     
@@ -312,7 +326,6 @@ public class Player : MonoBehaviour
 
     public void resetGame()
     {
-        
         allowedToWalk = true;
         Entropy = 0;
         speed = startingSpeed;
@@ -383,7 +396,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public IEnumerator CauseParadox()
+    public IEnumerator CauseParadox(bool isInLevel = false)
     {
         if (IsImmune)
         {
@@ -414,9 +427,7 @@ public class Player : MonoBehaviour
             yield break;
         }
 
-        // Initial values
-
-        float bloomValue = bloom.intensity.value;
+        
 
         // PHASE 1: Reality distortion buildup (3 seconds)
         float duration = 2f;
@@ -431,7 +442,7 @@ public class Player : MonoBehaviour
             float t = elapsed / duration;
             
             chromaticValue = Mathf.Lerp(chromaticValue, 4, t * 2f); // Chromatic aberration grows faster
-            distortionValue = Mathf.Lerp(distortionValue, 0.75f, t); // Negative for "implosion" effect
+            distortionValue = Mathf.Lerp(distortionValue, -1f, t/10f); // Negative for "implosion" effect
             chromatic.intensity.Override(chromaticValue);
             distortion.intensity.Override(distortionValue);
 
@@ -446,6 +457,10 @@ public class Player : MonoBehaviour
         time = 0;
         duration = 2f;
         elapsed = 0f;
+        if (isInLevel && Level.CurrentLevel != null)
+        {
+            StartCoroutine(Book.openBook("levelStart"));
+        }
    
         yield return new WaitForSeconds(0.4f);
         while (elapsed < duration || radius < 1.5f)

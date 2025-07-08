@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -17,12 +18,21 @@ public class BidirectionalAudioPlayer : MonoBehaviour
     void Start()
     {
         clipLength = forwardClip.length;
-        
+
+        StartCoroutine(loadAudio());
+            
+        audioSource.loop = true;
+      
+    }
+
+    IEnumerator loadAudio()
+    {
         audioSource.clip = reversedClip;
-        
-        audioSource.clip = forwardClip;
-        audioSource.loop = false;
         audioSource.Play();
+        yield return null;yield return null;
+        audioSource.clip = forwardClip;
+        audioSource.Play();
+
     }
     
     void Update()

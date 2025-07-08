@@ -37,7 +37,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: ce4f644e975a5534fa30ac5032754dea, type: 3}
+        m_Texture: {fileID: 2800000, guid: 67d2b81ce60dbbd49a768b7317993bb9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_1b20f09808224afb8640ebbe2d412aa7_Texture_1_Texture2D:
@@ -63,7 +63,8 @@ Material:
     m_Ints: []
     m_Floats:
     - _Amount: 0.8
-    - _TileCount: 18.6
+    - _CellCount: 8
+    - _TileCount: 21.67
     - _TilingFactor: 4
     - _VoronoiScale: 10
     m_Colors: []

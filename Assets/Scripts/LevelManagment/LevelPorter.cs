@@ -121,7 +121,6 @@ public class LevelPorter : MonoBehaviour
         }
 
         double num = Math.Ceiling((TargetEntropy / player.MaxEntropy)*10);
-        print(num + " " + num/10f);
         player.Book.TargetEntropy.text = (num/10f).ToString() ;
         player.Book.GetComponent<Book>().CollecableImage.sprite = FinishItem.GetComponent<SpriteRenderer>().sprite;
         yield return new WaitForSeconds(0.75f);

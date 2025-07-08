@@ -1,0 +1,12 @@
+# ninja log v5
+53	370	7736265495134757	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	53ce147db94688e6
+372	527	7736265496595240	C:/Users/tvass/Desktop/paradox/New/Paradox-Game/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/526d454n/obj/arm64-v8a/libswappywrapper.so	121ea68a21e6dd39
+24	1183	7736265503232857	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	5815a7f1604e1b23
+18	1198	7736265503399268	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	ae61a15e77054626
+37	1220	7736265503625685	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	262e0a303d72d22e
+12	1222	7736265503635899	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	bc9b7aa777bcd32f
+0	1278	7736265504201467	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	1b90168676b14b23
+45	1452	7736265505959207	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	b26e2071205ab146
+30	1488	7736265506304748	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	cb48e7ad2d19b874
+6	1575	7736265507144373	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	a3b7238b82ba711a
+1575	1652	7736265507986800	C:/Users/tvass/Desktop/paradox/New/Paradox-Game/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/526d454n/obj/arm64-v8a/libgame.so	72eb921c9f3a48d3

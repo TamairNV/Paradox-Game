@@ -7,6 +7,7 @@ public class LavaTile : MonoBehaviour
     [SerializeField] private Sprite ice;
     public bool isLava = true;
     private SpriteRenderer sr;
+    public static float LavaTileIncrease = 10;
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -38,6 +39,20 @@ public class LavaTile : MonoBehaviour
                 sr.sprite = ice;
                 isLava = false;
             }
+        }
+
+        if (other.gameObject.layer == 13 && isLava)
+        {
+            
+            Player player = other.gameObject.GetComponent<Player>();
+           
+            if (player.FeetCollider.IsTouching(GetComponent<Collider2D>()))
+            {
+                StartCoroutine(player.CauseParadox());
+                player.QuoteMaker.DisplayMessage("You Stepped into Lava");
+            }
+            
+
         }
     }
 
